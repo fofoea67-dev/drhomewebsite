@@ -1,0 +1,1565 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>دكتور هوم DR HOME</title>
+<meta name="description" content="دكتور هوم: متجر الأجهزة المنزلية الذكية. ثلاجات وغسالات ومكيفات وشاشات مع توصيل وتركيب وضمان رسمي واستشارة مجانية.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;600;700;800;900&family=Tajawal:wght@400;500;700;800&display=swap">
+<script>document.documentElement.lang = 'ar'; document.documentElement.dir = 'rtl';</script>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: 'rgb(var(--ink) / <alpha-value>)',
+          surface: 'rgb(var(--surface) / <alpha-value>)',
+          night: 'rgb(var(--night) / <alpha-value>)',
+          wa: 'rgb(var(--wa) / <alpha-value>)',
+          brand: {
+            yellow: 'rgb(var(--yellow) / <alpha-value>)',
+            blue: 'rgb(var(--blue) / <alpha-value>)',
+            sky: 'rgb(var(--sky) / <alpha-value>)',
+            birch: 'rgb(var(--birch) / <alpha-value>)'
+          },
+          energy: {
+            a3: 'rgb(var(--e-a3) / <alpha-value>)',
+            a2: 'rgb(var(--e-a2) / <alpha-value>)',
+            a1: 'rgb(var(--e-a1) / <alpha-value>)',
+            a: 'rgb(var(--e-a) / <alpha-value>)'
+          }
+        },
+        fontFamily: {
+          sans: ['Tajawal', 'Cairo', 'Tahoma', 'Segoe UI', 'sans-serif'],
+          display: ['Cairo', 'Tahoma', 'Segoe UI', 'sans-serif']
+        }
+      }
+    }
+  };
+</script>
+<style>
+  /* Layout: sticky two-tier header → split hero → full-width catalogue grid → quiet alternating bands.
+     IKEA yellow is reserved for price tags and primary actions; IKEA blue for secondary actions and active states. */
+  :root {
+    color-scheme: dark;
+    --ink: 15 23 42;        /* #0F172A page background */
+    --surface: 30 41 59;    /* #1E293B cards */
+    --night: 11 17 32;      /* #0B1120 footer */
+    --yellow: 255 218 26;   /* #FFDA1A primary accent */
+    --blue: 0 88 171;       /* #0058AB secondary accent */
+    --sky: 77 154 230;      /* #4D9AE6 readable blue for text on dark */
+    --birch: 226 199 153;   /* Scandinavian wood, illustrations only */
+    --wa: 37 211 102;       /* WhatsApp green */
+    --e-a3: 0 166 81;       /* energy label A+++ */
+    --e-a2: 76 184 71;      /* A++ */
+    --e-a1: 191 215 48;     /* A+ */
+    --e-a: 255 242 0;       /* A */
+  }
+  html { background: rgb(var(--ink)); scroll-behavior: smooth; }
+  body { margin: 0; background: rgb(var(--ink)); color: rgb(226 232 240); font-family: 'Tajawal', 'Cairo', Tahoma, sans-serif; font-size: 16px; line-height: 1.8; }
+  [hidden] { display: none !important; }
+  svg { direction: ltr; }
+  h1, h2, h3 { text-wrap: balance; }
+  section[id] { scroll-margin-top: 88px; }
+  @media (min-width: 1024px) { section[id] { scroll-margin-top: 132px; } }
+  .site-header { top: env(safe-area-inset-top, 0px); transition: box-shadow .25s ease, background-color .25s ease; }
+  .site-header[data-scrolled] { background-color: rgb(var(--ink) / .96); box-shadow: 0 14px 30px -18px rgb(2 6 23 / .9); }
+  .hl { background: rgb(var(--yellow)); color: rgb(var(--ink)); padding: 0 .28em .04em; border-radius: .3em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .btn-yellow { box-shadow: 0 10px 24px -12px rgb(var(--yellow) / .7); }
+  .wa-float { inset-inline-end: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); }
+  .faq-item[data-open="true"] { border-color: rgb(var(--blue)); }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid rgb(var(--yellow)); outline-offset: 3px; }
+  #booking::backdrop { background: rgb(2 6 23 / .78); backdrop-filter: blur(4px); }
+  #booking[open] { animation: dialog-in .25s ease-out; }
+  @keyframes dialog-in { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
+  @keyframes rise { from { opacity: .15; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  .rise { animation: rise .7s cubic-bezier(.2, .7, .2, 1) both; }
+  .rise-2 { animation-delay: .08s; } .rise-3 { animation-delay: .16s; } .rise-4 { animation-delay: .24s; } .rise-5 { animation-delay: .32s; }
+  @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  .floaty { animation: floaty 6s ease-in-out infinite; }
+  .floaty-late { animation-delay: -3s; }
+  @keyframes panel-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+  .faq-panel:not([hidden]) { animation: panel-in .25s ease-out; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+<style type="text/tailwindcss">
+  @layer components {
+    .btn { @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl px-5 py-3 font-display text-sm font-bold leading-none transition duration-200; }
+    .btn-yellow { @apply bg-brand-yellow text-ink hover:bg-[#FFE45C]; }
+    .btn-blue { @apply bg-brand-blue text-white hover:bg-[#0A6AC9]; }
+    .btn-outline { @apply border border-slate-600 bg-slate-900/40 text-slate-100 hover:border-brand-blue hover:bg-brand-blue/15; }
+    .btn-ghost-blue { @apply border border-brand-blue/70 bg-brand-blue/10 text-brand-sky hover:bg-brand-blue hover:text-white; }
+    .btn-wa { @apply bg-wa text-[#052E16] hover:bg-[#3BE27A]; }
+    .eyebrow { @apply inline-flex items-center gap-2 font-display text-sm font-bold text-brand-yellow; }
+    .section-title { @apply font-display text-3xl font-extrabold leading-snug text-white sm:text-4xl; }
+    .section-lead { @apply max-w-2xl text-base leading-8 text-slate-400 sm:text-lg sm:leading-9; }
+    .nav-link { @apply rounded-lg px-3 py-2 font-display text-[15px] font-semibold text-slate-300 transition hover:bg-slate-800/70 hover:text-white aria-[current=true]:text-brand-yellow; }
+    .field { @apply w-full rounded-xl border border-slate-600 bg-ink px-4 py-3 text-base text-white placeholder:text-slate-500 transition focus:border-brand-sky focus:outline-none focus:ring-2 focus:ring-brand-blue/50; }
+    .chip { @apply inline-flex shrink-0 items-center gap-2 rounded-full border border-slate-700 bg-surface px-4 py-2 font-display text-sm font-semibold text-slate-300 transition hover:border-brand-blue hover:text-white aria-pressed:border-brand-yellow aria-pressed:bg-brand-yellow aria-pressed:text-ink; }
+    .chip-count { @apply rounded-full bg-black/25 px-2 py-0.5 text-xs tabular-nums; }
+    .card { @apply flex flex-col overflow-hidden rounded-2xl border border-slate-700/50 bg-surface transition duration-300 hover:-translate-y-1 hover:border-brand-blue/80; }
+    .card-media { @apply relative flex aspect-[4/3] items-center justify-center bg-gradient-to-b from-slate-700/30 to-ink/60 px-6 pb-4 pt-12; }
+    .card-art { @apply h-auto w-full max-w-[15rem] transition duration-500 group-hover:scale-[1.04]; }
+    .card-title { @apply font-display text-lg font-bold leading-8 text-white; }
+    .spec { @apply flex items-start gap-2; }
+    .badge-yellow { @apply rounded-md bg-brand-yellow px-2 py-1 font-display text-[11px] font-extrabold leading-none text-ink; }
+    .badge-blue { @apply rounded-md bg-brand-blue px-2 py-1 font-display text-[11px] font-extrabold leading-none text-white; }
+    .energy { @apply inline-flex items-stretch; }
+    .energy-grade { @apply flex h-6 items-center rounded-s-[4px] ps-1.5 pe-1 font-display text-[11px] font-extrabold leading-none text-ink; }
+    .price-tag { @apply inline-flex items-baseline gap-1 rounded-lg bg-brand-yellow px-3 py-1.5 font-display leading-none text-ink; }
+    .warranty { @apply inline-flex items-center gap-1.5 rounded-full border border-brand-blue/60 bg-brand-blue/15 px-3 py-1 font-display text-xs font-bold text-brand-sky; }
+    .phone { @apply relative w-full max-w-[15rem] rounded-[2.25rem] border border-slate-600 bg-slate-950 p-2 shadow-2xl shadow-black/50; }
+    .phone-notch { @apply absolute left-1/2 top-3.5 z-10 h-5 w-20 -translate-x-1/2 rounded-full bg-slate-950; }
+    .phone-screen { @apply relative flex aspect-[9/19] flex-col overflow-hidden rounded-[1.75rem]; }
+    .bubble-in { @apply flex flex-col gap-1.5 self-start rounded-xl rounded-ss-sm p-2.5; }
+    .bubble-out { @apply flex flex-col gap-1.5 self-end rounded-xl rounded-se-sm p-2.5; }
+    .sk { @apply block h-1.5 rounded-full bg-slate-400/40; }
+    .shot-label { @apply absolute inset-x-3 bottom-3 flex items-center justify-center gap-1.5 rounded-full border border-dashed border-slate-500/80 bg-slate-950/85 px-2 py-1.5 font-display text-[11px] font-semibold text-slate-300; }
+    .faq-item { @apply rounded-2xl border border-slate-700/50 bg-surface transition-colors; }
+    .faq-btn { @apply flex w-full items-center justify-between gap-4 p-5 text-start font-display text-base font-bold leading-7 text-white sm:text-lg; }
+    .faq-icon { @apply grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink text-brand-yellow; }
+    .faq-panel { @apply px-5 pb-5 leading-8 text-slate-300; }
+    .social { @apply grid h-10 w-10 place-items-center rounded-xl border border-slate-700 text-slate-300 transition hover:border-brand-blue hover:text-white; }
+    .foot-link { @apply text-slate-400 transition hover:text-brand-yellow; }
+    .slot-box { @apply flex flex-col items-center gap-0.5 rounded-xl border border-slate-600 bg-ink px-2 py-2.5 text-center text-slate-300 transition peer-checked:border-brand-yellow peer-checked:bg-brand-yellow peer-checked:text-ink peer-focus-visible:ring-2 peer-focus-visible:ring-brand-sky; }
+  }
+</style>
+<div id="app" dir="rtl" lang="ar" class="min-h-screen overflow-x-clip bg-ink font-sans text-slate-200 antialiased">
+
+  <a href="#main" class="btn btn-yellow sr-only focus:not-sr-only focus:absolute focus:start-4 focus:top-4 focus:z-50">تخطَّ إلى المحتوى</a>
+
+  <!-- ============ HEADER ============ -->
+  <header id="site-header" class="site-header sticky z-40 border-b border-slate-800 bg-ink/85 backdrop-blur-md">
+    <div class="mx-auto flex h-[72px] max-w-7xl items-center gap-3 px-4 sm:gap-4 sm:px-6 lg:px-8">
+      <a href="#home" class="flex shrink-0 items-center gap-3" aria-label="دكتور هوم، الصفحة الرئيسية">
+        <svg viewBox="0 0 40 40" class="h-10 w-10 shrink-0" aria-hidden="true">
+          <rect width="40" height="40" rx="10" fill="#FFDA1A"/>
+          <path d="M9 19 20 10l11 9v11a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2Z" fill="none" stroke="#0F172A" stroke-width="2.6" stroke-linejoin="round"/>
+          <path d="M20 18v10M15 23h10" stroke="#0058AB" stroke-width="3.2" stroke-linecap="round"/>
+        </svg>
+        <span class="flex flex-col gap-1 leading-none">
+          <span class="font-display text-lg font-extrabold text-white">دكتور هوم</span>
+          <span class="font-display text-[11px] font-bold tracking-[0.25em] text-brand-yellow" dir="ltr">DR HOME</span>
+        </span>
+      </a>
+
+      <form role="search" class="relative hidden flex-1 md:ms-4 md:block md:max-w-md lg:max-w-lg" data-search-form>
+        <label for="site-search" class="sr-only">ابحث في الأجهزة</label>
+        <input id="site-search" type="search" data-search autocomplete="off" placeholder="ابحث عن ثلاجة، غسالة، مكيف…" class="field h-11 py-2 ps-11 text-sm">
+        <svg class="pointer-events-none absolute start-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </form>
+
+      <div class="ms-auto flex items-center gap-2">
+        <a data-wa href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-outline hidden h-11 md:inline-flex">
+          <svg class="h-5 w-5 text-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 21 1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+          <span class="hidden xl:inline">تواصل معنا عبر الواتساب</span>
+          <span class="xl:hidden">واتساب</span>
+        </a>
+        <button type="button" data-book="" class="btn btn-yellow h-11 px-4">
+          <svg class="hidden h-4 w-4 sm:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          <span>احجز مكالمة</span>
+        </button>
+        <button type="button" id="menu-toggle" class="grid h-11 w-11 place-items-center rounded-xl border border-slate-700 text-slate-200 transition hover:border-brand-blue lg:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="فتح القائمة">
+          <svg data-icon="open" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg data-icon="close" hidden class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <nav aria-label="التنقل الرئيسي" class="hidden border-t border-slate-800/80 lg:block">
+      <div class="mx-auto flex h-12 max-w-7xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8">
+        <ul class="flex items-center gap-1">
+          <li><a href="#home" data-nav class="nav-link" aria-current="true">الرئيسية</a></li>
+          <li><a href="#products" data-nav class="nav-link" aria-current="false">الأجهزة</a></li>
+          <li><a href="#services" data-nav class="nav-link" aria-current="false">خدماتنا</a></li>
+          <li><a href="#about" data-nav class="nav-link" aria-current="false">من نحن</a></li>
+          <li><a href="#videos" data-nav class="nav-link" aria-current="false">فيديوهات تعليمية</a></li>
+        </ul>
+        <div class="flex items-center gap-6 text-sm text-slate-400">
+          <span class="flex items-center gap-2">
+            <svg class="h-4 w-4 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>
+            <span>توصيل لجميع المحافظات</span>
+          </span>
+          <span class="flex items-center gap-2">
+            <svg class="h-4 w-4 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>خدمة العملاء يومياً 9 ص – 9 م</span>
+          </span>
+        </div>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" hidden class="max-h-[calc(100dvh-72px)] overflow-y-auto border-t border-slate-800 lg:hidden">
+      <div class="mx-auto flex max-w-7xl flex-col gap-5 px-4 py-5 sm:px-6">
+        <form role="search" class="relative md:hidden" data-search-form>
+          <label for="mobile-search" class="sr-only">ابحث في الأجهزة</label>
+          <input id="mobile-search" type="search" data-search autocomplete="off" placeholder="ابحث عن ثلاجة، غسالة، مكيف…" class="field h-12 ps-11">
+          <svg class="pointer-events-none absolute start-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </form>
+        <nav aria-label="قائمة الجوال">
+          <ul class="flex flex-col">
+            <li><a href="#home" class="block rounded-lg px-3 py-3 font-display text-base font-bold text-slate-200 hover:bg-slate-800">الرئيسية</a></li>
+            <li><a href="#products" class="block rounded-lg px-3 py-3 font-display text-base font-bold text-slate-200 hover:bg-slate-800">الأجهزة</a></li>
+            <li><a href="#services" class="block rounded-lg px-3 py-3 font-display text-base font-bold text-slate-200 hover:bg-slate-800">خدماتنا</a></li>
+            <li><a href="#about" class="block rounded-lg px-3 py-3 font-display text-base font-bold text-slate-200 hover:bg-slate-800">من نحن</a></li>
+            <li><a href="#videos" class="block rounded-lg px-3 py-3 font-display text-base font-bold text-slate-200 hover:bg-slate-800">فيديوهات تعليمية</a></li>
+          </ul>
+        </nav>
+        <div class="grid gap-2 sm:grid-cols-2">
+          <a data-wa href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-wa h-12">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 21 1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+            <span>تواصل معنا عبر الواتساب</span>
+          </a>
+          <button type="button" data-book="" class="btn btn-yellow h-12">احجز مكالمة</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section id="home" aria-labelledby="hero-title" class="relative isolate overflow-hidden border-b border-slate-800 bg-gradient-to-b from-ink to-surface/70">
+      <div aria-hidden="true" class="pointer-events-none absolute -top-40 end-[-10rem] -z-10 h-[32rem] w-[32rem] rounded-full bg-brand-blue/25 blur-3xl"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute -bottom-48 start-[-8rem] -z-10 h-80 w-80 rounded-full bg-brand-yellow/10 blur-3xl"></div>
+
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 py-14 sm:px-6 sm:py-16 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-20">
+        <div class="flex flex-col items-start gap-7">
+          <p class="rise inline-flex items-center gap-2 rounded-full border border-slate-700 bg-surface/80 px-4 py-1.5 text-sm text-slate-300">
+            <span class="h-2 w-2 shrink-0 rounded-full bg-brand-yellow"></span>
+            <span>جديد الموسم: مكيفات إنفرتر تعمل بكفاءة حتى <span dir="ltr">52°م</span></span>
+          </p>
+          <h1 id="hero-title" class="rise rise-2 font-display text-4xl font-black leading-[1.4] text-white sm:text-5xl sm:leading-[1.35] lg:text-[3.5rem]">
+            أجهزة <span class="hl">أذكى</span><br>
+            لبيتٍ أهدأ وحياةٍ أسهل
+          </h1>
+          <p class="rise rise-3 max-w-xl text-lg leading-9 text-slate-300">
+            في دكتور هوم نختار لك أفضل الثلاجات والغسالات والمكيفات والشاشات من ماركات موثوقة، ونوصلها إلى باب بيتك مع تركيب احترافي وضمان رسمي. وإذا احترت بين موديلين، يساعدك خبراؤنا على الاختيار مجاناً.
+          </p>
+          <div class="rise rise-4 flex flex-wrap gap-3">
+            <a href="#products" class="btn btn-yellow h-14 px-7 text-base">
+              <span>تسوق الآن</span>
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            </a>
+            <button type="button" data-book="" class="btn btn-blue h-14 px-7 text-base">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              <span>احجز استشارة مجانية</span>
+            </button>
+          </div>
+          <ul class="rise rise-5 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-300">
+            <li class="flex items-center gap-2">
+              <span class="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue/20 text-brand-sky"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span>
+              <span>توصيل لجميع المحافظات</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue/20 text-brand-sky"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94Z"/></svg></span>
+              <span>تركيب بأيدي فنيين معتمدين</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="grid h-8 w-8 place-items-center rounded-lg bg-brand-blue/20 text-brand-sky"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <span>ضمان رسمي حتى 5 سنوات</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Showcase -->
+        <div class="rise rise-3 relative">
+          <div class="overflow-hidden rounded-[2rem] border border-slate-700/60 bg-gradient-to-br from-surface via-[#16213A] to-ink shadow-2xl shadow-black/40">
+            <svg viewBox="0 0 560 460" class="block h-auto w-full" role="img" aria-label="مطبخ عصري بأجهزة ذكية: ثلاجة بأبواب فرنسية، فرن مدمج، ماكينة قهوة ومكنسة روبوت">
+              <path d="M248 0v242M266 0v242M284 0v242M302 0v242M320 0v242M338 0v242M356 0v242M374 0v242M392 0v242M410 0v242M428 0v242M446 0v242M464 0v242M482 0v242M500 0v242M518 0v242M536 0v242" stroke="#334155" stroke-opacity=".45" stroke-width="1"/>
+              <rect x="0" y="384" width="560" height="76" fill="#0B1120" fill-opacity=".7"/>
+              <path d="M0 384h560" stroke="#334155"/>
+              <ellipse cx="125" cy="388" rx="96" ry="8" fill="#020617" opacity=".6"/>
+              <g fill="none" stroke="#4D9AE6" stroke-width="3" stroke-linecap="round">
+                <path d="M111 46a20 20 0 0 1 28 0"/>
+                <path d="M101 36a34 34 0 0 1 48 0"/>
+              </g>
+              <circle cx="125" cy="56" r="3.5" fill="#4D9AE6"/>
+              <rect x="40" y="70" width="170" height="314" rx="10" fill="#E2E8F0" stroke="#94A3B8" stroke-width="2"/>
+              <path d="M125 70v190M40 260h170M40 322h170" stroke="#94A3B8" stroke-width="2"/>
+              <rect x="112" y="140" width="6" height="74" rx="3" fill="#64748B"/>
+              <rect x="132" y="140" width="6" height="74" rx="3" fill="#64748B"/>
+              <rect x="95" y="274" width="60" height="6" rx="3" fill="#64748B"/>
+              <rect x="95" y="336" width="60" height="6" rx="3" fill="#64748B"/>
+              <rect x="58" y="96" width="44" height="28" rx="5" fill="#0F172A"/>
+              <text x="80" y="116" text-anchor="middle" font-family="Cairo, sans-serif" font-size="15" font-weight="800" fill="#FFDA1A">4°</text>
+              <rect x="192" y="80" width="10" height="294" rx="5" fill="#FFFFFF" opacity=".4"/>
+              <ellipse cx="328" cy="110" rx="7" ry="16" transform="rotate(-24 328 110)" fill="#34D399"/>
+              <ellipse cx="343" cy="108" rx="7" ry="17" transform="rotate(20 343 108)" fill="#10B981"/>
+              <ellipse cx="335" cy="104" rx="6" ry="18" fill="#6EE7B7"/>
+              <rect x="322" y="122" width="26" height="28" rx="6" fill="#F8FAFC"/>
+              <rect x="380" y="122" width="16" height="5" rx="2" fill="#94A3B8"/>
+              <rect x="378" y="126" width="20" height="24" rx="5" fill="#CBD5E1"/>
+              <rect x="404" y="132" width="18" height="18" rx="5" fill="#FFDA1A"/>
+              <path d="M440 136h48a24 14 0 0 1-48 0Z" fill="#F1F5F9"/>
+              <rect x="300" y="150" width="210" height="9" rx="2" fill="#E2C799"/>
+              <rect x="230" y="254" width="300" height="130" fill="#D9BC8C"/>
+              <path d="M320 254v130M440 254v130" stroke="#B8976A" stroke-width="2"/>
+              <rect x="306" y="276" width="4" height="30" rx="2" fill="#8A6D45"/>
+              <rect x="450" y="276" width="4" height="30" rx="2" fill="#8A6D45"/>
+              <rect x="224" y="242" width="312" height="13" rx="3" fill="#F1F5F9"/>
+              <rect x="326" y="262" width="108" height="114" rx="4" fill="#0F172A" stroke="#475569" stroke-width="2"/>
+              <rect x="338" y="272" width="84" height="5" rx="2.5" fill="#94A3B8"/>
+              <rect x="338" y="288" width="84" height="74" rx="4" fill="#FFDA1A" fill-opacity=".22"/>
+              <ellipse cx="380" cy="334" rx="20" ry="5" fill="#FFDA1A" fill-opacity=".8"/>
+              <path d="M346 340h68" stroke="#94A3B8" stroke-width="2"/>
+              <rect x="340" y="236" width="80" height="7" rx="2" fill="#0F172A"/>
+              <rect x="246" y="192" width="48" height="50" rx="7" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.5"/>
+              <rect x="254" y="200" width="32" height="10" rx="3" fill="#0F172A"/>
+              <circle cx="262" cy="205" r="2" fill="#FFDA1A"/>
+              <rect x="262" y="224" width="16" height="17" rx="3" fill="#F8FAFC"/>
+              <path d="M250 440c40 10 90 4 150-14" fill="none" stroke="#4D9AE6" stroke-width="2.5" stroke-dasharray="2 8" stroke-linecap="round"/>
+              <ellipse cx="462" cy="426" rx="50" ry="15" fill="#94A3B8"/>
+              <ellipse cx="462" cy="419" rx="50" ry="15" fill="#E2E8F0"/>
+              <ellipse cx="462" cy="413" rx="14" ry="6" fill="#CBD5E1" stroke="#94A3B8"/>
+              <ellipse cx="490" cy="420" rx="4" ry="2" fill="#FFDA1A"/>
+            </svg>
+          </div>
+
+          <div class="floaty absolute start-3 top-3 flex w-48 items-center gap-3 rounded-2xl border border-slate-700 bg-ink/90 p-3 shadow-xl backdrop-blur sm:start-4 sm:top-4 sm:w-56 lg:-start-8">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-blue/20 text-brand-sky">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
+            </span>
+            <span class="flex min-w-0 flex-1 flex-col gap-0.5 leading-tight">
+              <span class="font-display text-sm font-bold text-white">الثلاجة الذكية</span>
+              <span class="text-xs text-slate-400">متصلة بالتطبيق · <span dir="ltr">4°م</span></span>
+            </span>
+            <span class="relative h-6 w-10 shrink-0 rounded-full bg-brand-yellow" aria-hidden="true"><span class="absolute end-1 top-1 h-4 w-4 rounded-full bg-ink"></span></span>
+          </div>
+
+          <div class="floaty floaty-late absolute bottom-3 end-3 hidden w-56 flex-col gap-2.5 rounded-2xl border border-slate-700 bg-ink/90 p-3.5 shadow-xl backdrop-blur sm:bottom-4 sm:end-4 sm:flex lg:-bottom-6 lg:-end-6">
+            <span class="flex items-center justify-between gap-2">
+              <span class="font-display text-sm font-bold text-white">كفاءة الطاقة</span>
+              <span class="text-[11px] text-slate-400">ملصق الطاقة الأوروبي</span>
+            </span>
+            <span class="flex flex-col gap-1" dir="ltr" aria-label="فئة الطاقة A+++">
+              <span class="flex items-center gap-2"><span class="h-2.5 w-10 rounded-sm bg-energy-a3"></span><span class="font-display text-[11px] font-extrabold leading-none text-white">A+++</span></span>
+              <span class="h-2.5 w-14 rounded-sm bg-energy-a2"></span>
+              <span class="h-2.5 w-[4.5rem] rounded-sm bg-energy-a1"></span>
+              <span class="h-2.5 w-[5.5rem] rounded-sm bg-energy-a"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRODUCTS ============ -->
+    <section id="products" aria-labelledby="products-title" class="py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <div class="flex flex-col gap-3">
+            <p class="eyebrow"><span class="h-2 w-2 rounded-sm bg-brand-yellow"></span><span>صفحة الأجهزة الشاملة</span></p>
+            <h2 id="products-title" class="section-title">كل أجهزة بيتك في مكان واحد</h2>
+            <p class="section-lead">مواصفات واضحة، وسعر نهائي بدون رسوم مخفية، وضمان مكتوب على كل جهاز. اشترِ مباشرة، أو احجز مكالمة ونجيب عن أسئلتك قبل الشراء.</p>
+          </div>
+          <p id="result-count" class="shrink-0 font-display text-sm font-semibold text-slate-400" aria-live="polite">عدد النتائج: 10 أجهزة</p>
+        </div>
+
+        <div class="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+          <div class="flex w-max gap-2 pb-1" role="group" aria-label="تصفية حسب القسم">
+            <button type="button" class="chip" data-filter="all" aria-pressed="true"><span>كل الأجهزة</span><span class="chip-count">10</span></button>
+            <button type="button" class="chip" data-filter="cooling" aria-pressed="false"><span>التبريد والتكييف</span><span class="chip-count">2</span></button>
+            <button type="button" class="chip" data-filter="laundry" aria-pressed="false"><span>الغسيل والتنظيف</span><span class="chip-count">3</span></button>
+            <button type="button" class="chip" data-filter="kitchen" aria-pressed="false"><span>أجهزة المطبخ</span><span class="chip-count">4</span></button>
+            <button type="button" class="chip" data-filter="screens" aria-pressed="false"><span>الشاشات والترفيه</span><span class="chip-count">1</span></button>
+          </div>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+
+          <!-- 1 · Featured: Refrigerator -->
+          <article data-product data-cat="cooling" data-name="ثلاجة ذكية بأبواب فرنسية 580 لتر" data-price="1850000" data-keywords="براد مجمدة فريزر" class="card group lg:col-span-2 lg:flex-row">
+            <div class="card-media lg:aspect-auto lg:w-[46%] lg:pt-14">
+              <div class="absolute start-3 top-3 flex flex-wrap gap-1.5">
+                <span class="badge-blue">الأكثر مبيعاً</span>
+                <span class="badge-yellow">خصم 12%</span>
+              </div>
+              <span class="energy absolute end-3 top-3" dir="ltr" title="فئة كفاءة الطاقة"><span class="energy-grade bg-energy-a2">A++</span><svg viewBox="0 0 8 24" class="h-6 w-2 text-energy-a2" aria-hidden="true"><path d="M0 0 8 12 0 24Z" fill="currentColor"/></svg><span class="sr-only">فئة كفاءة الطاقة</span></span>
+              <svg viewBox="0 0 240 180" class="card-art lg:max-w-[18rem]" aria-hidden="true">
+                <ellipse cx="120" cy="168" rx="62" ry="6" fill="#020617" opacity=".55"/>
+                <rect x="74" y="10" width="92" height="156" rx="8" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.5"/>
+                <path d="M120 10v92M74 102h92M74 134h92" stroke="#94A3B8" stroke-width="1.5"/>
+                <rect x="112" y="38" width="4" height="40" rx="2" fill="#64748B"/>
+                <rect x="124" y="38" width="4" height="40" rx="2" fill="#64748B"/>
+                <rect x="100" y="112" width="40" height="4" rx="2" fill="#64748B"/>
+                <rect x="100" y="144" width="40" height="4" rx="2" fill="#64748B"/>
+                <rect x="84" y="24" width="22" height="14" rx="3" fill="#0F172A"/>
+                <text x="95" y="34.5" text-anchor="middle" font-family="Cairo, sans-serif" font-size="9" font-weight="700" fill="#FFDA1A">4°</text>
+                <rect x="155" y="16" width="5" height="144" rx="2.5" fill="#FFFFFF" opacity=".45"/>
+              </svg>
+            </div>
+            <div class="flex flex-1 flex-col gap-4 p-5 lg:p-6">
+              <div class="flex flex-col gap-1.5">
+                <p class="text-xs font-medium text-slate-400">التبريد والتكييف · <span dir="ltr">DH-RF580</span></p>
+                <h3 class="card-title lg:text-xl">ثلاجة ذكية بأبواب فرنسية 580 لتر</h3>
+                <p class="text-sm leading-7 text-slate-400">ثلاجة عائلية واسعة تناسب الأسر الكبيرة، مع درج مستقل بحرارة قابلة للتعديل للحوم والمشروبات، وتحكم كامل من هاتفك.</p>
+              </div>
+              <ul class="flex flex-col gap-2 text-sm leading-6 text-slate-300">
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>سعة 580 لتر: 380 لتر للتبريد و200 لتر للتجميد</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>تبريد No Frost مزدوج يحافظ على رطوبة الخضار والفواكه</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>تطبيق ذكي عبر <bdi>Wi-Fi</bdi> لضبط الحرارة وتنبيه الباب المفتوح</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>ضاغط إنفرتر رقمي هادئ مع ضمان 10 سنوات على الضاغط</span></li>
+              </ul>
+              <div class="mt-auto flex flex-wrap items-end justify-between gap-3 border-t border-slate-700/60 pt-4">
+                <div class="flex flex-col gap-1.5">
+                  <s class="text-xs tabular-nums text-slate-400">2,100,000 د.ع</s>
+                  <p class="price-tag"><span class="text-2xl font-black tabular-nums">1,850,000</span><span class="text-xs font-bold">د.ع</span></p>
+                </div>
+                <span class="warranty"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/></svg><span>ضمان 5 سنوات</span></span>
+              </div>
+              <div class="grid gap-2 sm:grid-cols-2">
+                <a data-buy href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-yellow h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>شراء الآن</span></a>
+                <button type="button" data-book="ثلاجة ذكية بأبواب فرنسية 580 لتر" class="btn btn-ghost-blue h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span>حجز مكالمة للاستفسار</span></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2 · Washing machine -->
+          <article data-product data-cat="laundry" data-name="غسالة ملابس أمامية إنفرتر 9 كغ" data-price="725000" data-keywords="غساله اوتوماتيك" class="card group">
+            <div class="card-media">
+              <span class="energy absolute end-3 top-3" dir="ltr" title="فئة كفاءة الطاقة"><span class="energy-grade bg-energy-a3">A+++</span><svg viewBox="0 0 8 24" class="h-6 w-2 text-energy-a3" aria-hidden="true"><path d="M0 0 8 12 0 24Z" fill="currentColor"/></svg><span class="sr-only">فئة كفاءة الطاقة</span></span>
+              <svg viewBox="0 0 240 180" class="card-art" aria-hidden="true">
+                <ellipse cx="120" cy="168" rx="60" ry="6" fill="#020617" opacity=".55"/>
+                <rect x="70" y="18" width="100" height="146" rx="8" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.5"/>
+                <path d="M70 44h100" stroke="#94A3B8" stroke-width="1.5"/>
+                <rect x="78" y="25" width="26" height="12" rx="2" fill="#CBD5E1" stroke="#94A3B8"/>
+                <rect x="114" y="25" width="26" height="12" rx="2" fill="#0F172A"/>
+                <circle cx="119" cy="31" r="1.8" fill="#FFDA1A"/>
+                <rect x="124" y="29.5" width="12" height="3" rx="1.5" fill="#4D9AE6"/>
+                <circle cx="154" cy="31" r="7" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+                <circle cx="120" cy="102" r="40" fill="#CBD5E1" stroke="#94A3B8" stroke-width="2"/>
+                <circle cx="120" cy="102" r="30" fill="#0F172A"/>
+                <path d="M90.3 106A30 30 0 0 0 149.7 106Z" fill="#0058AB"/>
+                <path d="M100 84a26 26 0 0 1 14-8" fill="none" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="108" cy="114" r="3" fill="#4D9AE6"/>
+                <circle cx="128" cy="118" r="2" fill="#4D9AE6"/>
+              </svg>
+            </div>
+            <div class="flex flex-1 flex-col gap-4 p-5">
+              <div class="flex flex-col gap-1.5">
+                <p class="text-xs font-medium text-slate-400">الغسيل والتنظيف · <span dir="ltr">DH-WM9</span></p>
+                <h3 class="card-title">غسالة ملابس أمامية إنفرتر 9 كغ</h3>
+              </div>
+              <ul class="flex flex-col gap-2 text-sm leading-6 text-slate-300">
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>محرك Inverter هادئ وموفّر للكهرباء</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>عصر 1400 دورة/دقيقة و14 برنامج غسيل</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>برنامج بخار لملابس الأطفال والأقمشة الحساسة</span></li>
+              </ul>
+              <div class="mt-auto flex flex-wrap items-end justify-between gap-3 border-t border-slate-700/60 pt-4">
+                <div class="flex flex-col gap-1.5">
+                  <span class="text-xs text-slate-400">سعر نهائي</span>
+                  <p class="price-tag"><span class="text-xl font-black tabular-nums">725,000</span><span class="text-xs font-bold">د.ع</span></p>
+                </div>
+                <span class="warranty"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/></svg><span>ضمان سنتين</span></span>
+              </div>
+              <div class="grid gap-2">
+                <a data-buy href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-yellow h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>شراء الآن</span></a>
+                <button type="button" data-book="غسالة ملابس أمامية إنفرتر 9 كغ" class="btn btn-ghost-blue h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span>حجز مكالمة للاستفسار</span></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3 · Dishwasher -->
+          <article data-product data-cat="laundry" data-name="غسالة صحون 14 مكان" data-price="690000" data-keywords="جلاية مواعين غساله صحون" class="card group">
+            <div class="card-media">
+              <div class="absolute start-3 top-3 flex flex-wrap gap-1.5"><span class="badge-yellow">خصم 9%</span></div>
+              <span class="energy absolute end-3 top-3" dir="ltr" title="فئة كفاءة الطاقة"><span class="energy-grade bg-energy-a2">A++</span><svg viewBox="0 0 8 24" class="h-6 w-2 text-energy-a2" aria-hidden="true"><path d="M0 0 8 12 0 24Z" fill="currentColor"/></svg><span class="sr-only">فئة كفاءة الطاقة</span></span>
+              <svg viewBox="0 0 240 180" class="card-art" aria-hidden="true">
+                <ellipse cx="120" cy="170" rx="80" ry="5" fill="#020617" opacity=".55"/>
+                <rect x="60" y="14" width="120" height="122" rx="6" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.5"/>
+                <rect x="61" y="15" width="118" height="18" rx="5" fill="#CBD5E1"/>
+                <circle cx="72" cy="24" r="2.5" fill="#94A3B8"/><circle cx="82" cy="24" r="2.5" fill="#94A3B8"/><circle cx="92" cy="24" r="2.5" fill="#FFDA1A"/>
+                <rect x="132" y="20" width="26" height="8" rx="2" fill="#0F172A"/>
+                <rect x="136" y="22.5" width="10" height="3" rx="1.5" fill="#4D9AE6"/>
+                <rect x="68" y="38" width="104" height="94" rx="3" fill="#0F172A"/>
+                <rect x="80" y="60" width="12" height="16" rx="3" fill="#CBD5E1"/><rect x="98" y="60" width="12" height="16" rx="3" fill="#CBD5E1"/><rect x="116" y="60" width="12" height="16" rx="3" fill="#CBD5E1"/><rect x="134" y="60" width="12" height="16" rx="3" fill="#CBD5E1"/><rect x="152" y="60" width="12" height="16" rx="3" fill="#CBD5E1"/>
+                <path d="M72 78h96M72 126h96" stroke="#64748B" stroke-width="2"/>
+                <rect x="78" y="90" width="6" height="34" rx="3" fill="#E2E8F0"/><rect x="90" y="90" width="6" height="34" rx="3" fill="#E2E8F0"/><rect x="102" y="90" width="6" height="34" rx="3" fill="#E2E8F0"/><rect x="114" y="90" width="6" height="34" rx="3" fill="#E2E8F0"/><rect x="126" y="90" width="6" height="34" rx="3" fill="#E2E8F0"/><rect x="138" y="90" width="6" height="34" rx="3" fill="#E2E8F0"/><rect x="150" y="90" width="6" height="34" rx="3" fill="#E2E8F0"/>
+                <path d="M60 136h120l18 28H42Z" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5" stroke-linejoin="round"/>
+                <path d="M68 150h104" stroke="#94A3B8" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="flex flex-1 flex-col gap-4 p-5">
+              <div class="flex flex-col gap-1.5">
+                <p class="text-xs font-medium text-slate-400">الغسيل والتنظيف · <span dir="ltr">DH-DW14</span></p>
+                <h3 class="card-title">غسالة صحون 14 مكان</h3>
+              </div>
+              <ul class="flex flex-col gap-2 text-sm leading-6 text-slate-300">
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>تتسع لـ 14 طقم أطباق مع رف ثالث للملاعق</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>تشغيل هادئ بمستوى 44 ديسيبل</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>تعقيم بحرارة <span dir="ltr">70°م</span> وتجفيف بالهواء الساخن</span></li>
+              </ul>
+              <div class="mt-auto flex flex-wrap items-end justify-between gap-3 border-t border-slate-700/60 pt-4">
+                <div class="flex flex-col gap-1.5">
+                  <s class="text-xs tabular-nums text-slate-400">760,000 د.ع</s>
+                  <p class="price-tag"><span class="text-xl font-black tabular-nums">690,000</span><span class="text-xs font-bold">د.ع</span></p>
+                </div>
+                <span class="warranty"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/></svg><span>ضمان سنتين</span></span>
+              </div>
+              <div class="grid gap-2">
+                <a data-buy href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-yellow h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>شراء الآن</span></a>
+                <button type="button" data-book="غسالة صحون 14 مكان" class="btn btn-ghost-blue h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span>حجز مكالمة للاستفسار</span></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4 · TV -->
+          <article data-product data-cat="screens" data-name="شاشة ذكية QLED مقاس 65 بوصة" data-price="1390000" data-keywords="تلفزيون تلفاز تي في" class="card group">
+            <div class="card-media">
+              <div class="absolute start-3 top-3 flex flex-wrap gap-1.5"><span class="badge-blue">جديد</span></div>
+              <svg viewBox="0 0 240 180" class="card-art" aria-hidden="true">
+                <ellipse cx="120" cy="168" rx="80" ry="5" fill="#020617" opacity=".55"/>
+                <rect x="18" y="18" width="204" height="122" rx="6" fill="#0F172A" stroke="#475569" stroke-width="3"/>
+                <rect x="25" y="25" width="190" height="108" rx="2" fill="#0058AB"/>
+                <circle cx="170" cy="58" r="13" fill="#FFDA1A"/>
+                <path d="M25 133 74 86l30 26 34-38 77 59Z" fill="#1E293B"/>
+                <path d="M25 133 58 104l34 29Z" fill="#334155"/>
+                <path d="M66 140 54 166M174 140l12 26" stroke="#94A3B8" stroke-width="4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="flex flex-1 flex-col gap-4 p-5">
+              <div class="flex flex-col gap-1.5">
+                <p class="text-xs font-medium text-slate-400">الشاشات والترفيه · <span dir="ltr">DH-TV65</span></p>
+                <h3 class="card-title">شاشة ذكية QLED مقاس 65 بوصة</h3>
+              </div>
+              <ul class="flex flex-col gap-2 text-sm leading-6 text-slate-300">
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>دقة 4K UHD مع <bdi>HDR10+</bdi> وألوان Quantum Dot</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>نظام ذكي يدعم يوتيوب ونتفليكس وشاهد</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>تحديث 120Hz مناسب للرياضة والألعاب</span></li>
+              </ul>
+              <div class="mt-auto flex flex-wrap items-end justify-between gap-3 border-t border-slate-700/60 pt-4">
+                <div class="flex flex-col gap-1.5">
+                  <span class="text-xs text-slate-400">سعر نهائي</span>
+                  <p class="price-tag"><span class="text-xl font-black tabular-nums">1,390,000</span><span class="text-xs font-bold">د.ع</span></p>
+                </div>
+                <span class="warranty"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/></svg><span>ضمان سنتين</span></span>
+              </div>
+              <div class="grid gap-2">
+                <a data-buy href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-yellow h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>شراء الآن</span></a>
+                <button type="button" data-book="شاشة ذكية QLED مقاس 65 بوصة" class="btn btn-ghost-blue h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span>حجز مكالمة للاستفسار</span></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5 · Built-in oven -->
+          <article data-product data-cat="kitchen" data-name="فرن كهربائي مدمج 70 لتر" data-price="540000" data-keywords="فرن بلت ان طباخ" class="card group">
+            <div class="card-media">
+              <span class="energy absolute end-3 top-3" dir="ltr" title="فئة كفاءة الطاقة"><span class="energy-grade bg-energy-a1">A+</span><svg viewBox="0 0 8 24" class="h-6 w-2 text-energy-a1" aria-hidden="true"><path d="M0 0 8 12 0 24Z" fill="currentColor"/></svg><span class="sr-only">فئة كفاءة الطاقة</span></span>
+              <svg viewBox="0 0 240 180" class="card-art" aria-hidden="true">
+                <ellipse cx="120" cy="168" rx="76" ry="5" fill="#020617" opacity=".55"/>
+                <rect x="46" y="16" width="148" height="148" rx="6" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.5"/>
+                <path d="M46 44h148" stroke="#94A3B8" stroke-width="1.5"/>
+                <circle cx="66" cy="30" r="7" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+                <circle cx="174" cy="30" r="7" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+                <rect x="100" y="23" width="40" height="14" rx="3" fill="#0F172A"/>
+                <text x="120" y="33.5" text-anchor="middle" font-family="Cairo, sans-serif" font-size="9" font-weight="700" fill="#FFDA1A">180°</text>
+                <rect x="56" y="54" width="128" height="100" rx="5" fill="#0F172A"/>
+                <rect x="66" y="58" width="108" height="6" rx="3" fill="#94A3B8"/>
+                <rect x="70" y="74" width="100" height="68" rx="4" fill="#FFDA1A" fill-opacity=".22"/>
+                <path d="M104 116q16-14 32 0" fill="#FFDA1A" fill-opacity=".55"/>
+                <ellipse cx="120" cy="120" rx="28" ry="6" fill="#FFDA1A" fill-opacity=".85"/>
+                <path d="M78 126h84" stroke="#94A3B8" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="flex flex-1 flex-col gap-4 p-5">
+              <div class="flex flex-col gap-1.5">
+                <p class="text-xs font-medium text-slate-400">أجهزة المطبخ · <span dir="ltr">DH-OV70</span></p>
+                <h3 class="card-title">فرن كهربائي مدمج 70 لتر</h3>
+              </div>
+              <ul class="flex flex-col gap-2 text-sm leading-6 text-slate-300">
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>10 أوضاع طهي مع مروحة توزيع حرارة 3D</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>تنظيف ذاتي بالتحلل الحراري Pyrolytic</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>باب زجاجي ثلاثي يبقى بارداً من الخارج</span></li>
+              </ul>
+              <div class="mt-auto flex flex-wrap items-end justify-between gap-3 border-t border-slate-700/60 pt-4">
+                <div class="flex flex-col gap-1.5">
+                  <span class="text-xs text-slate-400">سعر نهائي</span>
+                  <p class="price-tag"><span class="text-xl font-black tabular-nums">540,000</span><span class="text-xs font-bold">د.ع</span></p>
+                </div>
+                <span class="warranty"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/></svg><span>ضمان سنتين</span></span>
+              </div>
+              <div class="grid gap-2">
+                <a data-buy href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-yellow h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>شراء الآن</span></a>
+                <button type="button" data-book="فرن كهربائي مدمج 70 لتر" class="btn btn-ghost-blue h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span>حجز مكالمة للاستفسار</span></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6 · Featured: Split AC -->
+          <article data-product data-cat="cooling" data-name="مكيف سبليت إنفرتر 1.5 طن" data-price="925000" data-keywords="سبلت تكييف هواء مبرده" class="card group lg:col-span-2 lg:flex-row">
+            <div class="card-media lg:aspect-auto lg:w-[46%] lg:pt-14">
+              <div class="absolute start-3 top-3 flex flex-wrap gap-1.5">
+                <span class="badge-blue">عرض الصيف</span>
+                <span class="badge-yellow">خصم 12%</span>
+              </div>
+              <span class="energy absolute end-3 top-3" dir="ltr" title="فئة كفاءة الطاقة"><span class="energy-grade bg-energy-a2">A++</span><svg viewBox="0 0 8 24" class="h-6 w-2 text-energy-a2" aria-hidden="true"><path d="M0 0 8 12 0 24Z" fill="currentColor"/></svg><span class="sr-only">فئة كفاءة الطاقة</span></span>
+              <svg viewBox="0 0 240 180" class="card-art lg:max-w-[18rem]" aria-hidden="true">
+                <rect x="24" y="30" width="192" height="58" rx="16" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.5"/>
+                <path d="M40 72h160" stroke="#CBD5E1" stroke-width="2"/>
+                <rect x="44" y="78" width="152" height="8" rx="4" fill="#94A3B8"/>
+                <rect x="172" y="42" width="28" height="16" rx="4" fill="#0F172A"/>
+                <text x="186" y="53.5" text-anchor="middle" font-family="Cairo, sans-serif" font-size="9" font-weight="700" fill="#4D9AE6">18°</text>
+                <path d="M70 100c-8 8 8 14 0 24M100 100c-8 8 8 14 0 24M130 100c-8 8 8 14 0 24" fill="none" stroke="#4D9AE6" stroke-width="2.5" stroke-linecap="round" opacity=".85"/>
+                <path d="M206 88v30" stroke="#94A3B8" stroke-width="3"/>
+                <ellipse cx="184" cy="170" rx="34" ry="4" fill="#020617" opacity=".5"/>
+                <rect x="152" y="118" width="64" height="50" rx="5" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+                <circle cx="174" cy="143" r="16" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.5"/>
+                <path d="M174 129v28M160 143h28" stroke="#94A3B8" stroke-width="1.5"/>
+                <path d="M198 128h12M198 134h12M198 140h12M198 146h12M198 152h12" stroke="#94A3B8" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <div class="flex flex-1 flex-col gap-4 p-5 lg:p-6">
+              <div class="flex flex-col gap-1.5">
+                <p class="text-xs font-medium text-slate-400">التبريد والتكييف · <span dir="ltr">DH-AC18</span></p>
+                <h3 class="card-title lg:text-xl">مكيف سبليت إنفرتر 1.5 طن</h3>
+                <p class="text-sm leading-7 text-slate-400">مصمم لصيف العراق: يحافظ على قوة التبريد في أشد أيام الحر، واستهلاكه المنخفض يناسب اشتراك المولدة.</p>
+              </div>
+              <ul class="flex flex-col gap-2 text-sm leading-6 text-slate-300">
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>قدرة تبريد 18,000 BTU لغرفة حتى 25 م²</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>ضاغط T3 يعمل بكفاءة حتى <span dir="ltr">52°م</span></span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>يعمل على فولتية من 160 إلى 260 فولت</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>تبريد وتدفئة مع وضع نوم هادئ 22 ديسيبل</span></li>
+              </ul>
+              <div class="mt-auto flex flex-wrap items-end justify-between gap-3 border-t border-slate-700/60 pt-4">
+                <div class="flex flex-col gap-1.5">
+                  <s class="text-xs tabular-nums text-slate-400">1,050,000 د.ع</s>
+                  <p class="price-tag"><span class="text-2xl font-black tabular-nums">925,000</span><span class="text-xs font-bold">د.ع</span></p>
+                </div>
+                <span class="warranty"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/></svg><span>ضمان 3 سنوات</span></span>
+              </div>
+              <div class="grid gap-2 sm:grid-cols-2">
+                <a data-buy href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-yellow h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>شراء الآن</span></a>
+                <button type="button" data-book="مكيف سبليت إنفرتر 1.5 طن" class="btn btn-ghost-blue h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span>حجز مكالمة للاستفسار</span></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7 · Robot vacuum -->
+          <article data-product data-cat="laundry" data-name="مكنسة روبوت ذكية مع ممسحة" data-price="395000" data-keywords="مكنسه كهربائية روبوت تنظيف" class="card group">
+            <div class="card-media">
+              <div class="absolute start-3 top-3 flex flex-wrap gap-1.5"><span class="badge-blue">جديد</span></div>
+              <svg viewBox="0 0 240 180" class="card-art" aria-hidden="true">
+                <path d="M14 92c-4 44 26 70 64 64" fill="none" stroke="#4D9AE6" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round"/>
+                <ellipse cx="132" cy="152" rx="70" ry="8" fill="#020617" opacity=".55"/>
+                <ellipse cx="132" cy="116" rx="74" ry="30" fill="#94A3B8"/>
+                <ellipse cx="132" cy="106" rx="74" ry="30" fill="#E2E8F0"/>
+                <ellipse cx="132" cy="106" rx="60" ry="22" fill="none" stroke="#CBD5E1" stroke-width="2"/>
+                <ellipse cx="132" cy="94" rx="24" ry="10" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+                <ellipse cx="132" cy="92" rx="12" ry="5" fill="#0F172A"/>
+                <ellipse cx="170" cy="110" rx="6" ry="3" fill="#FFDA1A"/>
+              </svg>
+            </div>
+            <div class="flex flex-1 flex-col gap-4 p-5">
+              <div class="flex flex-col gap-1.5">
+                <p class="text-xs font-medium text-slate-400">الغسيل والتنظيف · <span dir="ltr">DH-RV40</span></p>
+                <h3 class="card-title">مكنسة روبوت ذكية مع ممسحة</h3>
+              </div>
+              <ul class="flex flex-col gap-2 text-sm leading-6 text-slate-300">
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>ملاحة ليزر LiDAR ترسم خريطة البيت</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>شفط 4000 باسكال مع مسح رطب في الوقت نفسه</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>جدولة التنظيف والتحكم من التطبيق</span></li>
+              </ul>
+              <div class="mt-auto flex flex-wrap items-end justify-between gap-3 border-t border-slate-700/60 pt-4">
+                <div class="flex flex-col gap-1.5">
+                  <span class="text-xs text-slate-400">سعر نهائي</span>
+                  <p class="price-tag"><span class="text-xl font-black tabular-nums">395,000</span><span class="text-xs font-bold">د.ع</span></p>
+                </div>
+                <span class="warranty"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/></svg><span>ضمان سنة</span></span>
+              </div>
+              <div class="grid gap-2">
+                <a data-buy href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-yellow h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>شراء الآن</span></a>
+                <button type="button" data-book="مكنسة روبوت ذكية مع ممسحة" class="btn btn-ghost-blue h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span>حجز مكالمة للاستفسار</span></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 8 · Microwave -->
+          <article data-product data-cat="kitchen" data-name="مايكرويف مع شواية 32 لتر" data-price="185000" data-keywords="ميكروويف مايكروويف" class="card group">
+            <div class="card-media">
+              <svg viewBox="0 0 240 180" class="card-art" aria-hidden="true">
+                <ellipse cx="120" cy="158" rx="88" ry="6" fill="#020617" opacity=".55"/>
+                <rect x="28" y="42" width="184" height="112" rx="8" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.5"/>
+                <rect x="40" y="54" width="122" height="88" rx="5" fill="#0F172A"/>
+                <rect x="48" y="62" width="106" height="72" rx="3" fill="#FFDA1A" fill-opacity=".16"/>
+                <ellipse cx="101" cy="124" rx="38" ry="6" fill="#94A3B8" fill-opacity=".6"/>
+                <ellipse cx="101" cy="118" rx="16" ry="7" fill="#FFDA1A" fill-opacity=".7"/>
+                <path d="M170 54v88" stroke="#CBD5E1" stroke-width="1.5"/>
+                <rect x="176" y="56" width="28" height="14" rx="3" fill="#0F172A"/>
+                <text x="190" y="66.5" text-anchor="middle" font-family="Cairo, sans-serif" font-size="8.5" font-weight="700" fill="#4D9AE6">0:30</text>
+                <circle cx="182" cy="84" r="4" fill="#CBD5E1" stroke="#94A3B8"/><circle cx="198" cy="84" r="4" fill="#CBD5E1" stroke="#94A3B8"/>
+                <circle cx="182" cy="98" r="4" fill="#CBD5E1" stroke="#94A3B8"/><circle cx="198" cy="98" r="4" fill="#CBD5E1" stroke="#94A3B8"/>
+                <circle cx="182" cy="112" r="4" fill="#CBD5E1" stroke="#94A3B8"/><circle cx="198" cy="112" r="4" fill="#CBD5E1" stroke="#94A3B8"/>
+                <rect x="178" y="124" width="24" height="10" rx="5" fill="#FFDA1A"/>
+              </svg>
+            </div>
+            <div class="flex flex-1 flex-col gap-4 p-5">
+              <div class="flex flex-col gap-1.5">
+                <p class="text-xs font-medium text-slate-400">أجهزة المطبخ · <span dir="ltr">DH-MW32</span></p>
+                <h3 class="card-title">مايكرويف مع شواية 32 لتر</h3>
+              </div>
+              <ul class="flex flex-col gap-2 text-sm leading-6 text-slate-300">
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>قوة 1000 واط و5 مستويات تسخين</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>شواية 1200 واط لتحمير الأطعمة</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>طبق دوار 31.5 سم وقفل أمان للأطفال</span></li>
+              </ul>
+              <div class="mt-auto flex flex-wrap items-end justify-between gap-3 border-t border-slate-700/60 pt-4">
+                <div class="flex flex-col gap-1.5">
+                  <span class="text-xs text-slate-400">سعر نهائي</span>
+                  <p class="price-tag"><span class="text-xl font-black tabular-nums">185,000</span><span class="text-xs font-bold">د.ع</span></p>
+                </div>
+                <span class="warranty"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/></svg><span>ضمان سنة</span></span>
+              </div>
+              <div class="grid gap-2">
+                <a data-buy href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-yellow h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>شراء الآن</span></a>
+                <button type="button" data-book="مايكرويف مع شواية 32 لتر" class="btn btn-ghost-blue h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span>حجز مكالمة للاستفسار</span></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 9 · Air fryer -->
+          <article data-product data-cat="kitchen" data-name="قلاية هوائية رقمية 6.2 لتر" data-price="135000" data-keywords="اير فراير قلايه بدون زيت" class="card group">
+            <div class="card-media">
+              <div class="absolute start-3 top-3 flex flex-wrap gap-1.5"><span class="badge-yellow">خصم 15%</span></div>
+              <svg viewBox="0 0 240 180" class="card-art" aria-hidden="true">
+                <ellipse cx="120" cy="166" rx="52" ry="6" fill="#020617" opacity=".55"/>
+                <rect x="72" y="22" width="96" height="140" rx="26" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.5"/>
+                <rect x="90" y="38" width="60" height="30" rx="8" fill="#0F172A"/>
+                <text x="120" y="58" text-anchor="middle" font-family="Cairo, sans-serif" font-size="13" font-weight="800" fill="#FFDA1A">200°</text>
+                <circle cx="104" cy="76" r="3" fill="#4D9AE6"/><circle cx="120" cy="76" r="3" fill="#94A3B8"/><circle cx="136" cy="76" r="3" fill="#94A3B8"/>
+                <path d="M78 84h84" stroke="#CBD5E1" stroke-width="2"/>
+                <rect x="78" y="90" width="84" height="64" rx="18" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+                <rect x="100" y="112" width="40" height="16" rx="8" fill="#475569"/>
+              </svg>
+            </div>
+            <div class="flex flex-1 flex-col gap-4 p-5">
+              <div class="flex flex-col gap-1.5">
+                <p class="text-xs font-medium text-slate-400">أجهزة المطبخ · <span dir="ltr">DH-AF62</span></p>
+                <h3 class="card-title">قلاية هوائية رقمية 6.2 لتر</h3>
+              </div>
+              <ul class="flex flex-col gap-2 text-sm leading-6 text-slate-300">
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>قلي مقرمش بملعقة زيت واحدة بدل الغمر بالزيت</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>8 برامج جاهزة وشاشة لمس</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>سلة غير لاصقة تدخل غسالة الصحون</span></li>
+              </ul>
+              <div class="mt-auto flex flex-wrap items-end justify-between gap-3 border-t border-slate-700/60 pt-4">
+                <div class="flex flex-col gap-1.5">
+                  <s class="text-xs tabular-nums text-slate-400">159,000 د.ع</s>
+                  <p class="price-tag"><span class="text-xl font-black tabular-nums">135,000</span><span class="text-xs font-bold">د.ع</span></p>
+                </div>
+                <span class="warranty"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/></svg><span>ضمان سنة</span></span>
+              </div>
+              <div class="grid gap-2">
+                <a data-buy href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-yellow h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>شراء الآن</span></a>
+                <button type="button" data-book="قلاية هوائية رقمية 6.2 لتر" class="btn btn-ghost-blue h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span>حجز مكالمة للاستفسار</span></button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 10 · Espresso machine -->
+          <article data-product data-cat="kitchen" data-name="ماكينة إسبريسو بضغط 15 بار" data-price="285000" data-keywords="قهوه اسبريسو كابتشينو مكينة" class="card group">
+            <div class="card-media">
+              <div class="absolute start-3 top-3 flex flex-wrap gap-1.5"><span class="badge-blue">الأكثر طلباً</span></div>
+              <svg viewBox="0 0 240 180" class="card-art" aria-hidden="true">
+                <ellipse cx="120" cy="166" rx="66" ry="6" fill="#020617" opacity=".55"/>
+                <rect x="138" y="22" width="44" height="140" rx="8" fill="#CBD5E1" stroke="#94A3B8" stroke-width="1.5"/>
+                <rect x="58" y="22" width="124" height="44" rx="8" fill="#E2E8F0" stroke="#94A3B8" stroke-width="1.5"/>
+                <circle cx="160" cy="44" r="12" fill="#0F172A" stroke="#94A3B8" stroke-width="1.5"/>
+                <path d="m160 44 6-6" stroke="#FFDA1A" stroke-width="2" stroke-linecap="round"/>
+                <rect x="84" y="66" width="40" height="10" rx="3" fill="#64748B"/>
+                <rect x="88" y="76" width="32" height="10" rx="3" fill="#475569"/>
+                <rect x="44" y="78" width="48" height="7" rx="3.5" fill="#0F172A"/>
+                <path d="M104 88v26" stroke="#B45309" stroke-width="3" stroke-linecap="round"/>
+                <rect x="92" y="114" width="26" height="24" rx="5" fill="#F8FAFC"/>
+                <path d="M118 120h4a5 5 0 0 1 0 10h-4" fill="none" stroke="#F8FAFC" stroke-width="3"/>
+                <rect x="58" y="138" width="124" height="22" rx="5" fill="#94A3B8"/>
+                <path d="M66 146h108" stroke="#64748B" stroke-width="1.5" stroke-dasharray="4 4"/>
+              </svg>
+            </div>
+            <div class="flex flex-1 flex-col gap-4 p-5">
+              <div class="flex flex-col gap-1.5">
+                <p class="text-xs font-medium text-slate-400">أجهزة المطبخ · <span dir="ltr">DH-ES15</span></p>
+                <h3 class="card-title">ماكينة إسبريسو بضغط 15 بار</h3>
+              </div>
+              <ul class="flex flex-col gap-2 text-sm leading-6 text-slate-300">
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>مضخة 15 بار لإسبريسو بطبقة كريمة غنية</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>ذراع بخار لرغوة الحليب والكابتشينو</span></li>
+                <li class="spec"><svg class="mt-1 h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>خزان ماء 1.5 لتر قابل للفك</span></li>
+              </ul>
+              <div class="mt-auto flex flex-wrap items-end justify-between gap-3 border-t border-slate-700/60 pt-4">
+                <div class="flex flex-col gap-1.5">
+                  <span class="text-xs text-slate-400">سعر نهائي</span>
+                  <p class="price-tag"><span class="text-xl font-black tabular-nums">285,000</span><span class="text-xs font-bold">د.ع</span></p>
+                </div>
+                <span class="warranty"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/></svg><span>ضمان سنة</span></span>
+              </div>
+              <div class="grid gap-2">
+                <a data-buy href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-yellow h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><span>شراء الآن</span></a>
+                <button type="button" data-book="ماكينة إسبريسو بضغط 15 بار" class="btn btn-ghost-blue h-11 w-full"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg><span>حجز مكالمة للاستفسار</span></button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div id="no-results" hidden class="flex flex-col items-center gap-4 rounded-2xl border border-dashed border-slate-700 px-6 py-14 text-center">
+          <p class="font-display text-lg font-bold text-white">لا توجد أجهزة تطابق «<span id="no-results-q"></span>»</p>
+          <p class="max-w-md text-slate-400">جرّب كلمة أخرى مثل «مكيف» أو «غسالة»، أو احجز مكالمة ونساعدك في إيجاد الجهاز المناسب.</p>
+          <div class="flex flex-wrap justify-center gap-2">
+            <button type="button" data-reset class="btn btn-outline">عرض كل الأجهزة</button>
+            <button type="button" data-book="" class="btn btn-yellow">احجز مكالمة</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section id="services" aria-labelledby="services-title" class="border-y border-slate-800 bg-surface/30 py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto flex max-w-7xl flex-col gap-12 px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col gap-3">
+          <p class="eyebrow"><span class="h-2 w-2 rounded-sm bg-brand-yellow"></span><span>خدماتنا</span></p>
+          <h2 id="services-title" class="section-title">من أول استفسار حتى تشغيل الجهاز في بيتك</h2>
+          <p class="section-lead">خدمة متكاملة يديرها فريق واحد، فلا تحتاج إلى المتابعة مع أكثر من جهة.</p>
+        </div>
+        <ol class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          <li class="flex flex-col gap-4 border-t-2 border-brand-yellow pt-6">
+            <div class="flex items-center gap-3">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-brand-yellow text-ink"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg></span>
+              <span class="font-display text-sm font-bold text-slate-400">الخطوة 1</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white">استشارة مجانية</h3>
+            <p class="leading-8 text-slate-400">نسمع احتياجك ونرشّح لك الجهاز المناسب لمساحة بيتك وعدد أفراد أسرتك وميزانيتك.</p>
+          </li>
+          <li class="flex flex-col gap-4 border-t-2 border-slate-700 pt-6">
+            <div class="flex items-center gap-3">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-surface text-brand-yellow ring-1 ring-slate-700"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></span>
+              <span class="font-display text-sm font-bold text-slate-400">الخطوة 2</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white">توصيل إلى باب البيت</h3>
+            <p class="leading-8 text-slate-400">نوصل طلبك مغلّفاً ومؤمّناً خلال 24–48 ساعة داخل بغداد، و2–5 أيام لباقي المحافظات.</p>
+          </li>
+          <li class="flex flex-col gap-4 border-t-2 border-slate-700 pt-6">
+            <div class="flex items-center gap-3">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-surface text-brand-yellow ring-1 ring-slate-700"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94Z"/></svg></span>
+              <span class="font-display text-sm font-bold text-slate-400">الخطوة 3</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white">تركيب واختبار</h3>
+            <p class="leading-8 text-slate-400">يركّب فنيونا الجهاز ويختبرونه أمامك، ويشرحون لك أهم الإعدادات قبل المغادرة.</p>
+          </li>
+          <li class="flex flex-col gap-4 border-t-2 border-slate-700 pt-6">
+            <div class="flex items-center gap-3">
+              <span class="grid h-12 w-12 place-items-center rounded-xl bg-surface text-brand-yellow ring-1 ring-slate-700"><svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <span class="font-display text-sm font-bold text-slate-400">الخطوة 4</span>
+            </div>
+            <h3 class="font-display text-xl font-bold text-white">ضمان وصيانة</h3>
+            <p class="leading-8 text-slate-400">ضمان رسمي على كل جهاز، وفريق صيانة يصلك إلى البيت طوال فترة الضمان.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <!-- To add a real screenshot: replace the contents of a .phone-screen with
+         <img src="review-1.jpg" alt="تقييم عميل" class="h-full w-full object-cover"> -->
+    <section id="reviews" aria-labelledby="reviews-title" class="py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto flex max-w-7xl flex-col gap-12 px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center gap-3 text-center">
+          <p class="eyebrow"><span class="h-2 w-2 rounded-sm bg-brand-yellow"></span><span>آراء العملاء</span></p>
+          <h2 id="reviews-title" class="section-title">كلام عملائنا من شاشات هواتفهم</h2>
+          <p class="section-lead">لقطات من رسائل وتقييمات وصلتنا بعد التوصيل والتركيب، كما هي بدون تعديل.</p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-4">
+          <!-- WhatsApp -->
+          <figure class="flex flex-col items-center gap-4">
+            <div class="phone">
+              <div class="phone-notch"></div>
+              <div class="phone-screen bg-[#0B141A]">
+                <div class="flex items-center gap-2 bg-[#1F2C34] px-3 pb-2.5 pt-9">
+                  <span class="h-7 w-7 shrink-0 rounded-full bg-slate-500"></span>
+                  <span class="flex flex-1 flex-col gap-1"><span class="sk w-16 bg-slate-300/60"></span><span class="sk w-10"></span></span>
+                </div>
+                <div class="flex flex-1 flex-col gap-2 p-3">
+                  <span class="bubble-in w-4/5 bg-[#202C33]"><span class="sk w-full"></span><span class="sk w-3/4"></span><span class="sk w-1/2"></span></span>
+                  <span class="bubble-in w-3/5 bg-[#202C33] p-1.5"><span class="block h-20 rounded-lg bg-slate-600/60"></span></span>
+                  <span class="bubble-out w-2/3 bg-[#005C4B]"><span class="sk w-full bg-white/30"></span><span class="sk w-1/2 bg-white/30"></span></span>
+                  <span class="bubble-in w-3/4 bg-[#202C33]"><span class="sk w-full"></span><span class="sk w-2/3"></span></span>
+                </div>
+                <span class="shot-label"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg><span>مكان لقطة الشاشة</span></span>
+              </div>
+            </div>
+            <figcaption class="flex items-center gap-2 font-display text-sm font-semibold text-slate-300">
+              <svg class="h-4 w-4 text-wa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 21 1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+              <span>عبر واتساب</span>
+            </figcaption>
+          </figure>
+
+          <!-- Instagram -->
+          <figure class="flex flex-col items-center gap-4">
+            <div class="phone">
+              <div class="phone-notch"></div>
+              <div class="phone-screen bg-black">
+                <div class="flex items-center gap-2 border-b border-white/10 bg-black px-3 pb-2.5 pt-9">
+                  <span class="h-7 w-7 shrink-0 rounded-full bg-gradient-to-tr from-amber-400 via-pink-500 to-purple-600 p-[2px]"><span class="block h-full w-full rounded-full bg-slate-600"></span></span>
+                  <span class="flex flex-1 flex-col gap-1"><span class="sk w-14 bg-slate-300/60"></span><span class="sk w-9"></span></span>
+                </div>
+                <div class="flex flex-1 flex-col gap-2 p-3">
+                  <span class="bubble-in w-3/4 bg-[#262626]"><span class="sk w-full"></span><span class="sk w-2/3"></span></span>
+                  <span class="bubble-in w-4/5 bg-[#262626]"><span class="sk w-full"></span><span class="sk w-full"></span><span class="sk w-1/3"></span></span>
+                  <span class="bubble-out w-3/5 bg-[#6D28D9]"><span class="sk w-full bg-white/35"></span><span class="sk w-1/2 bg-white/35"></span></span>
+                  <span class="bubble-in w-1/2 bg-[#262626]"><span class="sk w-full"></span></span>
+                </div>
+                <span class="shot-label"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg><span>مكان لقطة الشاشة</span></span>
+              </div>
+            </div>
+            <figcaption class="flex items-center gap-2 font-display text-sm font-semibold text-slate-300">
+              <svg class="h-4 w-4 text-pink-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>
+              <span>عبر إنستغرام</span>
+            </figcaption>
+          </figure>
+
+          <!-- Messenger -->
+          <figure class="flex flex-col items-center gap-4">
+            <div class="phone">
+              <div class="phone-notch"></div>
+              <div class="phone-screen bg-[#18191A]">
+                <div class="flex items-center gap-2 bg-[#242526] px-3 pb-2.5 pt-9">
+                  <span class="h-7 w-7 shrink-0 rounded-full bg-slate-500"></span>
+                  <span class="flex flex-1 flex-col gap-1"><span class="sk w-16 bg-slate-300/60"></span><span class="sk w-12"></span></span>
+                </div>
+                <div class="flex flex-1 flex-col gap-2 p-3">
+                  <span class="bubble-out w-2/3 bg-[#0084FF]"><span class="sk w-full bg-white/40"></span></span>
+                  <span class="bubble-in w-4/5 bg-[#3A3B3C]"><span class="sk w-full"></span><span class="sk w-full"></span><span class="sk w-2/3"></span></span>
+                  <span class="bubble-in w-3/5 bg-[#3A3B3C] p-1.5"><span class="block h-16 rounded-lg bg-slate-600/60"></span></span>
+                  <span class="bubble-out w-1/2 bg-[#0084FF]"><span class="sk w-full bg-white/40"></span></span>
+                </div>
+                <span class="shot-label"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg><span>مكان لقطة الشاشة</span></span>
+              </div>
+            </div>
+            <figcaption class="flex items-center gap-2 font-display text-sm font-semibold text-slate-300">
+              <svg class="h-4 w-4 text-[#4D9AE6]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              <span>عبر ماسنجر</span>
+            </figcaption>
+          </figure>
+
+          <!-- Google reviews -->
+          <figure class="flex flex-col items-center gap-4">
+            <div class="phone">
+              <div class="phone-notch"></div>
+              <div class="phone-screen bg-[#202124]">
+                <div class="flex flex-col gap-2 px-3 pb-3 pt-9">
+                  <span class="block h-7 rounded-full bg-[#303134]"></span>
+                </div>
+                <div class="flex flex-1 flex-col gap-3 px-3">
+                  <span class="flex flex-col gap-2 rounded-xl bg-[#303134] p-3">
+                    <span class="flex items-center gap-2"><span class="h-6 w-6 rounded-full bg-slate-500"></span><span class="sk w-14 bg-slate-300/60"></span></span>
+                    <span class="flex gap-0.5 text-brand-yellow" aria-hidden="true">
+                      <svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg><svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg><svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg><svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg><svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg>
+                    </span>
+                    <span class="sk w-full"></span><span class="sk w-full"></span><span class="sk w-1/2"></span>
+                  </span>
+                  <span class="flex flex-col gap-2 rounded-xl bg-[#303134] p-3">
+                    <span class="flex items-center gap-2"><span class="h-6 w-6 rounded-full bg-slate-500"></span><span class="sk w-12 bg-slate-300/60"></span></span>
+                    <span class="flex gap-0.5 text-brand-yellow" aria-hidden="true">
+                      <svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg><svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg><svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg><svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg><svg class="h-3 w-3" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg>
+                    </span>
+                    <span class="sk w-full"></span><span class="sk w-2/3"></span>
+                  </span>
+                </div>
+                <span class="shot-label"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg><span>مكان لقطة الشاشة</span></span>
+              </div>
+            </div>
+            <figcaption class="flex items-center gap-2 font-display text-sm font-semibold text-slate-300">
+              <svg class="h-4 w-4 text-brand-yellow" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></svg>
+              <span>تقييمات Google</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <p class="text-center text-slate-400">اشتريت من دكتور هوم؟<a data-wa="مرحباً دكتور هوم، أحب أن أشارككم تجربتي مع الجهاز الذي اشتريته." href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="font-bold text-brand-sky underline-offset-4 hover:underline">أرسل لنا تجربتك على واتساب</a></p>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" aria-labelledby="about-title" class="border-y border-slate-800 bg-surface/30 py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8">
+        <div class="flex flex-col gap-6">
+          <div class="flex flex-col gap-3">
+            <p class="eyebrow"><span class="h-2 w-2 rounded-sm bg-brand-yellow"></span><span>من نحن</span></p>
+            <h2 id="about-title" class="section-title">دكتور هوم… طبيب أجهزة بيتك</h2>
+            <p class="section-lead">بدأنا فريقَ صيانة يعرف الأجهزة المنزلية من الداخل، ومن هنا جاء اسمنا. اليوم نبيع الأجهزة التي نثق بها، لأن خبرة الصيانة علّمتنا أي الموديلات تدوم وأيها يُتعب أصحابه.</p>
+          </div>
+          <ul class="grid gap-6 sm:grid-cols-3">
+            <li class="flex flex-col gap-2">
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-brand-blue/20 text-brand-sky"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94Z"/></svg></span>
+              <h3 class="font-display text-base font-bold text-white">اختيار بخبرة فنية</h3>
+              <p class="text-sm leading-7 text-slate-400">كل موديل نعرضه مرّ على فنيي الصيانة قبل أن يصل إلى المتجر.</p>
+            </li>
+            <li class="flex flex-col gap-2">
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-brand-blue/20 text-brand-sky"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4Z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
+              <h3 class="font-display text-base font-bold text-white">سعر واضح</h3>
+              <p class="text-sm leading-7 text-slate-400">السعر المكتوب هو ما تدفعه، شاملاً التوصيل داخل بغداد.</p>
+            </li>
+            <li class="flex flex-col gap-2">
+              <span class="grid h-10 w-10 place-items-center rounded-xl bg-brand-blue/20 text-brand-sky"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg></span>
+              <h3 class="font-display text-base font-bold text-white">معك بعد البيع</h3>
+              <p class="text-sm leading-7 text-slate-400">صيانة منزلية وقطع غيار أصلية طوال فترة الضمان.</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pre-delivery check-up report (sample) -->
+        <div class="flex flex-col gap-5 rounded-3xl border border-slate-700/60 bg-ink p-6 shadow-2xl shadow-black/40 sm:p-8">
+          <div class="flex items-start justify-between gap-4 border-b border-dashed border-slate-700 pb-5">
+            <div class="flex flex-col gap-1">
+              <p class="flex items-center gap-2 font-display text-xs font-bold text-brand-yellow"><span>تقرير فحص قبل التسليم</span><span class="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] text-slate-400">نموذج</span></p>
+              <p class="font-display text-xl font-extrabold text-white">مكيف سبليت إنفرتر 1.5 طن</p>
+              <p class="text-sm text-slate-400">رقم الطلب <span dir="ltr">#DH-24817</span></p>
+            </div>
+            <svg viewBox="0 0 40 40" class="h-11 w-11 shrink-0" aria-hidden="true">
+              <rect width="40" height="40" rx="10" fill="#FFDA1A"/>
+              <path d="M9 19 20 10l11 9v11a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2Z" fill="none" stroke="#0F172A" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M20 18v10M15 23h10" stroke="#0058AB" stroke-width="3.2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <ul class="flex flex-col divide-y divide-slate-800">
+            <li class="flex items-center justify-between gap-4 py-3.5">
+              <span class="flex items-center gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-energy-a3/20 text-energy-a3"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span class="text-slate-200">تشغيل تجريبي لمدة 30 دقيقة</span></span>
+              <span class="shrink-0 font-display text-sm font-bold text-slate-300">ناجح</span>
+            </li>
+            <li class="flex items-center justify-between gap-4 py-3.5">
+              <span class="flex items-center gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-energy-a3/20 text-energy-a3"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span class="text-slate-200">قياس الفولتية وسحب التيار</span></span>
+              <span class="shrink-0 font-display text-sm font-bold tabular-nums text-slate-300" dir="ltr">220V · 6.8A</span>
+            </li>
+            <li class="flex items-center justify-between gap-4 py-3.5">
+              <span class="flex items-center gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-energy-a3/20 text-energy-a3"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span class="text-slate-200">حرارة الهواء الخارج من الوحدة</span></span>
+              <span class="shrink-0 font-display text-sm font-bold tabular-nums text-slate-300" dir="ltr">12°م</span>
+            </li>
+            <li class="flex items-center justify-between gap-4 py-3.5">
+              <span class="flex items-center gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-energy-a3/20 text-energy-a3"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span class="text-slate-200">فحص التسريب ومستوى الضجيج</span></span>
+              <span class="shrink-0 font-display text-sm font-bold text-slate-300">سليم</span>
+            </li>
+            <li class="flex items-center justify-between gap-4 py-3.5">
+              <span class="flex items-center gap-3"><span class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-energy-a3/20 text-energy-a3"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span class="text-slate-200">تسجيل الضمان باسم العميل</span></span>
+              <span class="shrink-0 font-display text-sm font-bold text-slate-300">3 سنوات</span>
+            </li>
+          </ul>
+          <div class="flex flex-wrap items-end justify-between gap-4 border-t border-dashed border-slate-700 pt-5">
+            <div class="flex flex-col gap-1">
+              <span class="text-sm text-slate-400">توقيع الفني المسؤول</span>
+              <svg viewBox="0 0 120 30" class="h-8 w-28" aria-hidden="true"><path d="M4 20c10-14 18-14 20 0s14-10 22-6 8 12 18 4 16-12 24-4 12 6 24-2" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <span class="-rotate-6 rounded-lg border-2 border-brand-yellow px-4 py-2 font-display text-lg font-black text-brand-yellow">جاهز للتسليم</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VIDEOS ============ -->
+    <section id="videos" aria-labelledby="videos-title" class="py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto flex max-w-7xl flex-col gap-10 px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+          <div class="flex flex-col gap-3">
+            <p class="eyebrow"><span class="h-2 w-2 rounded-sm bg-brand-yellow"></span><span>فيديوهات تعليمية</span></p>
+            <h2 id="videos-title" class="section-title">استخدم أجهزتك بالطريقة الصحيحة</h2>
+            <p class="section-lead">شروحات قصيرة من فنيي دكتور هوم تساعدك على العناية بأجهزتك وإطالة عمرها.</p>
+          </div>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="btn btn-outline h-12 shrink-0 self-start sm:self-auto">
+            <svg class="h-5 w-5 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg>
+            <span>كل الفيديوهات على يوتيوب</span>
+          </a>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="group flex flex-col gap-4">
+            <div class="relative aspect-video overflow-hidden rounded-2xl border border-slate-700/60 bg-gradient-to-br from-brand-blue/60 via-surface to-ink">
+              <svg class="absolute -bottom-6 -end-6 h-36 w-36 text-white/10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 2v20M3.3 7l17.4 10M3.3 17 20.7 7"/><path d="m9 4 3 2 3-2M9 20l3-2 3 2"/></svg>
+              <span class="absolute start-3 top-3 rounded-md bg-brand-yellow px-2 py-1 font-display text-sm font-black text-ink">1 طن أم 1.5 طن؟</span>
+              <span class="absolute inset-0 grid place-items-center"><span class="grid h-14 w-14 place-items-center rounded-full bg-white/95 text-ink shadow-lg transition group-hover:scale-110 group-hover:bg-brand-yellow"><svg class="h-6 w-6 translate-x-[2px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+              <span class="absolute bottom-3 end-3 rounded bg-black/70 px-1.5 py-0.5 font-display text-xs font-bold text-white" dir="ltr">06:48</span>
+            </div>
+            <div class="flex flex-col gap-1">
+              <h3 class="font-display text-base font-bold leading-7 text-white transition group-hover:text-brand-yellow">كيف تختار حجم المكيف المناسب لغرفتك؟</h3>
+              <p class="text-sm text-slate-400">دليل الشراء</p>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="group flex flex-col gap-4">
+            <div class="relative aspect-video overflow-hidden rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-600/60 via-surface to-ink">
+              <svg class="absolute -bottom-6 -end-6 h-36 w-36 text-white/10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="13" r="5"/><path d="M8 6h.01M11 6h.01"/></svg>
+              <span class="absolute start-3 top-3 rounded-md bg-brand-yellow px-2 py-1 font-display text-sm font-black text-ink">فلتر الغسالة</span>
+              <span class="absolute inset-0 grid place-items-center"><span class="grid h-14 w-14 place-items-center rounded-full bg-white/95 text-ink shadow-lg transition group-hover:scale-110 group-hover:bg-brand-yellow"><svg class="h-6 w-6 translate-x-[2px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+              <span class="absolute bottom-3 end-3 rounded bg-black/70 px-1.5 py-0.5 font-display text-xs font-bold text-white" dir="ltr">04:12</span>
+            </div>
+            <div class="flex flex-col gap-1">
+              <h3 class="font-display text-base font-bold leading-7 text-white transition group-hover:text-brand-yellow">تنظيف فلتر الغسالة الأمامية خطوة بخطوة</h3>
+              <p class="text-sm text-slate-400">صيانة منزلية</p>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="group flex flex-col gap-4">
+            <div class="relative aspect-video overflow-hidden rounded-2xl border border-slate-700/60 bg-gradient-to-br from-brand-blue/60 via-surface to-ink">
+              <svg class="absolute -bottom-6 -end-6 h-36 w-36 text-white/10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z"/></svg>
+              <span class="absolute start-3 top-3 rounded-md bg-brand-yellow px-2 py-1 font-display text-sm font-black text-ink"><span dir="ltr">4°</span> و <span dir="ltr">−18°</span></span>
+              <span class="absolute inset-0 grid place-items-center"><span class="grid h-14 w-14 place-items-center rounded-full bg-white/95 text-ink shadow-lg transition group-hover:scale-110 group-hover:bg-brand-yellow"><svg class="h-6 w-6 translate-x-[2px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+              <span class="absolute bottom-3 end-3 rounded bg-black/70 px-1.5 py-0.5 font-display text-xs font-bold text-white" dir="ltr">03:35</span>
+            </div>
+            <div class="flex flex-col gap-1">
+              <h3 class="font-display text-base font-bold leading-7 text-white transition group-hover:text-brand-yellow">أفضل درجة حرارة للثلاجة والفريزر</h3>
+              <p class="text-sm text-slate-400">نصائح الاستخدام</p>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="group flex flex-col gap-4">
+            <div class="relative aspect-video overflow-hidden rounded-2xl border border-slate-700/60 bg-gradient-to-br from-slate-600/60 via-surface to-ink">
+              <svg class="absolute -bottom-6 -end-6 h-36 w-36 text-white/10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg>
+              <span class="absolute start-3 top-3 rounded-md bg-brand-yellow px-2 py-1 font-display text-sm font-black text-ink">5 أخطاء شائعة</span>
+              <span class="absolute inset-0 grid place-items-center"><span class="grid h-14 w-14 place-items-center rounded-full bg-white/95 text-ink shadow-lg transition group-hover:scale-110 group-hover:bg-brand-yellow"><svg class="h-6 w-6 translate-x-[2px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+              <span class="absolute bottom-3 end-3 rounded bg-black/70 px-1.5 py-0.5 font-display text-xs font-bold text-white" dir="ltr">05:20</span>
+            </div>
+            <div class="flex flex-col gap-1">
+              <h3 class="font-display text-base font-bold leading-7 text-white transition group-hover:text-brand-yellow">أخطاء شائعة تقصّر عمر غسالة الصحون</h3>
+              <p class="text-sm text-slate-400">صيانة منزلية</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section id="faq" aria-labelledby="faq-title" class="border-t border-slate-800 py-16 sm:py-20 lg:py-24">
+      <div class="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-16 lg:px-8">
+        <div class="flex flex-col gap-6 lg:sticky lg:top-36 lg:self-start">
+          <div class="flex flex-col gap-3">
+            <p class="eyebrow"><span class="h-2 w-2 rounded-sm bg-brand-yellow"></span><span>الأسئلة الشائعة</span></p>
+            <h2 id="faq-title" class="section-title">أسئلة يسألها عملاؤنا قبل الشراء</h2>
+            <p class="section-lead">إجابات مختصرة عن التوصيل والتركيب والضمان وحجز الاستشارات.</p>
+          </div>
+          <div class="flex flex-col gap-4 rounded-2xl border border-slate-700/50 bg-surface p-6">
+            <p class="font-display text-lg font-bold text-white">لم تجد إجابتك؟</p>
+            <p class="text-sm leading-7 text-slate-400">فريق خدمة العملاء يرد على واتساب يومياً من 9 صباحاً حتى 9 مساءً.</p>
+            <div class="flex flex-wrap gap-2">
+              <a data-wa href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-wa h-11">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 21 1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+                <span>اسألنا على واتساب</span>
+              </a>
+              <button type="button" data-book="" class="btn btn-ghost-blue h-11">احجز مكالمة</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3">
+          <div class="faq-item" data-open="true">
+            <h3><button type="button" class="faq-btn group" id="faq-q1" aria-expanded="true" aria-controls="faq-a1"><span>كم يستغرق التوصيل، وهل يشمل جميع المحافظات؟</span><span class="faq-icon"><svg class="h-5 w-5 transition group-aria-expanded:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button></h3>
+            <div id="faq-a1" role="region" aria-labelledby="faq-q1" class="faq-panel">نوصل داخل بغداد خلال 24 إلى 48 ساعة، وإلى باقي المحافظات خلال 2 إلى 5 أيام عمل. يتصل بك فريق التوصيل قبل الموعد لتأكيد العنوان والوقت المناسب لك.</div>
+          </div>
+          <div class="faq-item" data-open="false">
+            <h3><button type="button" class="faq-btn group" id="faq-q2" aria-expanded="false" aria-controls="faq-a2"><span>هل التركيب مجاني؟ ومن يقوم به؟</span><span class="faq-icon"><svg class="h-5 w-5 transition group-aria-expanded:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button></h3>
+            <div id="faq-a2" role="region" aria-labelledby="faq-q2" class="faq-panel" hidden>التركيب مجاني للمكيفات والغسالات وغسالات الصحون والأفران المدمجة داخل بغداد، ويقوم به فنيون معتمدون من دكتور هوم. نختبر الجهاز أمامك بعد التركيب ونشرح لك طريقة استخدامه.</div>
+          </div>
+          <div class="faq-item" data-open="false">
+            <h3><button type="button" class="faq-btn group" id="faq-q3" aria-expanded="false" aria-controls="faq-a3"><span>ماذا يغطي الضمان، وكيف أطالب به؟</span><span class="faq-icon"><svg class="h-5 w-5 transition group-aria-expanded:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button></h3>
+            <div id="faq-a3" role="region" aria-labelledby="faq-q3" class="faq-panel" hidden>يغطي الضمان عيوب التصنيع وقطع الغيار وأجور الصيانة طوال المدة المكتوبة على بطاقة كل جهاز. احتفظ بفاتورة الشراء، وراسلنا على واتساب برقم الفاتورة ووصف المشكلة، ونرسل لك فنياً إلى البيت.</div>
+          </div>
+          <div class="faq-item" data-open="false">
+            <h3><button type="button" class="faq-btn group" id="faq-q4" aria-expanded="false" aria-controls="faq-a4"><span>كيف أحجز استشارة مجانية؟ ومتى يتصل بي الخبير؟</span><span class="faq-icon"><svg class="h-5 w-5 transition group-aria-expanded:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button></h3>
+            <div id="faq-a4" role="region" aria-labelledby="faq-q4" class="faq-panel" hidden>اضغط «احجز مكالمة» أعلى الصفحة أو «حجز مكالمة للاستفسار» في بطاقة أي جهاز، ثم اختر الفترة المناسبة لك. يتصل بك أحد خبرائنا في الفترة التي اخترتها ليساعدك على اختيار السعة والموديل المناسبين لبيتك.</div>
+          </div>
+          <div class="faq-item" data-open="false">
+            <h3><button type="button" class="faq-btn group" id="faq-q5" aria-expanded="false" aria-controls="faq-a5"><span>هل يمكنني الدفع عند الاستلام أو بالتقسيط؟</span><span class="faq-icon"><svg class="h-5 w-5 transition group-aria-expanded:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button></h3>
+            <div id="faq-a5" role="region" aria-labelledby="faq-q5" class="faq-panel" hidden>نعم، الدفع عند الاستلام متاح لجميع الطلبات. ونوفر التقسيط عبر شركائنا من المصارف وشركات التمويل بعد تقديم المستمسكات المطلوبة.</div>
+          </div>
+          <div class="faq-item" data-open="false">
+            <h3><button type="button" class="faq-btn group" id="faq-q6" aria-expanded="false" aria-controls="faq-a6"><span>هل يمكنني استبدال الجهاز أو إرجاعه؟</span><span class="faq-icon"><svg class="h-5 w-5 transition group-aria-expanded:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span></button></h3>
+            <div id="faq-a6" role="region" aria-labelledby="faq-q6" class="faq-panel" hidden>يمكنك استبدال الجهاز أو إرجاعه خلال 7 أيام من الاستلام إذا كان بحالته الأصلية وفي كرتونه، أو فوراً إذا وصلك بعيب مصنعي.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA BAND ============ -->
+    <section aria-labelledby="cta-title" class="pb-16 sm:pb-20 lg:pb-24">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="relative isolate flex flex-col items-start gap-8 overflow-hidden rounded-[2rem] bg-brand-yellow p-8 text-ink sm:p-10 lg:flex-row lg:items-center lg:justify-between lg:p-14">
+          <svg class="pointer-events-none absolute -bottom-12 -end-10 -z-10 h-64 w-64 text-ink/10" viewBox="0 0 40 40" aria-hidden="true"><path d="M5 19 20 7l15 12v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><path d="M20 17v12M14 23h12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+          <div class="flex max-w-2xl flex-col gap-3">
+            <h2 id="cta-title" class="font-display text-3xl font-black leading-snug sm:text-4xl">محتار أي جهاز يناسب بيتك؟</h2>
+            <p class="text-lg leading-8 text-ink/80">احجز مكالمة مجانية مع خبير من دكتور هوم، ونقارن معك السعة والاستهلاك والسعر قبل أن تدفع أي مبلغ.</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button type="button" data-book="" class="btn h-14 bg-ink px-7 text-base text-brand-yellow hover:bg-slate-800">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+              <span>احجز مكالمة مجانية</span>
+            </button>
+            <a data-wa href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn h-14 border-2 border-ink px-7 text-base text-ink hover:bg-ink/10">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 21 1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+              <span>تواصل عبر واتساب</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-slate-800 bg-night">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr_1.5fr] lg:px-8">
+      <div class="flex flex-col gap-5">
+        <a href="#home" class="flex items-center gap-3" aria-label="دكتور هوم، الصفحة الرئيسية">
+          <svg viewBox="0 0 40 40" class="h-11 w-11 shrink-0" aria-hidden="true">
+            <rect width="40" height="40" rx="10" fill="#FFDA1A"/>
+            <path d="M9 19 20 10l11 9v11a2 2 0 0 1-2 2H11a2 2 0 0 1-2-2Z" fill="none" stroke="#0F172A" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M20 18v10M15 23h10" stroke="#0058AB" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+          <span class="flex flex-col gap-1 leading-none">
+            <span class="font-display text-xl font-extrabold text-white">دكتور هوم</span>
+            <span class="font-display text-[11px] font-bold tracking-[0.25em] text-brand-yellow" dir="ltr">DR HOME</span>
+          </span>
+        </a>
+        <p class="max-w-xs text-sm leading-7 text-slate-400">متجرك لأجهزة منزلية موثوقة، مع التوصيل والتركيب والضمان والصيانة في مكان واحد.</p>
+        <ul class="flex gap-2" aria-label="حساباتنا على مواقع التواصل">
+          <li><a href="#" class="social" aria-label="إنستغرام"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a></li>
+          <li><a href="#" class="social" aria-label="فيسبوك"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></li>
+          <li><a href="#" class="social" aria-label="يوتيوب"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a></li>
+          <li><a href="#" class="social" aria-label="تيك توك"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.4 4.6 5 5"/></svg></a></li>
+        </ul>
+      </div>
+
+      <nav aria-labelledby="foot-pages" class="flex flex-col gap-4">
+        <h2 id="foot-pages" class="font-display text-base font-bold text-white">روابط سريعة</h2>
+        <ul class="flex flex-col gap-3 text-sm">
+          <li><a href="#home" class="foot-link">الرئيسية</a></li>
+          <li><a href="#products" class="foot-link">الأجهزة</a></li>
+          <li><a href="#services" class="foot-link">خدماتنا</a></li>
+          <li><a href="#about" class="foot-link">من نحن</a></li>
+          <li><a href="#videos" class="foot-link">فيديوهات تعليمية</a></li>
+          <li><a href="#faq" class="foot-link">الأسئلة الشائعة</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-labelledby="foot-cats" class="flex flex-col gap-4">
+        <h2 id="foot-cats" class="font-display text-base font-bold text-white">أقسام الأجهزة</h2>
+        <ul class="flex flex-col gap-3 text-sm">
+          <li><a href="#products" data-filter-link="cooling" class="foot-link">التبريد والتكييف</a></li>
+          <li><a href="#products" data-filter-link="laundry" class="foot-link">الغسيل والتنظيف</a></li>
+          <li><a href="#products" data-filter-link="kitchen" class="foot-link">أجهزة المطبخ</a></li>
+          <li><a href="#products" data-filter-link="screens" class="foot-link">الشاشات والترفيه</a></li>
+        </ul>
+      </nav>
+
+      <div class="flex flex-col gap-4">
+        <h2 class="font-display text-base font-bold text-white">تواصل معنا</h2>
+        <ul class="flex flex-col gap-2">
+          <li class="flex items-center justify-between gap-3 rounded-xl border border-slate-800 bg-ink px-4 py-3">
+            <span class="flex flex-col items-start gap-0.5">
+              <span class="text-xs text-slate-400">المبيعات</span>
+              <span data-number class="select-all font-display text-base font-bold tabular-nums text-white" dir="ltr">+964 770 000 0000</span>
+            </span>
+            <button type="button" data-copy="+9647700000000" class="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 px-2.5 py-1.5 font-display text-xs font-bold text-slate-300 transition hover:border-brand-blue hover:text-white" aria-label="نسخ رقم المبيعات"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span data-copy-label>نسخ</span></button>
+          </li>
+          <li class="flex items-center justify-between gap-3 rounded-xl border border-slate-800 bg-ink px-4 py-3">
+            <span class="flex flex-col items-start gap-0.5">
+              <span class="text-xs text-slate-400">الصيانة والضمان</span>
+              <span data-number class="select-all font-display text-base font-bold tabular-nums text-white" dir="ltr">+964 780 000 0000</span>
+            </span>
+            <button type="button" data-copy="+9647800000000" class="inline-flex items-center gap-1.5 rounded-lg border border-slate-700 px-2.5 py-1.5 font-display text-xs font-bold text-slate-300 transition hover:border-brand-blue hover:text-white" aria-label="نسخ رقم الصيانة"><svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="14" height="14" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span data-copy-label>نسخ</span></button>
+          </li>
+        </ul>
+        <a data-wa href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-wa h-12 w-full">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 21 1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+          <span>راسلنا على واتساب</span>
+        </a>
+        <ul class="flex flex-col gap-2 text-sm text-slate-400">
+          <li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>السبت – الخميس، 9 صباحاً – 9 مساءً</span></li>
+          <li class="flex items-center gap-2"><svg class="h-4 w-4 shrink-0 text-brand-yellow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>بغداد، العراق</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-slate-800">
+      <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 pb-24 pt-6 text-sm text-slate-400 sm:flex-row sm:px-6 sm:pb-6 lg:px-8">
+        <p>© <span data-year>2026</span> دكتور هوم <span dir="ltr">DR HOME</span>. جميع الحقوق محفوظة.</p>
+        <ul class="flex gap-5">
+          <li><a href="#" class="foot-link">سياسة الخصوصية</a></li>
+          <li><a href="#" class="foot-link">الشروط والأحكام</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a data-wa href="https://wa.me/9647700000000" target="_blank" rel="noopener" aria-label="تواصل معنا عبر الواتساب" class="wa-float fixed z-40 grid h-14 w-14 place-items-center rounded-full bg-wa text-[#052E16] shadow-lg shadow-black/40 transition hover:scale-105">
+    <svg class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 21 1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+  </a>
+
+  <!-- ============ BOOKING DIALOG ============ -->
+  <dialog id="booking" aria-labelledby="booking-title" class="w-[min(calc(100vw-2rem),34rem)] max-h-[calc(100dvh-2rem)] overflow-y-auto rounded-3xl border border-slate-700 bg-surface p-0 text-slate-200">
+    <div class="flex flex-col gap-6 p-6 sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <div class="flex flex-col gap-1">
+          <h2 id="booking-title" class="font-display text-2xl font-extrabold text-white">احجز مكالمة استشارة مجانية</h2>
+          <p class="text-sm leading-7 text-slate-400">اترك رقمك ويتصل بك خبير من دكتور هوم في الوقت الذي يناسبك.</p>
+        </div>
+        <button type="button" data-close class="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-slate-600 text-slate-300 transition hover:border-brand-blue hover:text-white" aria-label="إغلاق">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form id="booking-form" novalidate class="flex flex-col gap-5">
+        <div class="flex flex-col gap-2">
+          <label for="bk-name" class="text-sm font-bold text-slate-200">الاسم الكامل</label>
+          <input id="bk-name" name="name" type="text" autocomplete="name" required placeholder="مثال: أحمد علي" class="field" aria-describedby="bk-name-err">
+          <p id="bk-name-err" class="text-sm text-rose-300" hidden>اكتب اسمك حتى نعرف بمن نتصل.</p>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="bk-phone" class="text-sm font-bold text-slate-200">رقم الهاتف</label>
+          <input id="bk-phone" name="phone" type="tel" inputmode="tel" dir="ltr" autocomplete="tel" required placeholder="0770 123 4567" class="field text-right" aria-describedby="bk-phone-err">
+          <p id="bk-phone-err" class="text-sm text-rose-300" hidden>أدخل رقم هاتف صحيح يبدأ بـ 07، مثل 0770 123 4567.</p>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="bk-product" class="text-sm font-bold text-slate-200">الجهاز الذي تستفسر عنه</label>
+          <select id="bk-product" name="product" class="field"></select>
+        </div>
+        <fieldset class="flex flex-col gap-2">
+          <legend class="mb-2 text-sm font-bold text-slate-200">الوقت المناسب للاتصال</legend>
+          <div class="grid grid-cols-3 gap-2">
+            <label class="cursor-pointer">
+              <input type="radio" name="slot" id="bk-slot-1" value="صباحاً (10 ص – 1 م)" class="peer sr-only" checked>
+              <span class="slot-box"><span class="font-display text-sm font-bold">صباحاً</span><span class="text-xs opacity-80">10 ص – 1 م</span></span>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="slot" id="bk-slot-2" value="ظهراً (1 م – 5 م)" class="peer sr-only">
+              <span class="slot-box"><span class="font-display text-sm font-bold">ظهراً</span><span class="text-xs opacity-80">1 م – 5 م</span></span>
+            </label>
+            <label class="cursor-pointer">
+              <input type="radio" name="slot" id="bk-slot-3" value="مساءً (5 م – 9 م)" class="peer sr-only">
+              <span class="slot-box"><span class="font-display text-sm font-bold">مساءً</span><span class="text-xs opacity-80">5 م – 9 م</span></span>
+            </label>
+          </div>
+        </fieldset>
+        <div class="flex flex-col gap-2">
+          <label for="bk-notes" class="text-sm font-bold text-slate-200">ملاحظات <span class="font-normal text-slate-400">(اختياري)</span></label>
+          <textarea id="bk-notes" name="notes" rows="3" placeholder="مثال: مساحة الغرفة 20 م²، والطابق الثالث بدون مصعد" class="field resize-y"></textarea>
+        </div>
+        <button type="submit" class="btn btn-yellow h-12 w-full text-base">تأكيد الحجز</button>
+        <p class="text-center text-xs text-slate-400">نستخدم بياناتك للتواصل معك بخصوص هذا الطلب فقط.</p>
+      </form>
+
+      <div id="booking-done" hidden class="flex flex-col items-center gap-4 py-4 text-center">
+        <span class="grid h-16 w-16 place-items-center rounded-full bg-wa/15 text-wa">
+          <svg class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        </span>
+        <h3 class="font-display text-xl font-extrabold text-white">طلبك جاهز للإرسال</h3>
+        <p class="max-w-sm leading-7 text-slate-400">اضغط الزر لإرسال تفاصيل الحجز إلينا عبر واتساب، وسيتصل بك أحد خبرائنا في الفترة التي اخترتها.</p>
+        <a id="booking-wa" href="https://wa.me/9647700000000" target="_blank" rel="noopener" class="btn btn-wa h-12 w-full max-w-xs text-base">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 21 1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/></svg>
+          <span>إرسال الطلب عبر واتساب</span>
+        </a>
+        <button type="button" data-edit class="text-sm font-bold text-brand-sky underline-offset-4 hover:underline">تعديل البيانات</button>
+      </div>
+    </div>
+  </dialog>
+</div>
+<script>
+(() => {
+  'use strict';
+
+  // Replace with the store's real WhatsApp number (international format, digits only).
+  const WA_NUMBER = '9647700000000';
+  const waLink = (text) => 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
+  const fmt = (n) => Number(n).toLocaleString('en-US');
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  $$('[data-year]').forEach((el) => { el.textContent = String(new Date().getFullYear()); });
+
+  // WhatsApp links with a prefilled message
+  $$('[data-wa]').forEach((a) => {
+    a.href = waLink(a.dataset.wa || 'مرحباً دكتور هوم، لدي استفسار عن أحد الأجهزة.');
+  });
+
+  // Product cards: "Buy now" opens a WhatsApp order for that product
+  const cards = $$('[data-product]');
+  cards.forEach((card) => {
+    const buy = $('[data-buy]', card);
+    if (buy) {
+      buy.href = waLink('مرحباً دكتور هوم، أرغب بشراء:\n' + card.dataset.name +
+        '\nالسعر: ' + fmt(card.dataset.price) + ' د.ع\nأرجو تأكيد التوفر وموعد التوصيل.');
+    }
+  });
+
+  // ---------- Mobile menu ----------
+  const menuBtn = $('#menu-toggle');
+  const menu = $('#mobile-menu');
+  function setMenu(open) {
+    menu.hidden = !open;
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'إغلاق القائمة' : 'فتح القائمة');
+    $('[data-icon="open"]', menuBtn).toggleAttribute('hidden', open);
+    $('[data-icon="close"]', menuBtn).toggleAttribute('hidden', !open);
+  }
+  const closeMenu = () => setMenu(false);
+  menuBtn.addEventListener('click', () => setMenu(menu.hidden));
+  menu.addEventListener('click', (e) => { if (e.target.closest('a, [data-book]')) closeMenu(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu.hidden) { closeMenu(); menuBtn.focus(); }
+  });
+  window.matchMedia('(min-width: 1024px)').addEventListener('change', (e) => { if (e.matches) closeMenu(); });
+
+  // ---------- Header shadow on scroll ----------
+  const header = $('#site-header');
+  const onScroll = () => header.toggleAttribute('data-scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // ---------- Active nav link ----------
+  const navLinks = $$('[data-nav]');
+  const setActive = (id) => navLinks.forEach((a) =>
+    a.setAttribute('aria-current', String(a.getAttribute('href') === '#' + id)));
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) setActive(en.target.id); });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    navLinks.forEach((a) => { const s = document.getElementById(a.getAttribute('href').slice(1)); if (s) io.observe(s); });
+  }
+
+  // ---------- Catalogue filter + search ----------
+  const norm = (s) => String(s).toLowerCase()
+    .replace(/[ً-ْـ]/g, '')
+    .replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي');
+  const index = new Map(cards.map((c) => [c, norm([
+    c.dataset.name, c.dataset.keywords || '', $('p', c).textContent, $('ul', c).textContent
+  ].join(' '))]));
+  const state = { cat: 'all', q: '' };
+  const chips = $$('[data-filter]');
+  const countEl = $('#result-count');
+  const empty = $('#no-results');
+  const emptyQ = $('#no-results-q');
+  const inputs = $$('[data-search]');
+  const plural = (n) => n === 1 ? 'جهاز واحد' : n === 2 ? 'جهازان' : n <= 10 ? n + ' أجهزة' : n + ' جهازاً';
+
+  function applyFilters() {
+    const q = norm(state.q.trim());
+    let shown = 0;
+    cards.forEach((card) => {
+      const ok = (state.cat === 'all' || card.dataset.cat === state.cat) && (!q || index.get(card).includes(q));
+      card.hidden = !ok;
+      if (ok) shown++;
+    });
+    countEl.textContent = shown ? 'عدد النتائج: ' + plural(shown) : 'لا توجد نتائج';
+    empty.hidden = shown > 0;
+    emptyQ.textContent = state.q.trim();
+    chips.forEach((ch) => ch.setAttribute('aria-pressed', String(ch.dataset.filter === state.cat)));
+  }
+  const syncInputs = (value, except) => inputs.forEach((i) => { if (i !== except) i.value = value; });
+
+  chips.forEach((ch) => ch.addEventListener('click', () => { state.cat = ch.dataset.filter; applyFilters(); }));
+  $$('[data-filter-link]').forEach((a) => a.addEventListener('click', () => {
+    state.cat = a.dataset.filterLink; state.q = ''; syncInputs(''); applyFilters();
+  }));
+  inputs.forEach((inp) => inp.addEventListener('input', () => {
+    state.q = inp.value; syncInputs(inp.value, inp); applyFilters();
+  }));
+  $$('[data-search-form]').forEach((f) => f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    closeMenu();
+    $('#products').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+  }));
+  $$('[data-reset]').forEach((b) => b.addEventListener('click', () => {
+    state.cat = 'all'; state.q = ''; syncInputs(''); applyFilters();
+  }));
+  applyFilters();
+
+  // ---------- FAQ accordion ----------
+  $$('.faq-btn').forEach((btn) => btn.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', String(open));
+    document.getElementById(btn.getAttribute('aria-controls')).hidden = !open;
+    btn.closest('.faq-item').dataset.open = String(open);
+  }));
+
+  // ---------- Booking dialog ----------
+  const dlg = $('#booking');
+  const form = $('#booking-form');
+  const done = $('#booking-done');
+  const waBtn = $('#booking-wa');
+  const nameIn = $('#bk-name');
+  const phoneIn = $('#bk-phone');
+  const productSel = $('#bk-product');
+  const notesIn = $('#bk-notes');
+  const GENERAL = 'استشارة عامة لاختيار جهاز';
+  [GENERAL].concat(cards.map((c) => c.dataset.name)).forEach((n) => productSel.add(new Option(n, n)));
+
+  function showError(input, show) {
+    document.getElementById(input.id + '-err').hidden = !show;
+    input.setAttribute('aria-invalid', String(show));
+  }
+  function openBooking(product) {
+    form.hidden = false;
+    done.hidden = true;
+    productSel.value = cards.some((c) => c.dataset.name === product) ? product : GENERAL;
+    if (typeof dlg.showModal === 'function') { if (!dlg.open) dlg.showModal(); }
+    else dlg.setAttribute('open', '');
+    nameIn.focus();
+  }
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-book]');
+    if (!trigger) return;
+    e.preventDefault();
+    openBooking(trigger.dataset.book);
+  });
+  $$('[data-close]', dlg).forEach((b) => b.addEventListener('click', () => dlg.close()));
+  dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+
+  const toLatinDigits = (s) => s
+    .replace(/[٠-٩]/g, (d) => String('٠١٢٣٤٥٦٧٨٩'.indexOf(d)))
+    .replace(/[۰-۹]/g, (d) => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(d)));
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = nameIn.value.trim();
+    const phone = toLatinDigits(phoneIn.value).replace(/[\s()-]/g, '');
+    const okName = name.length >= 2;
+    const okPhone = /^(?:\+?964|0)?7\d{9}$/.test(phone);
+    showError(nameIn, !okName);
+    showError(phoneIn, !okPhone);
+    if (!okName) { nameIn.focus(); return; }
+    if (!okPhone) { phoneIn.focus(); return; }
+    const slot = (form.querySelector('input[name="slot"]:checked') || {}).value || '';
+    const lines = [
+      'طلب حجز مكالمة استشارة – دكتور هوم',
+      'الاسم: ' + name,
+      'الهاتف: ' + phone,
+      'الجهاز: ' + productSel.value,
+      'الوقت المناسب: ' + slot
+    ];
+    if (notesIn.value.trim()) lines.push('ملاحظات: ' + notesIn.value.trim());
+    waBtn.href = waLink(lines.join('\n'));
+    form.hidden = true;
+    done.hidden = false;
+    waBtn.focus();
+  });
+  $('[data-edit]', dlg).addEventListener('click', () => { done.hidden = true; form.hidden = false; nameIn.focus(); });
+  [nameIn, phoneIn].forEach((i) => i.addEventListener('input', () => {
+    if (i.getAttribute('aria-invalid') === 'true') showError(i, false);
+  }));
+
+  // ---------- Copy phone numbers ----------
+  $$('[data-copy]').forEach((btn) => btn.addEventListener('click', () => {
+    const label = $('[data-copy-label]', btn);
+    const reset = () => setTimeout(() => { label.textContent = 'نسخ'; }, 1800);
+    const fallback = () => {
+      const target = btn.parentElement.querySelector('[data-number]');
+      const range = document.createRange();
+      range.selectNodeContents(target);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      label.textContent = 'انسخه يدوياً';
+      reset();
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(btn.dataset.copy).then(() => { label.textContent = 'تم النسخ'; reset(); }, fallback);
+    } else {
+      fallback();
+    }
+  }));
+})();
+</script>
+
+</body></html>
