@@ -1,0 +1,66 @@
+media:
+  - name: Store Assets
+    input: assets
+    output: /assets
+    extensions: [png, jpg, jpeg, webp, mp4]
+
+content:
+  - name: homepage
+    label: Home Page (index.html)
+    type: file
+    path: index.html
+    format: html
+    fields:
+      - name: body
+        label: HTML Code & Content
+        type: code
+
+  - name: products-page
+    label: Products Page (products.html)
+    type: file
+    path: products.html
+    format: html
+    fields:
+      - name: body
+        label: HTML Code & Content
+        type: code
+
+  - name: offers-page
+    label: Offers Page (offers.html)
+    type: file
+    path: offers.html
+    format: html
+    fields:
+      - name: body
+        label: HTML Code & Content
+        type: code
+
+  - name: cart-page
+    label: Cart Page (cart.html)
+    type: file
+    path: cart.html
+    format: html
+    fields:
+      - name: body
+        label: HTML Code & Content
+        type: code
+
+  - name: contact-page
+    label: Contact Page (contact.html)
+    type: file
+    path: contact.html
+    format: html
+    fields:
+      - name: body
+        label: HTML Code & Content
+        type: code
+
+  - name: support-page
+    label: Support Page (support.html)
+    type: file
+    path: support.html
+    format: html
+    fields:
+      - name: body
+        label: HTML Code & Content
+        type: code
