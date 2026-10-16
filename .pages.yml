@@ -1,8 +1,6 @@
 media:
-  - name: Store Assets
-    input: assets
-    output: /assets
-    extensions: [png, jpg, jpeg, webp, mp4]
+  input: assets
+  output: assets
 
 content:
   - name: homepage
