@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الدعم والضمان · DR HOME</title>
+<meta name="description" content="خدمة عملاء دكتور هوم: طلب صيانة، تسجيل الضمان، خطط الضمان الممتد والأسئلة الشائعة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="support">
+<div id="dh-top"></div>
+<main>
+  <section class="shero" aria-labelledby="sT">
+    <div class="wrap">
+      <p class="eyebrow">Customer care</p>
+      <h1 class="h1" id="sT">كيف يمكننا مساعدتك؟</h1>
+      <p class="lead">ابحث في الأسئلة الشائعة، أو اطلب زيارة فني، أو سجّل ضمان جهازك.</p>
+      <form class="big-search" id="helpSearch" role="search"><i data-i="search"></i><label class="sr-only" for="helpQ">ابحث في المساعدة</label><input id="helpQ" type="search" placeholder="ابحث بسؤالك، مثل: التوصيل أو الضمان" autocomplete="off"><button class="btn btn-primary btn-sm" type="submit">بحث</button></form>
+      <div class="chips-row"><button class="tab" type="button" data-q="التوصيل">التوصيل</button><button class="tab" type="button" data-q="الضمان">الضمان</button><button class="tab" type="button" data-q="إرجاع">الإرجاع</button><button class="tab" type="button" data-q="الدفع">طرق الدفع</button></div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="svcT">
+    <div class="wrap">
+      <div class="sec-head"><div><p class="eyebrow">Services</p><h2 class="h2" id="svcT">خدمات ما بعد البيع</h2></div></div>
+      <div class="svc-grid" id="svc"></div>
+    </div>
+  </section>
+
+  <section class="sec sec-soft" id="warranty" aria-labelledby="wT">
+    <div class="wrap">
+      <div class="sec-head" style="justify-content:center"><div class="center"><p class="eyebrow">Warranty plans</p><h2 class="h2" id="wT">خطط الضمان</h2><p class="lead">كل جهاز من دكتور هوم يأتي بضمان رسمي، ويمكنك تمديده لراحة بال أطول.</p></div></div>
+      <div class="plans" id="plans"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="request" aria-labelledby="rT">
+    <div class="wrap split">
+      <div class="split-copy">
+        <p class="eyebrow">Service request</p>
+        <h2 class="h2" id="rT">اطلب زيارة فني</h2>
+        <p class="lead">املأ النموذج وسنؤكد موعدك خلال ساعتين. الزيارة مجانية للأجهزة المشمولة بالضمان.</p>
+        <ol class="vsteps" id="vsteps"></ol>
+      </div>
+      <form class="panel" data-demo="استلمنا طلب الصيانة، وسنتصل بك خلال ساعتين لتأكيد الموعد.">
+        <div class="form">
+          <div class="field"><label for="sn">الاسم الكامل</label><input class="input" id="sn" required autocomplete="name" placeholder="مثال: زينب علي"></div>
+          <div class="field"><label for="sp">رقم الهاتف</label><input class="input" id="sp" type="tel" required autocomplete="tel" placeholder="07XX XXX XXXX"></div>
+          <div class="field"><label for="device">نوع الجهاز</label><div class="sel"><select class="input" id="device"></select><i data-i="chevD"></i></div></div>
+          <div class="field"><label for="model">رقم الموديل (اختياري)</label><input class="input" id="model" placeholder="مثال: DH-SR650GB" autocomplete="off"></div>
+          <div class="field"><label for="date">التاريخ المفضل</label><input class="input" id="date" type="date" required></div>
+          <div class="field"><label for="slot">الوقت المفضل</label><div class="sel"><select class="input" id="slot"><option>صباحاً 9 – 12</option><option>ظهراً 12 – 4</option><option>مساءً 4 – 8</option></select><i data-i="chevD"></i></div></div>
+          <div class="field full"><label for="issue">صف المشكلة</label><textarea class="input" id="issue" required placeholder="مثال: الثلاجة لا تبرّد في القسم العلوي منذ يومين"></textarea></div>
+          <div class="field full"><button class="btn btn-primary btn-block" type="submit"><i data-i="send"></i>إرسال الطلب</button></div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="sec sec-soft" id="faqSec" aria-labelledby="fT">
+    <div class="wrap">
+      <div class="sec-head" style="justify-content:center"><div class="center"><p class="eyebrow">FAQ</p><h2 class="h2" id="fT">الأسئلة الشائعة</h2></div></div>
+      <div class="faq-list" id="faq"></div>
+    </div>
+  </section>
+
+  <section class="sec-sm on-night" aria-label="طرق التواصل">
+    <div class="wrap"><div class="help-row" id="helpRow"></div></div>
+  </section>
+</main>
+<div id="dh-footer"></div>
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
