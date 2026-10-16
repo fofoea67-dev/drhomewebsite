@@ -13,7 +13,7 @@ content:
     fields:
       - name: body
         label: HTML Code & Content
-        type: code
+        type: text
 
   - name: products-page
     label: Products Page (products.html)
@@ -23,7 +23,7 @@ content:
     fields:
       - name: body
         label: HTML Code & Content
-        type: code
+        type: text
 
   - name: offers-page
     label: Offers Page (offers.html)
@@ -33,7 +33,7 @@ content:
     fields:
       - name: body
         label: HTML Code & Content
-        type: code
+        type: text
 
   - name: cart-page
     label: Cart Page (cart.html)
@@ -43,7 +43,7 @@ content:
     fields:
       - name: body
         label: HTML Code & Content
-        type: code
+        type: text
 
   - name: contact-page
     label: Contact Page (contact.html)
@@ -53,7 +53,7 @@ content:
     fields:
       - name: body
         label: HTML Code & Content
-        type: code
+        type: text
 
   - name: support-page
     label: Support Page (support.html)
@@ -63,4 +63,4 @@ content:
     fields:
       - name: body
         label: HTML Code & Content
-        type: code
+        type: text
