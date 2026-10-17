@@ -47,7 +47,7 @@
     },
     {
       "id": "lg",
-      "nameAr": "توشيبا (LG)",
+      "nameAr": "توشيبا0000000",
       "nameEn": "toshiba Electronics"
     },
     {
@@ -185,6 +185,29 @@
     }
   ],
   "products": [
+    {
+      "id": "product-mvcqwibu",
+      "modelCode": "",
+      "brand": "lg",
+      "category": "refrigerators",
+      "subcategory": "instaview",
+      "price": 0,
+      "oldPrice": 0,
+      "inStock": true,
+      "isOffer": false,
+      "warrantyYears": 2,
+      "image": "",
+      "nameAr": "",
+      "nameEn": "",
+      "shortDescAr": "",
+      "shortDescEn": "",
+      "specs": {
+        "capacityOrSize": "",
+        "color": "",
+        "motorOrTech": "",
+        "origin": ""
+      }
+    },
     {
       "id": "lg-instaview-617-black",
       "modelCode": "GR-X257CQES",
