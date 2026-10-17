@@ -1,0 +1,118 @@
+media:
+  input: images
+  output: images
+
+content:
+  - name: store_data
+    label: "إدارة متجر DR HOME (المنتجات والصور والأسعار)"
+    type: file
+    path: content.json
+    format: json
+    fields:
+      - name: storeInfo
+        label: "1. إعدادات المتجر والبانر الرئيسي"
+        type: object
+        fields:
+          - { name: name, label: "اسم المتجر", type: string }
+          - { name: logo, label: "شعار المتجر (اختياري - ارفع صورة)", type: image }
+          - { name: whatsappNumber, label: "رقم الواتساب للطلبات (بدون + مثل 9647700000000)", type: string }
+          - { name: phone, label: "رقم خدمة الزبائن المعروض", type: string }
+          - { name: email, label: "البريد الإلكتروني", type: string }
+          - { name: addressAr, label: "العنوان الرئيسي (عربي)", type: string }
+          - { name: addressEn, label: "العنوان الرئيسي (إنكليزي)", type: string }
+          - { name: instagram, label: "رابط إنستغرام", type: string }
+          - { name: facebook, label: "رابط فيسبوك", type: string }
+
+      - name: banners
+        label: "2. بانرات العروض العلوية (السلايدر الرئيسي)"
+        type: object
+        list: true
+        fields:
+          - { name: badgeAr, label: "شارة البانر (عربي)", type: string }
+          - { name: badgeEn, label: "شارة البانر (إنكليزي)", type: string }
+          - { name: titleAr, label: "عنوان البانر (عربي)", type: string }
+          - { name: titleEn, label: "عنوان البانر (إنكليزي)", type: string }
+          - { name: subtitleAr, label: "وصف البانر (عربي)", type: text }
+          - { name: subtitleEn, label: "وصف البانر (إنكليزي)", type: text }
+          - { name: image, label: "صورة البانر", type: image }
+          - { name: targetCategory, label: "يربط مع فئة (refrigerators / tvs / washers / ac / kitchen)", type: string }
+
+      - name: brands
+        label: "3. العلامات التجارية (الماركات)"
+        type: object
+        list: true
+        fields:
+          - { name: id, label: "معرف الماركة (مثل lg, whirlpool, carrier, kitchenaid)", type: string }
+          - { name: nameAr, label: "اسم الماركة (عربي)", type: string }
+          - { name: nameEn, label: "اسم الماركة (إنكليزي)", type: string }
+
+      - name: categories
+        label: "4. الأقسام والفئات الفرعية"
+        type: object
+        list: true
+        fields:
+          - { name: id, label: "معرف القسم (refrigerators / tvs / washers / ac / kitchen)", type: string }
+          - { name: nameAr, label: "اسم القسم (عربي)", type: string }
+          - { name: nameEn, label: "اسم القسم (إنكليزي)", type: string }
+          - { name: image, label: "صورة القسم الدائرية", type: image }
+          - name: subcategories
+            label: "الفئات الفرعية داخل هذا القسم"
+            type: object
+            list: true
+            fields:
+              - { name: id, label: "معرف الفئة الفرعية", type: string }
+              - { name: nameAr, label: "اسم الفئة الفرعية (عربي)", type: string }
+              - { name: nameEn, label: "اسم الفئة الفرعية (إنكليزي)", type: string }
+
+      - name: products
+        label: "5. المنتجات والأسعار والمخزون"
+        type: object
+        list: true
+        fields:
+          - { name: id, label: "معرف المنتج الفريد (بدون مسافات مثل lg-instaview-617)", type: string }
+          - { name: modelCode, label: "رقم الموديل (مثال: GR-X257CQES)", type: string }
+          - { name: brand, label: "معرف الماركة (lg / whirlpool / carrier / kitchenaid)", type: string }
+          - { name: category, label: "معرف القسم الرئيسي (refrigerators / tvs / washers / ac / kitchen)", type: string }
+          - { name: subcategory, label: "معرف الفئة الفرعية (مثال: instaview / oled / split-ac)", type: string }
+          - { name: price, label: "السعر الحالي بالدينار (أرقام فقط مثل 3100000)", type: number }
+          - { name: oldPrice, label: "السعر السابق قبل الخصم (ضع 0 إذا لا يوجد خصم)", type: number }
+          - { name: inStock, label: "متوفر في المخزون؟ (فعّله إذا كان متوفراً)", type: boolean }
+          - { name: isOffer, label: "إظهار في صفحة التخفيضات الكبرى؟", type: boolean }
+          - { name: warrantyYears, label: "سنوات الضمان", type: number }
+          - { name: image, label: "صورة المنتج", type: image }
+          - { name: nameAr, label: "اسم ومواصفات المنتج (عربي - كما يظهر في البطاقة)", type: text }
+          - { name: nameEn, label: "اسم ومواصفات المنتج (إنكليزي)", type: text }
+          - { name: shortDescAr, label: "التفاصيل الإضافية في صفحة المنتج (عربي)", type: text }
+          - { name: shortDescEn, label: "التفاصيل الإضافية في صفحة المنتج (إنكليزي)", type: text }
+          - name: specs
+            label: "جدول المواصفات التقنية"
+            type: object
+            fields:
+              - { name: capacityOrSize, label: "السعة أو الحجم (مثال: 617 لتر / 65 بوصة / 2 طن)", type: string }
+              - { name: color, label: "اللون (مثال: أسود مطفي / ستانلس ستيل)", type: string }
+              - { name: motorOrTech, label: "نوع المحرك / التقنية (مثال: Smart Inverter / OLED evo)", type: string }
+              - { name: origin, label: "بلد المنشأ / المواصفات", type: string }
+
+      - name: branches
+        label: "6. الفروع وصالات العرض"
+        type: object
+        list: true
+        fields:
+          - { name: nameAr, label: "اسم الفرع (عربي)", type: string }
+          - { name: nameEn, label: "اسم الفرع (إنكليزي)", type: string }
+          - { name: addressAr, label: "العنوان (عربي)", type: string }
+          - { name: addressEn, label: "العنوان (إنكليزي)", type: string }
+          - { name: phone, label: "رقم هاتف الفرع", type: string }
+          - { name: hoursAr, label: "أوقات الدوام (عربي)", type: string }
+          - { name: hoursEn, label: "أوقات الدوام (إنكليزي)", type: string }
+          - { name: mapUrl, label: "رابط خرائط Google", type: string }
+
+      - name: faqs
+        label: "7. الأسئلة الشائعة"
+        type: object
+        list: true
+        fields:
+          - { name: qAr, label: "السؤال (عربي)", type: string }
+          - { name: aAr, label: "الجواب (عربي)", type: text }
+          - { name: qEn, label: "السؤال (إنكليزي)", type: string }
+          - { name: aEn, label: "الجواب (إنكليزي)", type: text }

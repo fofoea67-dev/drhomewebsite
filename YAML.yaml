@@ -1,0 +1,145 @@
+media:
+  input: assets/images
+  output: assets/images
+
+content:
+  - name: store_content
+    label: "إدارة محتوى متجر DR HOME"
+    type: file
+    path: content.json
+    format: json
+    fields:
+      - name: storeInfo
+        label: "الهوية وإعدادات المتجر الأساسية"
+        type: object
+        fields:
+          - name: name
+            label: "اسم المتجر"
+            type: string
+          - name: logo
+            label: "شعار المتجر"
+            type: image
+          - name: currencyAr
+            label: "رمز العملة (عربي)"
+            type: string
+          - name: currencyEn
+            label: "رمز العملة (إنكليزي)"
+            type: string
+          - name: whatsappNumber
+            label: "رقم الواتساب للطلبات (مثل 9647700000000)"
+            type: string
+          - name: phone
+            label: "رقم الهاتف المعروض"
+            type: string
+          - name: email
+            label: "البريد الإلكتروني"
+            type: string
+          - name: instagram
+            label: "رابط إنستغرام"
+            type: string
+          - name: facebook
+            label: "رابط فيسبوك"
+            type: string
+          - name: heroVideoUrl
+            label: "رابط الفيديو السينمائي بالصفحة الرئيسية (MP4)"
+            type: string
+          - name: heroPosterImage
+            label: "صورة خلفية بديلة للفيديو السينمائي"
+            type: image
+          - name: ar
+            label: "نصوص الواجهة الرئيسية (عربي)"
+            type: object
+            fields:
+              - { name: tagline, label: "الشعار اللفظي", type: string }
+              - { name: heroBadge, label: "شارة الفيديو العلوي", type: string }
+              - { name: heroTitle, label: "العنوان الرئيسي للفيديو", type: string }
+              - { name: heroSubtitle, label: "الوصف تحت العنوان الرئيسي", type: text }
+              - { name: heroPrimaryBtn, label: "نص الزر الرئيسي", type: string }
+              - { name: heroSecondaryBtn, label: "نص الزر الثانوي", type: string }
+              - { name: promoBannerTitle, label: "عنوان بانر العرض الخاص", type: string }
+              - { name: promoBannerText, label: "نص بانر العرض الخاص", type: text }
+              - { name: aboutStory, label: "قصة المتجر (من نحن)", type: text }
+              - { name: aboutVision, label: "رؤيتنا (من نحن)", type: text }
+              - { name: warrantyText, label: "تفاصيل سياسة الضمان والصيانة", type: text }
+              - { name: privacyText, label: "نص سياسة الخصوصية", type: text }
+          - name: en
+            label: "نصوص الواجهة الرئيسية (إنكليزي)"
+            type: object
+            fields:
+              - { name: tagline, label: "Tagline (EN)", type: string }
+              - { name: heroBadge, label: "Hero Badge (EN)", type: string }
+              - { name: heroTitle, label: "Hero Title (EN)", type: string }
+              - { name: heroSubtitle, label: "Hero Subtitle (EN)", type: text }
+              - { name: heroPrimaryBtn, label: "Primary Button (EN)", type: string }
+              - { name: heroSecondaryBtn, label: "Secondary Button (EN)", type: string }
+              - { name: promoBannerTitle, label: "Promo Banner Title (EN)", type: string }
+              - { name: promoBannerText, label: "Promo Banner Text (EN)", type: text }
+              - { name: aboutStory, label: "About Us Story (EN)", type: text }
+              - { name: aboutVision, label: "Our Vision (EN)", type: text }
+              - { name: warrantyText, label: "Warranty & Support Text (EN)", type: text }
+              - { name: privacyText, label: "Privacy Policy Text (EN)", type: text }
+
+      - name: categories
+        label: "فئات المنتجات"
+        type: object
+        list: true
+        fields:
+          - { name: id, label: "المعرف البرمجي (tvs / cooling / ac / kitchen)", type: string }
+          - { name: nameAr, label: "اسم الفئة (عربي)", type: string }
+          - { name: nameEn, label: "اسم الفئة (إنكليزي)", type: string }
+          - { name: descAr, label: "وصف مختصر (عربي)", type: string }
+          - { name: descEn, label: "وصف مختصر (إنكليزي)", type: string }
+          - { name: image, label: "صورة الفئة", type: image }
+
+      - name: products
+        label: "المنتجات"
+        type: object
+        list: true
+        fields:
+          - { name: id, label: "معرف المنتج الفريد (بدون مسافات)", type: string }
+          - { name: category, label: "معرف الفئة (tvs / cooling / ac / kitchen)", type: string }
+          - { name: price, label: "السعر الحالي بالدينار العراقي", type: number }
+          - { name: oldPrice, label: "السعر قبل الخصم (0 إذا لا يوجد)", type: number }
+          - { name: isOffer, label: "إظهار في صفحة العروض؟", type: boolean }
+          - { name: featured, label: "إظهار في الصفحة الرئيسية؟", type: boolean }
+          - { name: inStock, label: "متوفر حالياً؟", type: boolean }
+          - { name: warrantyYears, label: "عدد سنوات الضمان", type: number }
+          - { name: image, label: "الصورة الرئيسية للمنتج", type: image }
+          - { name: nameAr, label: "اسم المنتج (عربي)", type: string }
+          - { name: nameEn, label: "اسم المنتج (إنكليزي)", type: string }
+          - { name: badgeAr, label: "شارة المنتج (عربي)", type: string }
+          - { name: badgeEn, label: "شارة المنتج (إنكليزي)", type: string }
+          - { name: shortDescAr, label: "وصف مختصر (عربي)", type: text }
+          - { name: shortDescEn, label: "وصف مختصر (إنكليزي)", type: text }
+          - name: specs
+            label: "المواصفات التقنية"
+            type: object
+            fields:
+              - { name: dimensions, label: "الأبعاد / الحجم", type: string }
+              - { name: energyClass, label: "كفاءة الطاقة / المحرك", type: string }
+              - { name: smartTech, label: "التقنية الذكية", type: string }
+              - { name: countryOfOrigin, label: "بلد المنشأ", type: string }
+
+      - name: faqs
+        label: "الأسئلة الشائعة"
+        type: object
+        list: true
+        fields:
+          - { name: qAr, label: "السؤال (عربي)", type: string }
+          - { name: aAr, label: "الإجابة (عربي)", type: text }
+          - { name: qEn, label: "السؤال (إنكليزي)", type: string }
+          - { name: aEn, label: "الإجابة (إنكليزي)", type: text }
+
+      - name: branches
+        label: "الفروع وصالات العرض"
+        type: object
+        list: true
+        fields:
+          - { name: nameAr, label: "اسم الفرع (عربي)", type: string }
+          - { name: nameEn, label: "اسم الفرع (إنكليزي)", type: string }
+          - { name: addressAr, label: "العنوان (عربي)", type: string }
+          - { name: addressEn, label: "العنوان (إنكليزي)", type: string }
+          - { name: hoursAr, label: "ساعات العمل (عربي)", type: string }
+          - { name: hoursEn, label: "ساعات العمل (إنكليزي)", type: string }
+          - { name: phone, label: "هاتف الفرع", type: string }
+          - { name: mapUrl, label: "رابط خرائط Google", type: string }

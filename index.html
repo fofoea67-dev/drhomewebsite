@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>DR HOME E-Store | متجر الأجهزة المنزلية والإلكترونيات في العراق</title>
+  <meta name="description" content="اكتشف وجهتك الشاملة لأفضل الإلكترونيات والأجهزة المنزلية في العراق من LG و Whirlpool و Carrier و KitchenAid بأسعار تنافسية بالدينار العراقي وضمان رسمي." />
+  <meta name="theme-color" content="#A50034" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="DR HOME E-Store | الأجهزة المنزلية والإلكترونيات" />
+  <meta property="og:description" content="تشكيلة واسعة من شاشات LG OLED، ثلاجات InstaView، غسالات، ومكيفات بأسعار تنافسية وعروض حصرية بالدينار العراقي." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1200&auto=format&fit=crop" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandRed: '#A50034',
+            brandRedHover: '#8A002B',
+            surfaceBg: '#F4F6F9',
+            darkSlate: '#111827'
+          },
+          fontFamily: {
+            ar: ['Tajawal', 'sans-serif'],
+            en: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    html[dir="rtl"] body { font-family: 'Tajawal', sans-serif; }
+    html[dir="ltr"] body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    /* Prevent iOS Safari zoom on input focus */
+    @media screen and (max-width: 768px) {
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+    }
+
+    .store-card {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    @media (hover: hover) {
+      .store-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 28px -10px rgba(17, 24, 39, 0.12);
+        border-color: #A50034;
+      }
+      .store-card:hover .prod-img {
+        transform: scale(1.04);
+      }
+    }
+    .store-card .prod-img {
+      transition: transform 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-view {
+      animation: fadeIn 0.3s ease-out forwards;
+    }
+
+    /* Smooth horizontal touch scrolling */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Safe padding at bottom on mobile for the Fixed App Bar */
+    @media (max-width: 1023px) {
+      body {
+        padding-bottom: 72px;
+      }
+    }
+  </style>
+
+  <script id="schema-jsonld" type="application/ld+json"></script>
+</head>
+<body class="bg-surfaceBg text-darkSlate antialiased min-h-screen flex flex-col selection:bg-brandRed selection:text-white">
+
+  <!-- Top Utility Bar -->
+  <div class="bg-darkSlate text-white text-[11px] sm:text-xs py-2 px-3 sm:px-4">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2">
+      <div class="flex items-center gap-1.5 truncate">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0"></span>
+        <span data-i18n="topWelcome" class="truncate">وجهتك الشاملة للأجهزة المنزلية والإلكترونيات الأصلية في العراق</span>
+      </div>
+      <div class="hidden sm:flex items-center gap-4 flex-shrink-0">
+        <a href="#branches" class="hover:text-rose-300 transition" data-i18n="navBranches">المعارض والفروع</a>
+        <span class="text-white/20">|</span>
+        <a href="#support" class="hover:text-rose-300 transition" data-i18n="navWarranty">الضمان والصيانة</a>
+        <span class="text-white/20">|</span>
+        <a href="#branches" id="top-phone" class="font-mono hover:text-rose-300 transition" dir="ltr">+964 770 000 0000</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Sticky Header (Compact & Neat on Mobile) -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-xs border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3.5 flex flex-wrap items-center justify-between gap-2.5 sm:gap-4">
+      
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-2 sm:gap-3">
+        <img id="site-logo-img" src="" alt="DR HOME" class="h-9 sm:h-11 w-auto hidden object-contain" />
+        <div id="site-logo-text" class="flex items-center gap-2">
+          <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-brandRed text-white flex items-center justify-center font-black text-base sm:text-lg shadow-sm shadow-brandRed/25">
+            DR
+          </div>
+          <div>
+            <div class="text-base sm:text-xl font-black tracking-tight text-darkSlate leading-none">DR HOME</div>
+            <div class="text-[9px] sm:text-[11px] font-bold text-brandRed tracking-wider uppercase mt-0.5">E-STORE IRAQ</div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Action Buttons (Language, Compare, Cart) -->
+      <div class="order-2 lg:order-3 flex items-center gap-1.5 sm:gap-2.5">
+        <button
+          id="lang-btn"
+          type="button"
+          class="px-2.5 sm:px-3.5 py-2 rounded-xl border border-slate-200 hover:border-brandRed text-xs font-bold text-slate-700 bg-slate-50 transition"
+        >
+          EN
+        </button>
+
+        <a
+          href="#compare"
+          class="relative p-2 sm:p-2.5 rounded-xl border border-slate-200 hover:border-brandRed bg-slate-50 text-slate-700 transition"
+          title="مقارنة المنتجات"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+          <span id="compare-badge" class="absolute -top-1.5 -right-1.5 w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-darkSlate text-white text-[10px] font-bold flex items-center justify-center hidden">0</span>
+        </a>
+
+        <button
+          id="cart-btn"
+          type="button"
+          class="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-brandRed hover:bg-brandRedHover text-white font-bold text-xs shadow-xs transition"
+        >
+          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <span data-i18n="cartBtnLabel" class="hidden sm:inline">السلة</span>
+          <span id="cart-badge" class="px-1.5 py-0.5 rounded-full bg-white text-brandRed font-black text-[11px] leading-none">0</span>
+        </button>
+      </div>
+
+      <!-- Search Bar (Full width on mobile row 2, centered on desktop) -->
+      <div class="order-3 lg:order-2 w-full lg:w-auto lg:flex-1 max-w-2xl mx-auto">
+        <div class="relative flex items-center">
+          <input
+            id="global-search-input"
+            type="search"
+            placeholder="ابحث عن جهاز، شاشة OLED، ثلاجة، أو رقم الموديل..."
+            class="w-full ps-4 pe-20 py-2.5 rounded-xl sm:rounded-2xl bg-slate-100 border border-slate-200 focus:bg-white focus:border-brandRed focus:outline-none text-darkSlate transition"
+          />
+          <button
+            id="global-search-btn"
+            type="button"
+            class="absolute end-1.5 px-4 py-1.5 rounded-lg sm:rounded-xl bg-brandRed hover:bg-brandRedHover text-white font-bold text-xs transition"
+            data-i18n="searchBtn"
+          >
+            بحث
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Horizontal Swipeable Categories Navigation Bar -->
+    <nav class="bg-slate-50 border-t border-slate-200/80">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center gap-4 sm:gap-6 overflow-x-auto no-scrollbar py-2 text-xs sm:text-sm font-bold text-slate-700">
+        <a href="#home" class="whitespace-nowrap hover:text-brandRed transition" data-i18n="navHome">الرئيسية</a>
+        <a href="#store" class="whitespace-nowrap hover:text-brandRed transition" data-i18n="navAllProducts">كل المنتجات</a>
+        <a href="#offers" class="whitespace-nowrap text-brandRed flex items-center gap-1">
+          <span>🔥</span>
+          <span data-i18n="navOffers">التخفيضات</span>
+        </a>
+        <div id="header-categories-nav" class="flex items-center gap-4 sm:gap-5 border-s border-slate-300 ps-4"></div>
+        <a href="#branches" class="whitespace-nowrap hover:text-brandRed transition ms-auto" data-i18n="navBranches">الفروع</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Dynamic View -->
+  <main id="app-main" class="flex-grow"></main>
+
+  <!-- Mobile Bottom App Navigation Bar (Visible ONLY on Phones & Tablets) -->
+  <nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-[0_-4px_20px_rgba(0,0,0,0.06)] px-2 py-1.5">
+    <div class="grid grid-cols-5 items-center text-center">
+      <a href="#home" class="mobile-nav-item flex flex-col items-center justify-center py-1 text-slate-600 hover:text-brandRed">
+        <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        <span class="text-[10px] font-bold" data-i18n="navHome">الرئيسية</span>
+      </a>
+
+      <a href="#store" class="mobile-nav-item flex flex-col items-center justify-center py-1 text-slate-600 hover:text-brandRed">
+        <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+        </svg>
+        <span class="text-[10px] font-bold" data-i18n="mobileCats">الأقسام</span>
+      </a>
+
+      <a href="#offers" class="mobile-nav-item flex flex-col items-center justify-center py-1 text-brandRed">
+        <div class="w-9 h-9 -mt-4 rounded-full bg-brandRed text-white flex items-center justify-center shadow-md shadow-brandRed/30 border-2 border-white text-sm">
+          🔥
+        </div>
+        <span class="text-[10px] font-extrabold mt-0.5" data-i18n="mobileOffers">العروض</span>
+      </a>
+
+      <button type="button" onclick="openCartDrawer()" class="relative flex flex-col items-center justify-center py-1 text-slate-600 hover:text-brandRed">
+        <svg class="w-5 h-5 mb-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+        <span id="mobile-cart-badge" class="absolute top-0.5 right-4 w-4 h-4 rounded-full bg-brandRed text-white text-[9px] font-black flex items-center justify-center">0</span>
+        <span class="text-[10px] font-bold" data-i18n="cartBtnLabel">السلة</span>
+      </button>
+
+      <button type="button" onclick="openDirectWhatsAppChat()" class="flex flex-col items-center justify-center py-1 text-emerald-600">
+        <svg class="w-5 h-5 mb-0.5 fill-current" viewBox="0 0 24 24">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+        </svg>
+        <span class="text-[10px] font-bold">واتساب</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Slide-Over Shopping Cart Drawer -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+    <div id="cart-overlay" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs"></div>
+    <div class="fixed inset-y-0 end-0 max-w-full flex">
+      <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col justify-between">
+        <div class="p-4 sm:p-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+          <h2 class="text-sm sm:text-base font-black text-darkSlate" data-i18n="cartTitle">سلة التسوق والطلب المباشر</h2>
+          <button id="cart-close" class="p-2 rounded-lg hover:bg-slate-200 text-slate-600 font-bold">✕</button>
+        </div>
+
+        <div id="cart-items-list" class="p-4 sm:p-5 flex-1 overflow-y-auto space-y-3"></div>
+
+        <div class="p-4 sm:p-5 border-t border-slate-200 bg-slate-50 space-y-3">
+          <div class="flex items-center justify-between text-sm sm:text-base font-black">
+            <span data-i18n="totalLabel">المجموع الكلي:</span>
+            <span id="cart-total" class="text-brandRed text-base sm:text-lg">0 دينار</span>
+          </div>
+          <input id="cust-name" type="text" placeholder="الاسم الكامل" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-brandRed" />
+          <input id="cust-address" type="text" placeholder="المحافظة والمنطقة (مثال: بغداد - الكرادة)" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 text-sm focus:outline-none focus:border-brandRed" />
+          <button id="whatsapp-checkout-btn" type="button" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md transition">
+            <span data-i18n="sendOrderWhatsApp">إرسال الطلب عبر واتساب الآن</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Store Footer -->
+  <footer class="bg-darkSlate text-slate-300 pt-12 pb-8 mt-12 border-t-4 border-brandRed">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-slate-800">
+        <div class="space-y-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-xl bg-brandRed text-white flex items-center justify-center font-black">DR</div>
+            <span class="text-xl font-black text-white">DR HOME E-STORE</span>
+          </div>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed" data-i18n="footerAbout">
+            وجهتك الشاملة لأفضل الإلكترونيات والأجهزة المنزلية الأصلية في العراق بأسعار تنافسية بالدينار العراقي مع ضمان رسمي وخدمة توصيل وتنصيب.
+          </p>
+          <div class="pt-2 flex items-center gap-3">
+            <a id="footer-ig" href="#" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-brandRed text-white text-xs transition">Instagram</a>
+            <a id="footer-fb" href="#" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-brandRed text-white text-xs transition">Facebook</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-white font-bold mb-3 text-sm" data-i18n="footerCats">أقسام المتجر</h3>
+          <ul id="footer-cats-list" class="space-y-2 text-xs sm:text-sm"></ul>
+        </div>
+
+        <div>
+          <h3 class="text-white font-bold mb-3 text-sm" data-i18n="footerSupport">روابط سريعة</h3>
+          <ul class="space-y-2 text-xs sm:text-sm">
+            <li><a href="#offers" class="hover:text-white transition" data-i18n="navOffers">التخفيضات الكبرى</a></li>
+            <li><a href="#compare" class="hover:text-white transition" data-i18n="navCompare">مقارنة الأجهزة</a></li>
+            <li><a href="#support" class="hover:text-white transition" data-i18n="navWarranty">الضمان والصيانة</a></li>
+            <li><a href="#faq" class="hover:text-white transition" data-i18n="navFaq">الأسئلة الشائعة</a></li>
+            <li><a href="#branches" class="hover:text-white transition" data-i18n="navBranches">المعارض والفروع</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-2 text-xs sm:text-sm">
+          <h3 class="text-white font-bold mb-3 text-sm" data-i18n="footerContact">تواصل معنا</h3>
+          <p id="footer-address" class="text-slate-400"></p>
+          <p id="footer-phone" class="text-white font-mono text-base" dir="ltr"></p>
+          <p id="footer-email" class="text-slate-400 font-mono"></p>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 text-center sm:text-start">
+        <p>© <span id="year-span"></span> DR HOME E-Store. جميع الحقوق محفوظة.</p>
+        <p>الأسعار معروضة بالدينار العراقي (IQD) ومشمولة بالضمان الرسمي.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Full Store Engine Script -->
+  <script>
+    const I18N = {
+      ar: {
+        topWelcome: "وجهتك الشاملة للأجهزة المنزلية والإلكترونيات الأصلية في العراق",
+        navHome: "الرئيسية",
+        navAllProducts: "كل المنتجات",
+        navOffers: "التخفيضات الكبرى",
+        mobileCats: "الأقسام",
+        mobileOffers: "العروض",
+        navBranches: "المعارض والفروع",
+        navWarranty: "الضمان والصيانة",
+        navCompare: "مقارنة الأجهزة",
+        navFaq: "الأسئلة الشائعة",
+        searchBtn: "بحث",
+        cartBtnLabel: "السلة",
+        cartTitle: "سلة التسوق والطلب المباشر",
+        totalLabel: "المجموع الكلي:",
+        sendOrderWhatsApp: "إرسال الطلب عبر واتساب الآن",
+        footerAbout: "وجهتك الشاملة لأفضل الإلكترونيات والأجهزة المنزلية الأصلية في العراق بأسعار تنافسية بالدينار العراقي مع ضمان رسمي وخدمة توصيل وتنصيب.",
+        footerCats: "أقسام المتجر",
+        footerSupport: "روابط سريعة",
+        footerContact: "تواصل معنا",
+        shopByBrand: "تسوق حسب الماركة",
+        shopByCategory: "تصفح حسب الأقسام",
+        viewAllProducts: "عرض الكل",
+        seeMore: "رؤية المزيد",
+        allSubcategories: "الكل",
+        dinar: "دينار",
+        offLabel: "د.ع خصم",
+        inStock: "متوفر",
+        outOfStock: "غير متوفر",
+        modelLabel: "موديل:",
+        addToCart: "أضف للسلة",
+        orderWhatsApp: "واتساب",
+        compare: "مقارنة",
+        warrantyYears: "سنوات ضمان",
+        filterBrand: "جميع الماركات",
+        filterCategory: "جميع الأقسام",
+        sortDefault: "الترتيب الافتراضي",
+        sortPriceAsc: "السعر: الأقل أولاً",
+        sortPriceDesc: "السعر: الأعلى أولاً",
+        onlyInStock: "المتوفر فقط",
+        emptyCart: "سلة التسوق فارغة حالياً",
+        emptyCompare: "لم تقم باختيار أجهزة للمقارنة بعد (يمكنك إضافة حتى 3 أجهزة).",
+        gridToggleLabel: "طريقة العرض:"
+      },
+      en: {
+        topWelcome: "Iraq's Premier Destination for Authentic Home Appliances",
+        navHome: "Home",
+        navAllProducts: "All Products",
+        navOffers: "Mega Deals",
+        mobileCats: "Categories",
+        mobileOffers: "Deals",
+        navBranches: "Showrooms",
+        navWarranty: "Warranty",
+        navCompare: "Compare",
+        navFaq: "FAQ",
+        searchBtn: "Search",
+        cartBtnLabel: "Cart",
+        cartTitle: "Shopping Cart & Direct Checkout",
+        totalLabel: "Total Amount:",
+        sendOrderWhatsApp: "Send Order via WhatsApp",
+        footerAbout: "Your complete destination for genuine LG, Whirlpool, Carrier, and KitchenAid home appliances in Iraq at competitive IQD prices.",
+        footerCats: "Store Categories",
+        footerSupport: "Quick Links",
+        footerContact: "Contact Us",
+        shopByBrand: "Shop by Brand",
+        shopByCategory: "Shop by Department",
+        viewAllProducts: "View All",
+        seeMore: "See More",
+        allSubcategories: "All",
+        dinar: "IQD",
+        offLabel: "IQD OFF",
+        inStock: "In Stock",
+        outOfStock: "Out of Stock",
+        modelLabel: "Model:",
+        addToCart: "Add to Cart",
+        orderWhatsApp: "WhatsApp",
+        compare: "Compare",
+        warrantyYears: "Yrs Warranty",
+        filterBrand: "All Brands",
+        filterCategory: "All Categories",
+        sortDefault: "Default Sorting",
+        sortPriceAsc: "Price: Low to High",
+        sortPriceDesc: "Price: High to Low",
+        onlyInStock: "In Stock Only",
+        emptyCart: "Your cart is currently empty",
+        emptyCompare: "No appliances added to comparison yet.",
+        gridToggleLabel: "View:"
+      }
+    };
+
+    const State = {
+      lang: localStorage.getItem("drhome_lang") || "ar",
+      data: null,
+      cart: JSON.parse(localStorage.getItem("drhome_cart") || "[]"),
+      compare: JSON.parse(localStorage.getItem("drhome_compare") || "[]"),
+      mobileCols: localStorage.getItem("drhome_mobile_cols") || "2", // '2' (2 cards per row on phone) or '1'
+      homeSubTab: {},
+      storeFilter: {
+        brand: "all",
+        category: "all",
+        subcategory: "all",
+        search: "",
+        sort: "default",
+        inStockOnly: false
+      }
+    };
+
+    function t(key) {
+      return I18N[State.lang][key] || key;
+    }
+
+    function loc(obj, field) {
+      if (!obj) return "";
+      const suffix = State.lang === "ar" ? "Ar" : "En";
+      return obj[field + suffix] || obj[field + "Ar"] || "";
+    }
+
+    function formatPrice(num) {
+      if (!num || isNaN(num)) return "";
+      return Number(num).toLocaleString("en-US") + " " + t("dinar");
+    }
+
+    function getGridClasses() {
+      return State.mobileCols === "2"
+        ? "grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5"
+        : "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5";
+    }
+
+    /* Mobile-Optimized Product Card (Sharp & Neat in both 2-col and 1-col modes) */
+    function renderProductCard(p) {
+      const hasDiscount = p.oldPrice && p.oldPrice > p.price;
+      const discountAmount = hasDiscount ? p.oldPrice - p.price : 0;
+      const brandObj = (State.data.brands || []).find((b) => b.id === p.brand);
+      const isCompared = State.compare.includes(p.id);
+
+      return `
+        <article class="store-card bg-white rounded-2xl border border-slate-200/90 overflow-hidden flex flex-col justify-between relative">
+          <div>
+            <!-- Image Container -->
+            <div class="relative h-36 sm:h-52 bg-slate-50 p-2.5 sm:p-4 flex items-center justify-center overflow-hidden border-b border-slate-100">
+              <a href="#product/${p.id}" class="w-full h-full flex items-center justify-center">
+                <img src="${p.image}" alt="${loc(p, 'name')}" loading="lazy" class="prod-img max-h-full max-w-full object-contain rounded-lg" />
+              </a>
+              ${
+                hasDiscount
+                  ? `<span class="absolute top-2 start-2 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg bg-brandRed text-white text-[10px] sm:text-[11px] font-black shadow-xs">
+                      ${Number(discountAmount).toLocaleString("en-US")} ${t("offLabel")}
+                    </span>`
+                  : ""
+              }
+              <button
+                type="button"
+                onclick="toggleCompare('${p.id}')"
+                class="absolute top-2 end-2 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md sm:rounded-lg text-[10px] sm:text-[11px] font-bold border transition ${
+                  isCompared
+                    ? "bg-darkSlate text-white border-darkSlate"
+                    : "bg-white/90 text-slate-700 border-slate-200"
+                }"
+              >
+                ${isCompared ? "✓" : "+"} <span class="hidden sm:inline">${t("compare")}</span>
+              </button>
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-2.5 sm:p-4 space-y-1.5 sm:space-y-2">
+              <!-- Brand & Model Code -->
+              <div class="flex flex-wrap items-center justify-between gap-1 text-[10px] sm:text-[11px] text-slate-500 font-bold">
+                <span class="text-brandRed uppercase truncate">${brandObj ? loc(brandObj, "name") : p.brand}</span>
+                <span class="font-mono bg-slate-100 px-1.5 py-0.5 rounded text-slate-700 truncate max-w-[110px] sm:max-w-none">${p.modelCode || p.id}</span>
+              </div>
+
+              <!-- Title -->
+              <a href="#product/${p.id}" class="block">
+                <h3 class="text-xs sm:text-sm font-bold text-darkSlate hover:text-brandRed transition line-clamp-2 leading-snug sm:leading-relaxed min-h-[2.2rem] sm:min-h-[2.75rem]">
+                  ${loc(p, "name")}
+                </h3>
+              </a>
+
+              <!-- Stock & Warranty -->
+              <div class="pt-0.5 flex flex-wrap items-center justify-between gap-1 text-[10px] sm:text-xs">
+                ${
+                  p.inStock
+                    ? `<span class="inline-flex items-center gap-1 text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-full">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> ${t("inStock")}
+                      </span>`
+                    : `<span class="inline-flex items-center gap-1 text-rose-700 font-bold bg-rose-50 px-2 py-0.5 rounded-full">
+                        <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> ${t("outOfStock")}
+                      </span>`
+                }
+                <span class="text-[10px] text-slate-400 hidden sm:inline">${p.warrantyYears} ${t("warrantyYears")}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Price & Buttons -->
+          <div class="p-2.5 sm:p-4 pt-0 space-y-2 sm:space-y-3">
+            <div class="pt-2 border-t border-slate-100">
+              <div class="text-sm sm:text-lg font-black text-brandRed leading-tight">${formatPrice(p.price)}</div>
+              ${
+                hasDiscount
+                  ? `<div class="text-[10px] sm:text-xs text-slate-400 line-through">${formatPrice(p.oldPrice)}</div>`
+                  : `<div class="h-3.5 sm:h-4"></div>`
+              }
+            </div>
+
+            <div class="grid grid-cols-2 gap-1.5 sm:gap-2">
+              <button
+                type="button"
+                ${!p.inStock ? "disabled" : ""}
+                onclick="addToCart('${p.id}')"
+                class="py-2 sm:py-2.5 px-1.5 sm:px-3 rounded-lg sm:rounded-xl font-bold text-[11px] sm:text-xs transition ${
+                  p.inStock
+                    ? "bg-darkSlate active:scale-95 hover:bg-slate-800 text-white"
+                    : "bg-slate-200 text-slate-400 cursor-not-allowed"
+                }"
+              >
+                ${t("addToCart")}
+              </button>
+              <button
+                type="button"
+                onclick="orderWhatsAppSingle('${p.id}')"
+                class="py-2 sm:py-2.5 px-1.5 sm:px-3 rounded-lg sm:rounded-xl bg-brandRed active:scale-95 hover:bg-brandRedHover text-white font-bold text-[11px] sm:text-xs transition"
+              >
+                ${t("orderWhatsApp")}
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    /* Mobile Grid View Switcher Bar */
+    function renderMobileLayoutSwitcher() {
+      return `
+        <div class="flex sm:hidden items-center justify-end gap-2">
+          <span class="text-[11px] font-bold text-slate-500">${t("gridToggleLabel")}</span>
+          <button
+            type="button"
+            onclick="setMobileCols('2')"
+            class="px-2.5 py-1 rounded-lg text-xs font-bold border ${
+              State.mobileCols === "2" ? "bg-brandRed text-white border-brandRed" : "bg-white text-slate-600 border-slate-200"
+            }"
+          >
+            2×2
+          </button>
+          <button
+            type="button"
+            onclick="setMobileCols('1')"
+            class="px-2.5 py-1 rounded-lg text-xs font-bold border ${
+              State.mobileCols === "1" ? "bg-brandRed text-white border-brandRed" : "bg-white text-slate-600 border-slate-200"
+            }"
+          >
+            1×1
+          </button>
+        </div>
+      `;
+    }
+
+    window.setMobileCols = function (cols) {
+      State.mobileCols = cols;
+      localStorage.setItem("drhome_mobile_cols", cols);
+      route(false);
+    };
+
+    /* ==========================================================================
+       1. HOME VIEW
+       ========================================================================== */
+    function renderHomeView() {
+      const banners = State.data.banners || [];
+      const mainBanner = banners[0] || {};
+      const sideBanner = banners[1] || mainBanner;
+
+      return `
+        <div class="space-y-6 sm:space-y-10 pb-6 animate-view">
+          <!-- Hero Promotional Banners -->
+          <section class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-3 sm:pt-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-3.5 sm:gap-5">
+              <!-- Main Banner -->
+              <div class="lg:col-span-8 relative rounded-2xl sm:rounded-3xl overflow-hidden bg-darkSlate min-h-[250px] sm:min-h-[380px] flex items-end sm:items-center shadow-sm">
+                <img src="${mainBanner.image}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-50" />
+                <div class="absolute inset-0 bg-gradient-to-t from-darkSlate via-darkSlate/65 to-transparent"></div>
+                <div class="relative z-10 p-5 sm:p-10 max-w-xl space-y-2.5 sm:space-y-4 text-white">
+                  <span class="inline-block px-3 py-1 rounded-full bg-brandRed text-[10px] sm:text-xs font-extrabold">
+                    ${loc(mainBanner, "badge")}
+                  </span>
+                  <h1 class="text-xl sm:text-4xl font-black leading-snug sm:leading-tight">
+                    ${loc(mainBanner, "title")}
+                  </h1>
+                  <p class="text-xs sm:text-sm text-slate-200 line-clamp-2 sm:line-clamp-none leading-relaxed">
+                    ${loc(mainBanner, "subtitle")}
+                  </p>
+                  <div class="pt-1 sm:pt-2 flex flex-wrap gap-2.5">
+                    <a href="#store/${mainBanner.targetCategory || 'all'}" class="px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-brandRed hover:bg-brandRedHover text-white font-bold text-xs sm:text-sm transition shadow-md">
+                      ${t("viewAllProducts")}
+                    </a>
+                    <a href="#offers" class="px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-white text-darkSlate font-bold text-xs sm:text-sm hover:bg-slate-100 transition">
+                      ${t("navOffers")}
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Side Banner -->
+              <div class="lg:col-span-4 relative rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900 min-h-[190px] sm:min-h-[260px] flex items-end shadow-sm">
+                <img src="${sideBanner.image}" alt="" class="absolute inset-0 w-full h-full object-cover opacity-55" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                <div class="relative z-10 p-5 sm:p-6 space-y-1.5 sm:space-y-2.5 text-white">
+                  <span class="px-2.5 py-0.5 rounded-md bg-white/20 backdrop-blur-xs text-[10px] sm:text-[11px] font-bold">
+                    ${loc(sideBanner, "badge")}
+                  </span>
+                  <h2 class="text-base sm:text-xl font-black leading-snug">${loc(sideBanner, "title")}</h2>
+                  <p class="text-xs text-slate-300 line-clamp-2">${loc(sideBanner, "subtitle")}</p>
+                  <a href="#store/${sideBanner.targetCategory || 'tvs'}" class="inline-block pt-1 text-xs font-bold text-rose-400 hover:underline">
+                    ${t("seeMore")} →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Swipeable Circular Categories (Story Style on Mobile, Grid on Desktop) -->
+          <section class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-slate-200 shadow-xs">
+              <div class="flex items-center justify-between mb-3.5 sm:mb-5">
+                <h2 class="text-base sm:text-xl font-black text-darkSlate">${t("shopByCategory")}</h2>
+                <a href="#store" class="text-xs font-bold text-brandRed hover:underline">${t("viewAllProducts")} →</a>
+              </div>
+              <div class="flex lg:grid lg:grid-cols-5 gap-3 sm:gap-4 overflow-x-auto no-scrollbar pb-1">
+                ${(State.data.categories || [])
+                  .map(
+                    (cat) => `
+                  <a href="#store/${cat.id}" class="flex-shrink-0 w-28 sm:w-auto group flex flex-col items-center p-3 sm:p-4 rounded-2xl bg-slate-50 hover:bg-rose-50/60 border border-slate-200/80 hover:border-brandRed transition text-center">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-white shadow-xs mb-2 border-2 border-white">
+                      <img src="${cat.image}" alt="${loc(cat, 'name')}" class="w-full h-full object-cover" />
+                    </div>
+                    <span class="text-[11px] sm:text-sm font-extrabold text-darkSlate group-hover:text-brandRed line-clamp-1">${loc(cat, "name")}</span>
+                  </a>
+                `
+                  )
+                  .join("")}
+              </div>
+            </div>
+          </section>
+
+          <!-- Swipeable Brands Bar -->
+          <section class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between gap-3 bg-white rounded-2xl p-3 sm:p-4 border border-slate-200 overflow-x-auto no-scrollbar">
+              <span class="text-xs sm:text-sm font-black text-slate-600 whitespace-nowrap px-1">${t("shopByBrand")}:</span>
+              <div class="flex items-center gap-2">
+                ${(State.data.brands || [])
+                  .map(
+                    (b) => `
+                  <button
+                    onclick="openBrandStore('${b.id}')"
+                    class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-brandRed hover:text-white text-darkSlate font-extrabold text-xs whitespace-nowrap transition"
+                  >
+                    ${loc(b, "name")}
+                  </button>
+                `
+                  )
+                  .join("")}
+              </div>
+            </div>
+          </section>
+
+          <!-- Mobile Grid Switcher Control -->
+          <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            ${renderMobileLayoutSwitcher()}
+          </div>
+
+          <!-- Department Blocks -->
+          ${(State.data.categories || []).map((cat) => renderHomeCategoryBlock(cat)).join("")}
+        </div>
+      `;
+    }
+
+    function renderHomeCategoryBlock(cat) {
+      const activeSub = State.homeSubTab[cat.id] || "all";
+      let catProducts = (State.data.products || []).filter((p) => p.category === cat.id);
+      if (activeSub !== "all") {
+        catProducts = catProducts.filter((p) => p.subcategory === activeSub);
+      }
+
+      return `
+        <section class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div class="bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 border border-slate-200 shadow-xs space-y-4 sm:space-y-6">
+            <div class="flex items-center justify-between gap-2 border-b border-slate-100 pb-3 sm:pb-4">
+              <h2 class="text-base sm:text-2xl font-black text-darkSlate flex items-center gap-2">
+                <span class="w-1.5 sm:w-2 h-5 sm:h-6 rounded-full bg-brandRed inline-block"></span>
+                <span>${loc(cat, "name")}</span>
+              </h2>
+              <a
+                href="#store/${cat.id}"
+                class="px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-slate-100 hover:bg-brandRed hover:text-white text-[11px] sm:text-xs font-extrabold whitespace-nowrap transition"
+              >
+                ${t("viewAllProducts")} →
+              </a>
+            </div>
+
+            <!-- Horizontal Subcategory Pills -->
+            <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar pb-1">
+              <button
+                type="button"
+                onclick="setHomeSubTab('${cat.id}', 'all')"
+                class="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold whitespace-nowrap transition ${
+                  activeSub === "all"
+                    ? "bg-brandRed text-white shadow-xs"
+                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                }"
+              >
+                ${t("allSubcategories")}
+              </button>
+              ${(cat.subcategories || [])
+                .map(
+                  (sub) => `
+                <button
+                  type="button"
+                  onclick="setHomeSubTab('${cat.id}', '${sub.id}')"
+                  class="px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs font-bold whitespace-nowrap transition ${
+                    activeSub === sub.id
+                      ? "bg-brandRed text-white shadow-xs"
+                      : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                  }"
+                >
+                  ${loc(sub, "name")}
+                </button>
+              `
+                )
+                .join("")}
+            </div>
+
+            <!-- Responsive Products Grid -->
+            <div class="${getGridClasses()}">
+              ${catProducts.slice(0, 4).map(renderProductCard).join("")}
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    window.setHomeSubTab = function (catId, subId) {
+      State.homeSubTab[catId] = subId;
+      document.getElementById("app-main").innerHTML = renderHomeView();
+    };
+
+    window.openBrandStore = function (brandId) {
+      State.storeFilter.brand = brandId;
+      State.storeFilter.category = "all";
+      State.storeFilter.subcategory = "all";
+      window.location.hash = "#store";
+    };
+
+    /* ==========================================================================
+       2. FULL STORE & FILTER VIEW
+       ========================================================================== */
+    function renderStoreView(catParam) {
+      if (catParam && catParam !== "all") {
+        State.storeFilter.category = catParam;
+      }
+
+      let items = [...(State.data.products || [])];
+
+      if (State.storeFilter.brand !== "all") {
+        items = items.filter((p) => p.brand === State.storeFilter.brand);
+      }
+      if (State.storeFilter.category !== "all") {
+        items = items.filter((p) => p.category === State.storeFilter.category);
+      }
+      if (State.storeFilter.subcategory !== "all") {
+        items = items.filter((p) => p.subcategory === State.storeFilter.subcategory);
+      }
+      if (State.storeFilter.inStockOnly) {
+        items = items.filter((p) => p.inStock);
+      }
+      if (State.storeFilter.search.trim() !== "") {
+        const q = State.storeFilter.search.toLowerCase();
+        items = items.filter(
+          (p) =>
+            p.nameAr.toLowerCase().includes(q) ||
+            p.nameEn.toLowerCase().includes(q) ||
+            (p.modelCode && p.modelCode.toLowerCase().includes(q))
+        );
+      }
+      if (State.storeFilter.sort === "price-asc") {
+        items.sort((a, b) => a.price - b.price);
+      } else if (State.storeFilter.sort === "price-desc") {
+        items.sort((a, b) => b.price - a.price);
+      }
+
+      const activeCatObj = (State.data.categories || []).find((c) => c.id === State.storeFilter.category);
+
+      return `
+        <section class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-8 space-y-4 sm:space-y-6 animate-view">
+          <div class="bg-white rounded-2xl p-3.5 sm:p-5 border border-slate-200 shadow-xs space-y-3">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
+              <select onchange="updateStoreFilter('brand', this.value)" class="px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-bold">
+                <option value="all">${t("filterBrand")}</option>
+                ${(State.data.brands || [])
+                  .map((b) => `<option value="${b.id}" ${State.storeFilter.brand === b.id ? "selected" : ""}>${loc(b, "name")}</option>`)
+                  .join("")}
+              </select>
+
+              <select onchange="updateStoreFilter('category', this.value)" class="px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-bold">
+                <option value="all">${t("filterCategory")}</option>
+                ${(State.data.categories || [])
+                  .map((c) => `<option value="${c.id}" ${State.storeFilter.category === c.id ? "selected" : ""}>${loc(c, "name")}</option>`)
+                  .join("")}
+              </select>
+
+              <select onchange="updateStoreFilter('sort', this.value)" class="px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-bold">
+                <option value="default" ${State.storeFilter.sort === "default" ? "selected" : ""}>${t("sortDefault")}</option>
+                <option value="price-asc" ${State.storeFilter.sort === "price-asc" ? "selected" : ""}>${t("sortPriceAsc")}</option>
+                <option value="price-desc" ${State.storeFilter.sort === "price-desc" ? "selected" : ""}>${t("sortPriceDesc")}</option>
+              </select>
+
+              <label class="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-bold cursor-pointer">
+                <input type="checkbox" ${State.storeFilter.inStockOnly ? "checked" : ""} onchange="updateStoreFilter('inStockOnly', this.checked)" class="w-4 h-4 accent-brandRed" />
+                <span class="truncate">${t("onlyInStock")}</span>
+              </label>
+            </div>
+
+            ${
+              activeCatObj && activeCatObj.subcategories
+                ? `<div class="flex items-center gap-2 overflow-x-auto no-scrollbar pt-2 border-t border-slate-100">
+                    <button onclick="updateStoreFilter('subcategory', 'all')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap ${ State.storeFilter.subcategory === "all" ? "bg-brandRed text-white" : "bg-slate-100 text-slate-700" }">${t("allSubcategories")}</button>
+                    ${activeCatObj.subcategories
+                      .map(
+                        (s) => `
+                      <button onclick="updateStoreFilter('subcategory', '${s.id}')" class="px-3.5 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap ${
+                        State.storeFilter.subcategory === s.id ? "bg-brandRed text-white" : "bg-slate-100 text-slate-700"
+                      }">${loc(s, "name")}</button>
+                    `
+                      )
+                      .join("")}
+                  </div>`
+                : ""
+            }
+          </div>
+
+          ${renderMobileLayoutSwitcher()}
+
+          <div class="${getGridClasses()}">
+            ${items.map(renderProductCard).join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    window.updateStoreFilter = function (key, val) {
+      State.storeFilter[key] = val;
+      if (key === "category") State.storeFilter.subcategory = "all";
+      document.getElementById("app-main").innerHTML = renderStoreView();
+    };
+
+    /* ==========================================================================
+       3. PRODUCT DETAILS PAGE
+       ========================================================================== */
+    function renderProductView(prodId) {
+      const p = (State.data.products || []).find((item) => item.id === prodId);
+      if (!p) return `<div class="p-20 text-center font-bold">المنتج غير موجود</div>`;
+
+      const hasDiscount = p.oldPrice && p.oldPrice > p.price;
+      const brandObj = (State.data.brands || []).find((b) => b.id === p.brand);
+
+      return `
+        <section class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-10 animate-view">
+          <div class="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 p-4 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10">
+            <div class="lg:col-span-6 bg-slate-50 rounded-2xl p-4 sm:p-6 flex items-center justify-center border border-slate-100">
+              <img src="${p.image}" alt="${loc(p, 'name')}" class="max-h-[280px] sm:max-h-[420px] object-contain rounded-xl" />
+            </div>
+
+            <div class="lg:col-span-6 space-y-4 sm:space-y-5">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="px-3 py-1 rounded-lg bg-rose-50 text-brandRed font-black text-xs">
+                  ${brandObj ? loc(brandObj, "name") : p.brand}
+                </span>
+                <span class="font-mono text-xs bg-slate-100 px-3 py-1 rounded-lg font-bold">
+                  ${t("modelLabel")} ${p.modelCode || p.id}
+                </span>
+              </div>
+
+              <h1 class="text-lg sm:text-2xl font-black text-darkSlate leading-relaxed">${loc(p, "name")}</h1>
+              <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${loc(p, "shortDesc")}</p>
+
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                <div>
+                  <div class="text-xl sm:text-3xl font-black text-brandRed">${formatPrice(p.price)}</div>
+                  ${
+                    hasDiscount
+                      ? `<div class="text-xs text-slate-400 line-through mt-0.5">${formatPrice(p.oldPrice)}</div>`
+                      : ""
+                  }
+                </div>
+                <div>
+                  ${
+                    p.inStock
+                      ? `<span class="px-3 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">${t("inStock")}</span>`
+                      : `<span class="px-3 py-1.5 rounded-full bg-rose-100 text-rose-800 text-xs font-bold">${t("outOfStock")}</span>`
+                  }
+                </div>
+              </div>
+
+              <div class="border border-slate-200 rounded-2xl overflow-hidden text-xs sm:text-sm">
+                <div class="grid grid-cols-2 p-3 bg-slate-50 border-b border-slate-200">
+                  <span class="text-slate-500 font-bold">السعة / الحجم</span>
+                  <span class="font-bold text-darkSlate">${p.specs?.capacityOrSize || "-"}</span>
+                </div>
+                <div class="grid grid-cols-2 p-3 border-b border-slate-200">
+                  <span class="text-slate-500 font-bold">اللون</span>
+                  <span class="font-bold text-darkSlate">${p.specs?.color || "-"}</span>
+                </div>
+                <div class="grid grid-cols-2 p-3 bg-slate-50 border-b border-slate-200">
+                  <span class="text-slate-500 font-bold">المحرك والتقنية</span>
+                  <span class="font-bold text-darkSlate">${p.specs?.motorOrTech || "-"}</span>
+                </div>
+                <div class="grid grid-cols-2 p-3">
+                  <span class="text-slate-500 font-bold">المنشأ والضمان</span>
+                  <span class="font-bold text-darkSlate">${p.specs?.origin || "-"}</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3 pt-2">
+                <button
+                  onclick="addToCart('${p.id}')"
+                  ${!p.inStock ? "disabled" : ""}
+                  class="py-3.5 sm:py-4 rounded-xl bg-darkSlate hover:bg-slate-800 text-white font-bold text-xs sm:text-sm transition"
+                >
+                  ${t("addToCart")}
+                </button>
+                <button
+                  onclick="orderWhatsAppSingle('${p.id}')"
+                  class="py-3.5 sm:py-4 rounded-xl bg-brandRed hover:bg-brandRedHover text-white font-bold text-xs sm:text-sm transition"
+                >
+                  ${t("orderWhatsApp")}
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    /* ==========================================================================
+       4. OFFERS, COMPARE, BRANCHES, SUPPORT, FAQ
+       ========================================================================== */
+    function renderOffersView() {
+      const offers = (State.data.products || []).filter((p) => p.isOffer || (p.oldPrice && p.oldPrice > p.price));
+      return `
+        <section class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-5 animate-view">
+          <div class="bg-brandRed text-white rounded-2xl sm:rounded-3xl p-6 sm:p-8">
+            <h1 class="text-xl sm:text-4xl font-black">${t("navOffers")}</h1>
+            <p class="text-xs sm:text-sm text-rose-100 mt-1.5">عروض وتخفيضات حصرية بالدينار العراقي من معارض DR HOME</p>
+          </div>
+          ${renderMobileLayoutSwitcher()}
+          <div class="${getGridClasses()}">
+            ${offers.map(renderProductCard).join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderCompareView() {
+      const list = State.compare.map((id) => (State.data.products || []).find((p) => p.id === id)).filter(Boolean);
+      if (list.length === 0) {
+        return `<div class="max-w-xl mx-auto py-20 px-4 text-center space-y-4"><p class="font-bold text-slate-600 text-sm">${t("emptyCompare")}</p><a href="#store" class="inline-block px-6 py-3 rounded-xl bg-brandRed text-white font-bold text-xs">${t("navAllProducts")}</a></div>`;
+      }
+      return `
+        <section class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10 animate-view">
+          <div class="bg-white rounded-2xl sm:rounded-3xl border border-slate-200 p-4 sm:p-6 overflow-x-auto">
+            <table class="w-full text-xs sm:text-sm text-start min-w-[540px]">
+              <thead>
+                <tr class="border-b border-slate-200">
+                  <th class="p-3 w-36 text-slate-500">المواصفات</th>
+                  ${list.map((p) => `<th class="p-3"><img src="${p.image}" class="h-24 sm:h-32 mx-auto object-contain mb-2" /><div class="font-bold text-darkSlate line-clamp-2">${loc(p, "name")}</div><div class="text-brandRed font-black mt-1">${formatPrice(p.price)}</div></th>`).join("")}
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200">
+                <tr><td class="p-3 font-bold">رقم الموديل</td>${list.map((p) => `<td class="p-3 font-mono">${p.modelCode}</td>`).join("")}</tr>
+                <tr><td class="p-3 font-bold">السعة / الحجم</td>${list.map((p) => `<td class="p-3">${p.specs?.capacityOrSize || "-"}</td>`).join("")}</tr>
+                <tr><td class="p-3 font-bold">التقنية والمحرك</td>${list.map((p) => `<td class="p-3">${p.specs?.motorOrTech || "-"}</td>`).join("")}</tr>
+                <tr><td class="p-3 font-bold">الضمان</td>${list.map((p) => `<td class="p-3">${p.warrantyYears} سنوات</td>`).join("")}</tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderBranchesView() {
+      return `
+        <section class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-5 animate-view">
+          <h1 class="text-xl sm:text-3xl font-black">${t("navBranches")}</h1>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            ${(State.data.branches || [])
+              .map(
+                (b) => `
+              <div class="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 space-y-2.5">
+                <h2 class="text-base sm:text-lg font-black text-brandRed">${loc(b, "name")}</h2>
+                <p class="text-xs sm:text-sm text-slate-700 font-medium">${loc(b, "address")}</p>
+                <p class="text-xs text-slate-500">${loc(b, "hours")}</p>
+                <p class="text-sm font-mono font-bold text-darkSlate" dir="ltr">${b.phone}</p>
+                <a href="${b.mapUrl}" target="_blank" class="inline-block px-4 py-2 rounded-xl bg-darkSlate text-white text-xs font-bold">عرض على الخريطة</a>
+              </div>
+            `
+              )
+              .join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderSupportView() {
+      return `
+        <section class="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-6 animate-view">
+          <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200 space-y-4">
+            <h1 class="text-xl sm:text-2xl font-black text-darkSlate">${t("navWarranty")}</h1>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              جميع أجهزة DR HOME مشمولة بضمان رسمي حقيقي (10 سنوات على الضاغط والمحرك الانفرتر، وسنتين صيانة شاملة). لطلب تنصيب جديد أو صيانة، أرسل بيانات جهازك مباشرة عبر واتساب:
+            </p>
+            <form onsubmit="sendSupportWhatsApp(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
+              <input id="sup-name" required placeholder="الاسم الكامل" class="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm" />
+              <input id="sup-model" required placeholder="نوع الجهاز أو رقم الموديل" class="px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm" />
+              <textarea id="sup-msg" required rows="3" placeholder="تفاصيل الطلب (تنصيب / صيانة / استفسار)" class="sm:col-span-2 px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-sm"></textarea>
+              <button type="submit" class="sm:col-span-2 py-3.5 rounded-xl bg-brandRed text-white font-bold text-sm">إرسال الطلب لقسم الصيانة عبر واتساب</button>
+            </form>
+          </div>
+        </section>
+      `;
+    }
+
+    function renderFaqView() {
+      return `
+        <section class="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-3.5 animate-view">
+          <h1 class="text-xl sm:text-2xl font-black mb-4">${t("navFaq")}</h1>
+          ${(State.data.faqs || [])
+            .map(
+              (f) => `
+            <details class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200">
+              <summary class="font-bold text-xs sm:text-base cursor-pointer">${loc(f, "q")}</summary>
+              <p class="text-xs sm:text-sm text-slate-600 mt-3 pt-3 border-t border-slate-100 leading-relaxed">${loc(f, "a")}</p>
+            </details>
+          `
+            )
+            .join("")}
+        </section>
+      `;
+    }
+
+    /* ==========================================================================
+       CART, WHATSAPP & ROUTER LOGIC
+       ========================================================================== */
+    window.openCartDrawer = function () {
+      document.getElementById("cart-drawer").classList.remove("hidden");
+    };
+
+    window.openDirectWhatsAppChat = function () {
+      const wa = State.data?.storeInfo?.whatsappNumber || "9647700000000";
+      window.open(`https://wa.me/${wa}?text=${encodeURIComponent("مرحباً DR HOME، لدي استفسار حول الأجهزة المتوفرة.")}`, "_blank");
+    };
+
+    window.addToCart = function (id) {
+      const found = State.cart.find((i) => i.id === id);
+      if (found) found.qty += 1;
+      else State.cart.push({ id, qty: 1 });
+      localStorage.setItem("drhome_cart", JSON.stringify(State.cart));
+      renderCartUI();
+      openCartDrawer();
+    };
+
+    window.removeFromCart = function (id) {
+      State.cart = State.cart.filter((i) => i.id !== id);
+      localStorage.setItem("drhome_cart", JSON.stringify(State.cart));
+      renderCartUI();
+    };
+
+    function renderCartUI() {
+      const count = State.cart.reduce((s, i) => s + i.qty, 0);
+      document.getElementById("cart-badge").textContent = count;
+      const mobileBadge = document.getElementById("mobile-cart-badge");
+      if (mobileBadge) mobileBadge.textContent = count;
+
+      const listEl = document.getElementById("cart-items-list");
+      if (!State.data || State.cart.length === 0) {
+        listEl.innerHTML = `<p class="text-center text-slate-400 py-12 text-sm">${t("emptyCart")}</p>`;
+        document.getElementById("cart-total").textContent = "0 " + t("dinar");
+        return;
+      }
+      let total = 0;
+      listEl.innerHTML = State.cart
+        .map((item) => {
+          const p = State.data.products.find((x) => x.id === item.id);
+          if (!p) return "";
+          total += p.price * item.qty;
+          return `
+            <div class="flex items-center justify-between gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <img src="${p.image}" class="w-14 h-14 object-contain bg-white rounded-lg p-1" />
+              <div class="flex-1 min-w-0">
+                <div class="text-xs font-bold text-darkSlate truncate">${loc(p, "name")}</div>
+                <div class="text-[11px] text-slate-500 font-mono">${p.modelCode}</div>
+                <div class="text-xs font-black text-brandRed mt-0.5">${formatPrice(p.price)} × ${item.qty}</div>
+              </div>
+              <button onclick="removeFromCart('${p.id}')" class="text-slate-400 hover:text-rose-600 px-2">✕</button>
+            </div>
+          `;
+        })
+        .join("");
+      document.getElementById("cart-total").textContent = formatPrice(total);
+    }
+
+    window.orderWhatsAppSingle = function (id) {
+      const p = State.data.products.find((x) => x.id === id);
+      if (!p) return;
+      const wa = State.data.storeInfo.whatsappNumber;
+      const text = `مرحباً DR HOME، أرغب بطلب المنتج التالي:\n- الاسم: ${p.nameAr}\n- الموديل: ${p.modelCode}\n- السعر: ${formatPrice(p.price)}`;
+      window.open(`https://wa.me/${wa}?text=${encodeURIComponent(text)}`, "_blank");
+    };
+
+    window.toggleCompare = function (id) {
+      const idx = State.compare.indexOf(id);
+      if (idx > -1) State.compare.splice(idx, 1);
+      else {
+        if (State.compare.length >= 3) State.compare.shift();
+        State.compare.push(id);
+      }
+      localStorage.setItem("drhome_compare", JSON.stringify(State.compare));
+      const badge = document.getElementById("compare-badge");
+      badge.textContent = State.compare.length;
+      badge.classList.toggle("hidden", State.compare.length === 0);
+      route(false);
+    };
+
+    window.sendSupportWhatsApp = function (e) {
+      e.preventDefault();
+      const name = document.getElementById("sup-name").value;
+      const model = document.getElementById("sup-model").value;
+      const msg = document.getElementById("sup-msg").value;
+      const wa = State.data.storeInfo.whatsappNumber;
+      window.open(`https://wa.me/${wa}?text=${encodeURIComponent(`طلب دعم/صيانة DR HOME:\nالاسم: ${name}\nالموديل: ${model}\nالتفاصيل: ${msg}`)}`, "_blank");
+    };
+
+    function applyStaticTranslations() {
+      document.documentElement.lang = State.lang;
+      document.documentElement.dir = State.lang === "ar" ? "rtl" : "ltr";
+      document.getElementById("lang-btn").textContent = State.lang === "ar" ? "EN" : "عربي";
+
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const k = el.getAttribute("data-i18n");
+        if (I18N[State.lang][k]) el.textContent = I18N[State.lang][k];
+      });
+
+      const info = State.data.storeInfo;
+      document.getElementById("top-phone").textContent = info.phone;
+      document.getElementById("footer-phone").textContent = info.phone;
+      document.getElementById("footer-email").textContent = info.email;
+      document.getElementById("footer-address").textContent = loc(info, "address");
+      document.getElementById("footer-ig").href = info.instagram;
+      document.getElementById("footer-fb").href = info.facebook;
+      document.getElementById("year-span").textContent = new Date().getFullYear();
+
+      if (info.logo && info.logo.trim() !== "") {
+        const img = document.getElementById("site-logo-img");
+        img.src = info.logo;
+        img.classList.remove("hidden");
+        document.getElementById("site-logo-text").classList.add("hidden");
+      }
+
+      document.getElementById("header-categories-nav").innerHTML = (State.data.categories || [])
+        .map((c) => `<a href="#store/${c.id}" class="whitespace-nowrap hover:text-brandRed transition">${loc(c, "name")}</a>`)
+        .join("");
+
+      document.getElementById("footer-cats-list").innerHTML = (State.data.categories || [])
+        .map((c) => `<li><a href="#store/${c.id}" class="hover:text-white transition">${loc(c, "name")}</a></li>`)
+        .join("");
+    }
+
+    function route(scrollTop = true) {
+      const hash = window.location.hash.replace("#", "") || "home";
+      const [view, param] = hash.split("/");
+      const main = document.getElementById("app-main");
+
+      if (view === "home") main.innerHTML = renderHomeView();
+      else if (view === "store") main.innerHTML = renderStoreView(param);
+      else if (view === "product") main.innerHTML = renderProductView(param);
+      else if (view === "offers") main.innerHTML = renderOffersView();
+      else if (view === "compare") main.innerHTML = renderCompareView();
+      else if (view === "branches" || view === "contact") main.innerHTML = renderBranchesView();
+      else if (view === "support") main.innerHTML = renderSupportView();
+      else if (view === "faq") main.innerHTML = renderFaqView();
+      else main.innerHTML = renderHomeView();
+
+      if (scrollTop) window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    async function boot() {
+      const res = await fetch("./content.json", { cache: "no-store" });
+      State.data = await res.json();
+      applyStaticTranslations();
+      renderCartUI();
+      route();
+
+      window.addEventListener("hashchange", () => route(true));
+
+      document.getElementById("lang-btn").addEventListener("click", () => {
+        State.lang = State.lang === "ar" ? "en" : "ar";
+        localStorage.setItem("drhome_lang", State.lang);
+        applyStaticTranslations();
+        renderCartUI();
+        route(false);
+      });
+
+      document.getElementById("global-search-btn").addEventListener("click", () => {
+        State.storeFilter.search = document.getElementById("global-search-input").value;
+        window.location.hash = "#store";
+        route();
+      });
+
+      document.getElementById("global-search-input").addEventListener("keyup", (e) => {
+        if (e.key === "Enter") {
+          State.storeFilter.search = e.target.value;
+          window.location.hash = "#store";
+          route();
+        }
+      });
+
+      document.getElementById("cart-btn").addEventListener("click", openCartDrawer);
+      document.getElementById("cart-close").addEventListener("click", () => {
+        document.getElementById("cart-drawer").classList.add("hidden");
+      });
+      document.getElementById("cart-overlay").addEventListener("click", () => {
+        document.getElementById("cart-drawer").classList.add("hidden");
+      });
+
+      document.getElementById("whatsapp-checkout-btn").addEventListener("click", () => {
+        if (State.cart.length === 0) return;
+        const name = document.getElementById("cust-name").value || "زبون DR HOME";
+        const addr = document.getElementById("cust-address").value || "بغداد";
+        let total = 0;
+        const lines = State.cart.map((item, i) => {
+          const p = State.data.products.find((x) => x.id === item.id);
+          if (!p) return "";
+          const sub = p.price * item.qty;
+          total += sub;
+          return `${i + 1}. ${p.nameAr} [${p.modelCode}] (العدد: ${item.qty}) = ${formatPrice(sub)}`;
+        });
+        const msg = `طلب جديد من متجر DR HOME E-Store:\nالاسم: ${name}\nالعنوان: ${addr}\n\nالمنتجات:\n${lines.join("\n")}\n\nالمجموع الكلي: ${formatPrice(total)}`;
+        window.open(`https://wa.me/${State.data.storeInfo.whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", boot);
+  </script>
+</body>
+</html>
