@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>DR HOME | لوحة تعديل الأجهزة والأسعار والصور</title>
+  <title>DR HOME E-Store | متجر الأجهزة المنزلية والإلكترونيات في العراق</title>
   <meta name="theme-color" content="#A50034" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,10 +14,10 @@
       theme: {
         extend: {
           colors: {
-            lgRed: '#A50034',
-            lgRedDark: '#820029',
-            darkSidebar: '#0F172A',
-            surfaceLight: '#F1F5F9'
+            brandRed: '#A50034',
+            brandRedHover: '#820029',
+            surfaceBg: '#F4F6F9',
+            darkSlate: '#111827'
           },
           fontFamily: {
             ar: ['Tajawal', 'sans-serif']
@@ -31,1056 +31,810 @@
     @media screen and (max-width: 768px) {
       input, select, textarea { font-size: 16px !important; }
     }
-    .sidebar-btn.active {
-      background-color: #A50034;
-      color: #ffffff;
-      box-shadow: 0 8px 20px -4px rgba(165, 0, 52, 0.45);
+    .store-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .store-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 28px -10px rgba(17, 24, 39, 0.12);
+      border-color: #A50034;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .edit-highlight {
+      outline: 2px dashed #A50034;
+      background-color: #fff1f2;
     }
   </style>
 </head>
-<body class="bg-surfaceLight text-slate-900 min-h-screen flex flex-col">
+<body class="bg-surfaceBg text-darkSlate antialiased min-h-screen flex flex-col">
 
-  <!-- إشعار علوي -->
-  <div id="toast-box" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 hidden px-6 py-3.5 rounded-2xl shadow-2xl font-bold text-sm text-white transition-all max-w-md text-center"></div>
+  <!-- إشعار عائم للتأكيد -->
+  <div id="live-toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 hidden px-6 py-3.5 rounded-2xl shadow-2xl font-bold text-sm text-white bg-emerald-600 text-center"></div>
 
-  <div class="flex-1 flex flex-col lg:flex-row min-h-screen">
-
-    <!-- القائمة الجانبية اليمنى -->
-    <aside class="w-full lg:w-72 bg-darkSidebar text-white flex flex-col justify-between border-b lg:border-b-0 lg:border-l border-slate-800 lg:sticky lg:top-0 lg:h-screen z-30">
-      <div>
-        <div class="p-5 border-b border-slate-800 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-lgRed flex items-center justify-center font-black text-lg">DR</div>
-            <div>
-              <div class="font-black text-base leading-none">DR HOME ADMIN</div>
-              <div class="text-[11px] text-emerald-400 font-bold mt-1 flex items-center gap-1">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> جاهز للتعديل المباشر
-              </div>
-            </div>
-          </div>
-          <a href="./index.html" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-200">
-            معاينة المتجر ↗
-          </a>
-        </div>
-
-        <nav class="p-3 flex lg:flex-col gap-1.5 overflow-x-auto">
-          <button onclick="switchTab('products')" id="tab-products" class="sidebar-btn active px-4 py-3 rounded-xl text-xs sm:text-sm font-bold text-right flex items-center gap-2.5 whitespace-nowrap transition">
-            <span>📦</span> <span>الأجهزة والأسعار والصور</span>
-          </button>
-          <button onclick="switchTab('banners')" id="tab-banners" class="sidebar-btn px-4 py-3 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:bg-slate-800 text-right flex items-center gap-2.5 whitespace-nowrap transition">
-            <span>🖼️</span> <span>البانرات والعروض العلوية</span>
-          </button>
-          <button onclick="switchTab('categories')" id="tab-categories" class="sidebar-btn px-4 py-3 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:bg-slate-800 text-right flex items-center gap-2.5 whitespace-nowrap transition">
-            <span>🗂️</span> <span>الأقسام الرئيسية</span>
-          </button>
-          <button onclick="switchTab('settings')" id="tab-settings" class="sidebar-btn px-4 py-3 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:bg-slate-800 text-right flex items-center gap-2.5 whitespace-nowrap transition">
-            <span>⚙️</span> <span>الواتساب والفروع والربط</span>
-          </button>
-        </nav>
+  <!-- ========================================================================
+       شريط التعديل الحي المباشر من داخل الموقع (Live On-Site Admin Bar)
+       ======================================================================== -->
+  <div class="bg-darkSlate text-white text-xs py-2.5 px-3 sm:px-6 sticky top-0 z-50 border-b-2 border-brandRed shadow-lg">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="font-bold">DR HOME — التحكم الحي المباشر من داخل الموقع</span>
       </div>
 
-      <div class="hidden lg:block p-4 border-t border-slate-800 space-y-2">
-        <button onclick="publishChanges()" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm shadow-lg transition flex items-center justify-center gap-2">
-          <span>💾</span> <span>حفظ ونشر في الموقع الآن</span>
+      <div class="flex flex-wrap items-center gap-2">
+        <button
+          id="toggle-edit-btn"
+          type="button"
+          onclick="toggleLiveEditMode()"
+          class="px-4 py-1.5 rounded-xl bg-brandRed hover:bg-brandRedHover text-white font-black text-xs shadow-md transition flex items-center gap-1.5"
+        >
+          <span>✏️</span>
+          <span id="toggle-edit-label">تفعيل التعديل المباشر هنا (Live Edit)</span>
         </button>
-        <button onclick="resetToDefaults()" class="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition">
-          🔄 إظهار/استعادة كل الأجهزة الافتراضية
+
+        <button
+          id="add-prod-live-btn"
+          type="button"
+          onclick="addNewProductLive()"
+          class="hidden px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-black text-xs transition"
+        >
+          + إضافة جهاز جديد
+        </button>
+
+        <button
+          id="save-live-btn"
+          type="button"
+          onclick="openPublishModal()"
+          class="hidden px-4 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs shadow-md transition"
+        >
+          💾 حفظ ونشر التعديلات الآن
+        </button>
+
+        <button
+          id="reset-live-btn"
+          type="button"
+          onclick="resetAllProducts()"
+          class="hidden px-3 py-1.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-slate-200 font-bold text-[11px] transition"
+        >
+          🔄 استعادة الافتراضي
         </button>
       </div>
-    </aside>
-
-    <!-- مساحة العمل الرئيسية -->
-    <div class="flex-1 flex flex-col">
-      <!-- الشريط العلوي -->
-      <header class="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 sm:px-8 py-3.5 flex flex-wrap items-center justify-between gap-3 shadow-xs">
-        <div>
-          <h2 id="current-tab-title" class="text-lg sm:text-xl font-black text-slate-900">إدارة الأجهزة والأسعار والصور</h2>
-          <p class="text-xs text-slate-500">عدّل أي سعر أو صورة أو نص مباشرة ثم اضغط الزر الأخضر (حفظ ونشر في الموقع)</p>
-        </div>
-
-        <div class="flex flex-wrap items-center gap-2">
-          <button onclick="resetToDefaults()" class="px-3.5 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold text-xs transition">
-            🔄 إظهار كل الأجهزة
-          </button>
-          <button onclick="addNewProductBlank()" class="px-4 py-2.5 rounded-xl bg-lgRed hover:bg-lgRedDark text-white font-bold text-xs sm:text-sm shadow-sm transition">
-            + إضافة جهاز جديد
-          </button>
-          <button onclick="publishChanges()" id="top-save-btn" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs sm:text-sm shadow-md transition flex items-center gap-1.5">
-            <span>💾</span> <span>حفظ ونشر في الموقع</span>
-          </button>
-        </div>
-      </header>
-
-      <!-- المحتوى الرئيسي -->
-      <main id="admin-content" class="p-4 sm:p-8 flex-1 max-w-7xl w-full mx-auto space-y-6"></main>
     </div>
   </div>
 
-  <!-- نافذة النشر المباشر في GitHub -->
+  <!-- الهيدر الرئيسي للمتجر -->
+  <header class="bg-white shadow-xs border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-3">
+      <a href="#" onclick="setCategory('all'); return false;" class="flex items-center gap-2.5">
+        <div class="w-11 h-11 rounded-2xl bg-brandRed text-white flex items-center justify-center font-black text-lg shadow-sm">
+          DR
+        </div>
+        <div>
+          <div class="text-xl font-black tracking-tight text-darkSlate leading-none">DR HOME</div>
+          <div class="text-[10px] font-bold text-brandRed tracking-wider uppercase mt-0.5">E-STORE IRAQ</div>
+        </div>
+      </a>
+
+      <!-- شريط البحث -->
+      <div class="order-3 lg:order-2 w-full lg:w-auto lg:flex-1 max-w-xl mx-auto">
+        <input
+          id="search-input"
+          type="search"
+          oninput="filterProducts(this.value)"
+          placeholder="ابحث عن جهاز، ثلاجة InstaView، شاشة OLED، أو رقم الموديل..."
+          class="w-full px-4 py-2.5 rounded-2xl bg-slate-100 border border-slate-200 focus:bg-white focus:border-brandRed focus:outline-none text-sm"
+        />
+      </div>
+
+      <!-- السلة والواتساب -->
+      <div class="order-2 lg:order-3 flex items-center gap-2">
+        <button
+          onclick="openCart()"
+          class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brandRed hover:bg-brandRedHover text-white font-bold text-xs shadow-xs transition"
+        >
+          <span>🛒 السلة</span>
+          <span id="cart-count" class="px-2 py-0.5 rounded-full bg-white text-brandRed font-black text-xs">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- شريط الأقسام -->
+    <nav class="bg-slate-50 border-t border-slate-200">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 flex items-center gap-3 overflow-x-auto no-scrollbar py-2.5 text-xs sm:text-sm font-bold">
+        <button onclick="setCategory('all')" id="cat-btn-all" class="cat-pill px-4 py-1.5 rounded-xl bg-brandRed text-white whitespace-nowrap transition">عرض كل الأجهزة</button>
+        <button onclick="setCategory('refrigerators')" id="cat-btn-refrigerators" class="cat-pill px-4 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 whitespace-nowrap transition">الثلاجات والمجمدات</button>
+        <button onclick="setCategory('tvs')" id="cat-btn-tvs" class="cat-pill px-4 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 whitespace-nowrap transition">التلفزيونات والصوتيات</button>
+        <button onclick="setCategory('washers')" id="cat-btn-washers" class="cat-pill px-4 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 whitespace-nowrap transition">الغسالات والمجففات</button>
+        <button onclick="setCategory('ac')" id="cat-btn-ac" class="cat-pill px-4 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 whitespace-nowrap transition">المكيفات والسبالت</button>
+        <button onclick="setCategory('kitchen')" id="cat-btn-kitchen" class="cat-pill px-4 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 whitespace-nowrap transition">أجهزة المطبخ والبلت-إن</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- المحتوى الرئيسي -->
+  <main class="max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-6 space-y-8 flex-grow">
+
+    <!-- البانر الرئيسي القابل للتعديل المباشر -->
+    <section id="hero-banner-box" class="relative rounded-3xl overflow-hidden bg-darkSlate min-h-[260px] sm:min-h-[340px] flex items-center shadow-md">
+      <img id="hero-img-el" src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1600&auto=format&fit=crop" alt="DR HOME" class="absolute inset-0 w-full h-full object-cover opacity-45" />
+      <div class="absolute inset-0 bg-gradient-to-t from-darkSlate via-darkSlate/60 to-transparent"></div>
+      <div class="relative z-10 p-6 sm:p-10 max-w-2xl space-y-3 text-white w-full">
+        <span id="hero-badge-el" class="inline-block px-3.5 py-1 rounded-full bg-brandRed text-xs font-extrabold">
+          تخفيضات كبرى في DR HOME E-Store
+        </span>
+        <h1 id="hero-title-el" class="text-2xl sm:text-4xl font-black leading-tight">
+          أحدث أجهزة إل جي (LG) المنزلية بضمان رسمي وأسعار تنافسية
+        </h1>
+        <p id="hero-sub-el" class="text-xs sm:text-sm text-slate-200 leading-relaxed">
+          تسوق ثلاجات InstaView، شاشات OLED evo، غسالات AI DD، ومكيفات Dual Inverter مع توصيل وتنصيب مجاني.
+        </p>
+
+        <!-- أدوات تعديل البانر (تظهر عند تفعيل التعديل الحي) -->
+        <div id="hero-edit-controls" class="hidden pt-4 mt-4 border-t border-white/20 bg-black/75 p-4 rounded-2xl space-y-2.5 text-xs">
+          <div class="font-black text-amber-400">✏️ تعديل البانر الرئيسي مباشرة:</div>
+          <input id="edit-hero-title" type="text" placeholder="عنوان البانر..." oninput="updateHeroLive()" class="w-full px-3 py-2 rounded-xl bg-slate-800 text-white border border-slate-600 font-bold" />
+          <input id="edit-hero-sub" type="text" placeholder="وصف البانر..." oninput="updateHeroLive()" class="w-full px-3 py-2 rounded-xl bg-slate-800 text-white border border-slate-600" />
+          <div class="flex flex-wrap items-center gap-2">
+            <label class="px-4 py-2 rounded-xl bg-brandRed hover:bg-brandRedHover text-white font-bold cursor-pointer">
+              📤 رفع صورة بانر من جهازي
+              <input type="file" accept="image/*" class="hidden" onchange="uploadHeroImageLive(this)" />
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- عنوان قائمة الأجهزة -->
+    <div class="flex flex-wrap items-center justify-between gap-2">
+      <div>
+        <h2 class="text-xl sm:text-2xl font-black text-darkSlate flex items-center gap-2">
+          <span class="w-2 h-6 rounded-full bg-brandRed inline-block"></span>
+          <span>الأجهزة المتوفرة والأسعار بالدينار العراقي</span>
+        </h2>
+        <p id="edit-mode-hint" class="hidden text-xs font-bold text-brandRed mt-1">
+          ✨ وضع التعديل المباشر مفعّل الآن! غيّر أي سعر أو اسم أو صورة بالأسفل مباشرة ثم اضغط (حفظ ونشر التعديلات الآن) بأعلى الصفحة.
+        </p>
+      </div>
+    </div>
+
+    <!-- شبكة المنتجات (تحتوي على منتجات افتراضية ثابتة حتى لا تكون فارغة أبداً) -->
+    <div id="products-grid" class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+      <!-- يتم تحديثها وعرضها فوراً -->
+    </div>
+
+  </main>
+
+  <!-- نافذة السلة -->
+  <div id="cart-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+      <div class="flex items-center justify-between border-b pb-3">
+        <h3 class="font-black text-base">سلة المشتريات والطلب عبر واتساب</h3>
+        <button onclick="document.getElementById('cart-modal').classList.add('hidden')" class="p-1.5 rounded-lg bg-slate-100 font-bold">✕</button>
+      </div>
+      <div id="cart-items" class="space-y-2.5 max-h-72 overflow-y-auto"></div>
+      <div class="border-t pt-3 space-y-3">
+        <div class="flex justify-between font-black text-base">
+          <span>المجموع الكلي:</span>
+          <span id="cart-total-price" class="text-brandRed">0 دينار</span>
+        </div>
+        <input id="order-name" type="text" placeholder="الاسم الكامل" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-sm" />
+        <input id="order-address" type="text" placeholder="المنطقة / المحافظة (مثال: بغداد - الكرادة)" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-sm" />
+        <button onclick="sendCartWhatsApp()" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-sm">
+          إرسال الطلب عبر واتساب الآن
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- نافذة الحفظ والنشر المباشر لـ GitHub -->
   <div id="publish-modal" class="fixed inset-0 z-50 hidden bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 space-y-5 text-right">
       <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-        <h3 class="text-lg font-black text-slate-900">🚀 حفظ ونشر التعديلات في الموقع</h3>
+        <h3 class="text-lg font-black text-slate-900">💾 حفظ التعديلات ونشرها للزبائن</h3>
         <button onclick="document.getElementById('publish-modal').classList.add('hidden')" class="p-2 rounded-lg bg-slate-100 font-bold">✕</button>
       </div>
 
-      <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs sm:text-sm text-emerald-900 leading-relaxed font-bold">
-        ✓ تم حفظ تعديلاتك ونسخ الكود الجديد تلقائياً إلى الحافظة!
+      <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs sm:text-sm text-emerald-900 font-bold">
+        ✓ تم حفظ جميع تعديلاتك في المتصفح ونسخ كود التحديث تلقائياً!
       </div>
 
-      <div class="space-y-2 text-xs sm:text-sm text-slate-700 leading-relaxed">
-        <p class="font-black text-slate-900">خطوتان فقط لتحديث الموقع أمام الزبائن:</p>
-        <ol class="list-decimal list-inside space-y-1.5">
-          <li>اضغط على الزر الأحمر بالأسفل لفتح ملف <code>content.json</code> في GitHub.</li>
-          <li>احذف النص القديم هناك (`Ctrl+A` ثم `Delete`) والصق النص الجديد (`Ctrl+V`) واضغط <b>Commit changes</b>.</li>
-        </ol>
+      <!-- خيار 1: النشر التلقائي المباشر بضغطة زر -->
+      <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 text-xs">
+        <div class="font-black text-slate-900">الطريقة 1: النشر التلقائي المباشر بضغطة واحدة</div>
+        <input id="gh-token-live" type="password" placeholder="ضع مفتاح GitHub Token هنا (ghp_...)" class="w-full px-3 py-2.5 rounded-xl bg-white border border-slate-300 font-mono" dir="ltr" />
+        <button onclick="pushLiveToGitHub()" id="push-gh-btn" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm shadow-md transition">
+          🚀 انشر في الموقع مباشرة الآن
+        </button>
       </div>
 
-      <div class="space-y-2.5 pt-2">
+      <!-- خيار 2: بدون Token نهائياً -->
+      <div class="space-y-2 text-xs">
+        <div class="font-black text-slate-900">الطريقة 2 (بدون Token): لصق مباشر في GitHub</div>
         <a
-          id="direct-github-edit-link"
           href="https://github.com/fofoea67-dev/drhome/edit/main/content.json"
           target="_blank"
-          onclick="copyJsonAgain()"
-          class="block w-full py-3.5 px-4 rounded-xl bg-lgRed hover:bg-lgRedDark text-white font-black text-center text-sm shadow-lg transition"
+          onclick="copyUpdatedJson()"
+          class="block w-full py-3 px-4 rounded-xl bg-brandRed hover:bg-brandRedHover text-white font-black text-center text-sm transition"
         >
-          1. فتح ملف content.json في GitHub للصق التعديلات ↗
+          فتح ملف content.json في GitHub ولصق التعديلات ↗
         </a>
-
-        <button
-          type="button"
-          onclick="downloadJsonFile()"
-          class="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition"
-        >
-          📥 أو تنزيل ملف content.json جاهزاً على حاسوبك
-        </button>
       </div>
     </div>
   </div>
 
+  <!-- الفوتر -->
+  <footer class="bg-darkSlate text-slate-400 py-8 mt-12 border-t-4 border-brandRed text-center text-xs">
+    <p>© 2026 DR HOME E-Store Iraq — جميع الأسعار بالدينار العراقي ومشمولة بالضمان الرسمي.</p>
+  </footer>
+
+  <!-- ========================================================================
+       المحرك المدمج (المنتجات + التعديل الحي المباشر من داخل الموقع)
+       ======================================================================== -->
   <script>
-    /* البيانات الافتراضية الكاملة المدمجة داخل اللوحة (12 جهازاً جاهزاً للتعديل) */
-    const BUILTIN_DATA = {
-      "storeInfo": {
-        "name": "DR HOME",
-        "logo": "",
-        "whatsappNumber": "9647700000000",
-        "phone": "+964 770 000 0000",
-        "email": "info@drhome.online",
-        "addressAr": "بغداد — صالات عرض DR HOME للأجهزة المنزلية والإلكترونيات",
-        "addressEn": "Baghdad — DR HOME Home Appliances & Electronics Showrooms",
-        "instagram": "https://instagram.com",
-        "facebook": "https://facebook.com"
+    const INITIAL_STORE = {
+      whatsappNumber: "9647700000000",
+      hero: {
+        badgeAr: "تخفيضات كبرى في DR HOME E-Store",
+        titleAr: "أحدث أجهزة إل جي (LG) المنزلية بضمان رسمي وأسعار تنافسية",
+        subtitleAr: "تسوق ثلاجات InstaView، شاشات OLED evo، غسالات AI DD، ومكيفات Dual Inverter مع توصيل وتنصيب مجاني.",
+        image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1600&auto=format&fit=crop"
       },
-      "banners": [
+      products: [
         {
-          "badgeAr": "تخفيضات كبرى في DR HOME E-Store",
-          "badgeEn": "MEGA SALE AT DR HOME E-STORE",
-          "titleAr": "أحدث أجهزة إل جي (LG) المنزلية بضمان رسمي وأسعار تنافسية",
-          "titleEn": "Latest LG Home Appliances with Official Warranty & Best IQD Prices",
-          "subtitleAr": "تسوق ثلاجات InstaView، شاشات OLED evo، غسالات AI DD، ومكيفات Dual Inverter مع توصيل وتنصيب مجاني.",
-          "subtitleEn": "Shop InstaView Refrigerators, OLED evo TVs, AI DD Washers, and Dual Inverter ACs.",
-          "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1600&auto=format&fit=crop",
-          "targetCategory": "refrigerators"
+          id: "lg-instaview-617",
+          modelCode: "GR-X257CQES",
+          brand: "LG",
+          category: "refrigerators",
+          price: 3100000,
+          oldPrice: 3350000,
+          inStock: true,
+          image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=900&auto=format&fit=crop",
+          nameAr: "ثلاجة إل جي InstaView حجم 617 لتر الباب بجانب الباب، تقنية UVnano، لون أسود مطفي"
         },
         {
-          "badgeAr": "عروض الشاشات والترفيه المنزلي",
-          "badgeEn": "HOME ENTERTAINMENT OFFERS",
-          "titleAr": "شاشات LG OLED evo & QNED بدقة 4K سينمائية",
-          "titleEn": "LG OLED evo & QNED 4K Smart TVs",
-          "subtitleAr": "خصومات فورية تصل إلى 350,000 دينار على الشاشات الكبيرة مع ضمان حقيقي لمدة سنتين.",
-          "subtitleEn": "Instant discounts up to 350,000 IQD on flagship large-screen TVs.",
-          "image": "https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=1600&auto=format&fit=crop",
-          "targetCategory": "tvs"
-        }
-      ],
-      "brands": [
-        { "id": "lg", "nameAr": "إل جي (LG)", "nameEn": "LG Electronics" },
-        { "id": "whirlpool", "nameAr": "ويرلبول (Whirlpool)", "nameEn": "Whirlpool" },
-        { "id": "carrier", "nameAr": "كاريير (Carrier)", "nameEn": "Carrier" },
-        { "id": "kitchenaid", "nameAr": "كيتشن إيد (KitchenAid)", "nameEn": "KitchenAid" }
-      ],
-      "categories": [
-        {
-          "id": "refrigerators",
-          "nameAr": "الثلاجات والمجمدات",
-          "nameEn": "Refrigerators & Freezers",
-          "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop",
-          "subcategories": [
-            { "id": "instaview", "nameAr": "ثلاجة InstaView", "nameEn": "InstaView Fridge" },
-            { "id": "side-by-side", "nameAr": "ثلاجات بابين متقابلين", "nameEn": "Side by Side" },
-            { "id": "four-door", "nameAr": "ثلاجة أربعة أبواب", "nameEn": "Four Door" },
-            { "id": "freezer", "nameAr": "فريزر ومجمدة عمودية", "nameEn": "Vertical Freezer" }
-          ]
+          id: "lg-instaview-611",
+          modelCode: "GC-X257CSES",
+          brand: "LG",
+          category: "refrigerators",
+          price: 3100000,
+          oldPrice: 0,
+          inStock: true,
+          image: "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?q=80&w=900&auto=format&fit=crop",
+          nameAr: "ثلاجة إل جي إنستافيو 611 لتر الباب بجانب الباب، تقنية UVnano، لون سلفر بلاتيني"
         },
         {
-          "id": "tvs",
-          "nameAr": "التلفزيونات والصوتيات",
-          "nameEn": "TVs & Audio",
-          "image": "https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=600&auto=format&fit=crop",
-          "subcategories": [
-            { "id": "oled", "nameAr": "شاشات OLED evo", "nameEn": "OLED evo TVs" },
-            { "id": "qned", "nameAr": "شاشات QNED MiniLED", "nameEn": "QNED MiniLED" },
-            { "id": "uhd", "nameAr": "شاشات UHD 4K", "nameEn": "UHD 4K TVs" }
-          ]
+          id: "lg-freezer-324",
+          modelCode: "GN-F304SLBT",
+          brand: "LG",
+          category: "refrigerators",
+          price: 1400000,
+          oldPrice: 1520000,
+          inStock: true,
+          image: "https://images.unsplash.com/photo-1536353284924-9220c464e262?q=80&w=900&auto=format&fit=crop",
+          nameAr: "فريزر عامودي إل جي 324 لتر، بباب واحد، ضاغط سمارت انفيرتر، لون سلفر"
         },
         {
-          "id": "washers",
-          "nameAr": "الغسالات والمجففات",
-          "nameEn": "Washers & Dryers",
-          "image": "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?q=80&w=600&auto=format&fit=crop",
-          "subcategories": [
-            { "id": "washtower", "nameAr": "برج الغسيل WashTower", "nameEn": "WashTower" },
-            { "id": "front-load", "nameAr": "غسالة تحميل أمامي", "nameEn": "Front Load Washer" },
-            { "id": "dryer", "nameAr": "مجفف ملابس", "nameEn": "Heat Pump Dryer" }
-          ]
+          id: "lg-oled-c5-65",
+          modelCode: "OLED65C56LA",
+          brand: "LG",
+          category: "tvs",
+          price: 2450000,
+          oldPrice: 2800000,
+          inStock: true,
+          image: "https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=900&auto=format&fit=crop",
+          nameAr: "شاشة إل جي أوليد 65 بوصة OLED evo C5 4K Smart TV، معالج α9 AI الجيل السابع"
         },
         {
-          "id": "ac",
-          "nameAr": "المكيفات والسبالت",
-          "nameEn": "Air Conditioners",
-          "image": "https://images.unsplash.com/photo-1614631446501-abcf76949eca?q=80&w=600&auto=format&fit=crop",
-          "subcategories": [
-            { "id": "split-ac", "nameAr": "سبلت جداري انفرتر", "nameEn": "Dual Inverter Split" },
-            { "id": "standing-ac", "nameAr": "سبلت كنتوري عمودي", "nameEn": "Floor Standing AC" }
-          ]
+          id: "lg-qned-75",
+          modelCode: "75QNED85T6A",
+          brand: "LG",
+          category: "tvs",
+          price: 2150000,
+          oldPrice: 2400000,
+          inStock: true,
+          image: "https://images.unsplash.com/photo-1509281373149-e957c6296406?q=80&w=900&auto=format&fit=crop",
+          nameAr: "شاشة إل جي 75 بوصة QNED85 MiniLED 4K، تقنية Quantum Dot NanoCell"
         },
         {
-          "id": "kitchen",
-          "nameAr": "أجهزة المطبخ والبلت-إن",
-          "nameEn": "Kitchen & Built-in",
-          "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=600&auto=format&fit=crop",
-          "subcategories": [
-            { "id": "dishwasher", "nameAr": "غسالة الصحون", "nameEn": "Dishwashers" },
-            { "id": "builtin-oven", "nameAr": "أفران وطباخات مدمجة", "nameEn": "Built-in Ovens & Hobs" },
-            { "id": "microwave", "nameAr": "مايكروويف", "nameEn": "Microwaves" },
-            { "id": "mixer", "nameAr": "عجانة ومحضرة طعام", "nameEn": "Stand Mixers & Blenders" }
-          ]
-        }
-      ],
-      "products": [
-        {
-          "id": "lg-instaview-617-black",
-          "modelCode": "GR-X257CQES",
-          "brand": "lg",
-          "category": "refrigerators",
-          "subcategory": "instaview",
-          "price": 3100000,
-          "oldPrice": 3350000,
-          "inStock": true,
-          "isOffer": true,
-          "warrantyYears": 10,
-          "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=900&auto=format&fit=crop",
-          "nameAr": "ثلاجة إل جي InstaView حجم 617 لتر الباب بجانب الباب، تقنية UVnano، تقنية التبريد الطولي LinearCooling، لون أسود مطفي",
-          "nameEn": "LG InstaView 617L Side-by-Side Refrigerator, UVnano, Matte Black",
-          "shortDescAr": "انقر مرتين على الزجاج لرؤية المحتويات الداخلية دون فتح الباب وفقدان الهواء البارد.",
-          "shortDescEn": "Knock twice to see inside without losing cold air.",
-          "specs": {
-            "capacityOrSize": "617 لتر (30 قدم)",
-            "color": "أسود مطفي",
-            "motorOrTech": "Inverter Linear Compressor",
-            "origin": "كوريا / ضمان 10 سنوات"
-          }
+          id: "lg-washtower-21",
+          modelCode: "WK2116WST",
+          brand: "LG",
+          category: "washers",
+          price: 2690000,
+          oldPrice: 2950000,
+          inStock: true,
+          image: "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?q=80&w=900&auto=format&fit=crop",
+          nameAr: "برج الغسيل والتجفيف إل جي WashTower سعة 21 كجم غسيل و 16 كجم تجفيف، ذكاء اصطناعي AI DD"
         },
         {
-          "id": "lg-instaview-611-silver",
-          "modelCode": "GC-X257CSES",
-          "brand": "lg",
-          "category": "refrigerators",
-          "subcategory": "instaview",
-          "price": 3100000,
-          "oldPrice": 0,
-          "inStock": true,
-          "isOffer": false,
-          "warrantyYears": 10,
-          "image": "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?q=80&w=900&auto=format&fit=crop",
-          "nameAr": "ثلاجة إل جي إنستافيو 611 لتر الباب بجانب الباب، تقنية UVnano، لون سلفر بلاتيني",
-          "nameEn": "LG InstaView 611L Side-by-Side Refrigerator, Platinum Silver",
-          "shortDescAr": "ثلاجة فاخرة مع فلتر Hygiene Fresh+ وتبريد متساوٍ.",
-          "shortDescEn": "Luxury refrigerator with Hygiene Fresh+ air filter.",
-          "specs": {
-            "capacityOrSize": "611 لتر",
-            "color": "سلفر",
-            "motorOrTech": "Smart Inverter",
-            "origin": "ضمان رسمي 10 سنوات"
-          }
+          id: "whirlpool-washer-10",
+          modelCode: "FFD 10449 SBCV",
+          brand: "Whirlpool",
+          category: "washers",
+          price: 862000,
+          oldPrice: 920000,
+          inStock: true,
+          image: "https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?q=80&w=900&auto=format&fit=crop",
+          nameAr: "غسالة ملابس ويرلبول (Whirlpool) تحميل أمامي سعة 10 كجم، تقنية الحاسة السادسة 6th Sense"
         },
         {
-          "id": "lg-vertical-freezer-324",
-          "modelCode": "GN-F304SLBT",
-          "brand": "lg",
-          "category": "refrigerators",
-          "subcategory": "freezer",
-          "price": 1400000,
-          "oldPrice": 1520000,
-          "inStock": true,
-          "isOffer": true,
-          "warrantyYears": 10,
-          "image": "https://images.unsplash.com/photo-1536353284924-9220c464e262?q=80&w=900&auto=format&fit=crop",
-          "nameAr": "فريزر عامودي إل جي 324 لتر، بباب واحد، ضاغط سمارت انفيرتر، لون سلفر",
-          "nameEn": "LG Vertical Single-Door Freezer 324L, Smart Inverter, Silver",
-          "shortDescAr": "مجمدة عمودية بدون ثلج بسبعة أدراج واسعة.",
-          "shortDescEn": "No-Frost upright freezer with 7 drawers.",
-          "specs": {
-            "capacityOrSize": "324 لتر",
-            "color": "سلفر",
-            "motorOrTech": "Smart Inverter",
-            "origin": "ضمان 10 سنوات"
-          }
+          id: "lg-dualcool-2ton",
+          modelCode: "I24CGH",
+          brand: "LG",
+          category: "ac",
+          price: 1180000,
+          oldPrice: 1290000,
+          inStock: true,
+          image: "https://images.unsplash.com/photo-1614631446501-abcf76949eca?q=80&w=900&auto=format&fit=crop",
+          nameAr: "سبلت إل جي DualCool Inverter سعة 2 طن، ضاغط استوائي T3 يتحمل حتى 65 مئوية، تحكم بالأمبير"
         },
         {
-          "id": "lg-oled-evo-c5-65",
-          "modelCode": "OLED65C56LA",
-          "brand": "lg",
-          "category": "tvs",
-          "subcategory": "oled",
-          "price": 2450000,
-          "oldPrice": 2800000,
-          "inStock": true,
-          "isOffer": true,
-          "warrantyYears": 2,
-          "image": "https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=900&auto=format&fit=crop",
-          "nameAr": "شاشة إل جي أوليد 65 بوصة OLED evo C5 4K Smart TV، معالج α9 AI الجيل السابع",
-          "nameEn": "LG 65-inch OLED evo C5 4K Smart TV",
-          "shortDescAr": "تباين لا نهائي مع وحدات البكسل ذاتية الإضاءة وتجربة سينمائية فائقة.",
-          "shortDescEn": "Self-lit OLED pixels for infinite contrast.",
-          "specs": {
-            "capacityOrSize": "65 بوصة",
-            "color": "أسود",
-            "motorOrTech": "OLED evo + α9 AI",
-            "origin": "كوريا / ضمان سنتين"
-          }
+          id: "lg-quadwash-dw",
+          modelCode: "DFC513FV",
+          brand: "LG",
+          category: "kitchen",
+          price: 1090000,
+          oldPrice: 1220000,
+          inStock: true,
+          image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=900&auto=format&fit=crop",
+          nameAr: "غسالة الصحون المتطورة من LG موديل DFC513FV، تقنية QuadWash بـ 4 أذرع رش، بخار TrueSteam"
         },
         {
-          "id": "lg-qned-75-miniled",
-          "modelCode": "75QNED85T6A",
-          "brand": "lg",
-          "category": "tvs",
-          "subcategory": "qned",
-          "price": 2150000,
-          "oldPrice": 2400000,
-          "inStock": true,
-          "isOffer": true,
-          "warrantyYears": 2,
-          "image": "https://images.unsplash.com/photo-1509281373149-e957c6296406?q=80&w=900&auto=format&fit=crop",
-          "nameAr": "شاشة إل جي 75 بوصة QNED85 MiniLED 4K، تقنية Quantum Dot NanoCell",
-          "nameEn": "LG 75-inch QNED85 MiniLED 4K Smart TV",
-          "shortDescAr": "ألوان نقية فائقة السطوع بحجم سينمائي 75 بوصة.",
-          "shortDescEn": "Quantum Dot meets NanoCell.",
-          "specs": {
-            "capacityOrSize": "75 بوصة",
-            "color": "أسود",
-            "motorOrTech": "QNED MiniLED 120Hz",
-            "origin": "ضمان رسمي سنتين"
-          }
-        },
-        {
-          "id": "lg-washtower-21-16",
-          "modelCode": "WK2116WST",
-          "brand": "lg",
-          "category": "washers",
-          "subcategory": "washtower",
-          "price": 2690000,
-          "oldPrice": 2950000,
-          "inStock": true,
-          "isOffer": true,
-          "warrantyYears": 10,
-          "image": "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?q=80&w=900&auto=format&fit=crop",
-          "nameAr": "برج الغسيل والتجفيف إل جي WashTower سعة 21 كجم غسيل و 16 كجم تجفيف، ذكاء اصطناعي AI DD",
-          "nameEn": "LG WashTower Stacked Washer 21kg & Dryer 16kg",
-          "shortDescAr": "حل متكامل لغسيل وتجفيف الملابس في وحدة عمودية واحدة.",
-          "shortDescEn": "Single unit vertical laundry solution.",
-          "specs": {
-            "capacityOrSize": "21/16 كجم",
-            "color": "أخضر وأسود",
-            "motorOrTech": "AI Direct Drive",
-            "origin": "كوريا / ضمان 10 سنوات"
-          }
-        },
-        {
-          "id": "whirlpool-washer-10kg",
-          "modelCode": "FFD 10449 SBCV",
-          "brand": "whirlpool",
-          "category": "washers",
-          "subcategory": "front-load",
-          "price": 862000,
-          "oldPrice": 920000,
-          "inStock": true,
-          "isOffer": true,
-          "warrantyYears": 10,
-          "image": "https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?q=80&w=900&auto=format&fit=crop",
-          "nameAr": "غسالة ملابس ويرلبول (Whirlpool) تحميل أمامي سعة 10 كجم، تقنية الحاسة السادسة 6th Sense",
-          "nameEn": "Whirlpool Front Load Washing Machine 10kg, Silver",
-          "shortDescAr": "مستشعرات ذكية تضبط الماء والطاقة حسب حجم الغسيل.",
-          "shortDescEn": "6th Sense intelligent sensors.",
-          "specs": {
-            "capacityOrSize": "10 كجم",
-            "color": "فضي إنوكس",
-            "motorOrTech": "SenseInverter",
-            "origin": "أوروبا"
-          }
-        },
-        {
-          "id": "lg-dualcool-ac-2ton",
-          "modelCode": "I24CGH",
-          "brand": "lg",
-          "category": "ac",
-          "subcategory": "split-ac",
-          "price": 1180000,
-          "oldPrice": 1290000,
-          "inStock": true,
-          "isOffer": true,
-          "warrantyYears": 10,
-          "image": "https://images.unsplash.com/photo-1614631446501-abcf76949eca?q=80&w=900&auto=format&fit=crop",
-          "nameAr": "سبلت إل جي DualCool Inverter سعة 2 طن، ضاغط استوائي T3 يتحمل حتى 65 مئوية، تحكم بالأمبير",
-          "nameEn": "LG DualCool Inverter Split AC 2.0 Ton (Tropical T3)",
-          "shortDescAr": "تبريد فائق السرعة وتوفير طاقة يصل إلى 65% مع التحكم بالأمبير.",
-          "shortDescEn": "Engineered for extreme summer heat up to 65°C.",
-          "specs": {
-            "capacityOrSize": "2 طن (24000 BTU)",
-            "color": "أبيض",
-            "motorOrTech": "Dual Inverter T3",
-            "origin": "ضمان 10 سنوات"
-          }
-        },
-        {
-          "id": "lg-quadwash-dishwasher",
-          "modelCode": "DFC513FV",
-          "brand": "lg",
-          "category": "kitchen",
-          "subcategory": "dishwasher",
-          "price": 1090000,
-          "oldPrice": 1220000,
-          "inStock": true,
-          "isOffer": true,
-          "warrantyYears": 10,
-          "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=900&auto=format&fit=crop",
-          "nameAr": "غسالة الصحون المتطورة من LG موديل DFC513FV، تقنية QuadWash بـ 4 أذرع رش، بخار TrueSteam",
-          "nameEn": "LG QuadWash TrueSteam Dishwasher (14 Place Settings)",
-          "shortDescAr": "تنظيف من كل الزوايا وتعقيم بالبخار الحقيقي.",
-          "shortDescEn": "4-arm QuadWash system with TrueSteam.",
-          "specs": {
-            "capacityOrSize": "14 مكان",
-            "color": "فضي بلاتيني",
-            "motorOrTech": "Inverter Direct Drive",
-            "origin": "كوريا / ضمان 10 سنوات"
-          }
-        },
-        {
-          "id": "kitchenaid-stand-mixer-56",
-          "modelCode": "5KSM60SPXBER",
-          "brand": "kitchenaid",
-          "category": "kitchen",
-          "subcategory": "mixer",
-          "price": 1085000,
-          "oldPrice": 1150000,
-          "inStock": true,
-          "isOffer": true,
-          "warrantyYears": 2,
-          "image": "https://images.unsplash.com/photo-1594385208974-2e75f8d7bb48?q=80&w=900&auto=format&fit=crop",
-          "nameAr": "عجانة كيتشن إيد آرتيزان رافعة للوعاء سعة 5.6 لتر، هيكل معدني بالكامل، الأحمر الملكي",
-          "nameEn": "KitchenAid Artisan Stand Mixer 5.6L, Empire Red",
-          "shortDescAr": "العجانة الاحترافية الأولى عالمياً بـ 11 سرعة.",
-          "shortDescEn": "Heavy-duty bowl-lift stand mixer.",
-          "specs": {
-            "capacityOrSize": "5.6 لتر",
-            "color": "أحمر ملكي",
-            "motorOrTech": "Direct Drive Metal",
-            "origin": "أمريكا"
-          }
-        }
-      ],
-      "branches": [
-        {
-          "nameAr": "معرض DR HOME الرئيسي — بغداد",
-          "nameEn": "DR HOME Main Showroom — Baghdad",
-          "addressAr": "بغداد، الكرادة، تقاطع المسبح، بناية DR HOME للأجهزة المنزلية",
-          "addressEn": "Baghdad, Karrada, Al-Masbah Intersection",
-          "phone": "+964 770 000 0001",
-          "hoursAr": "يومياً من 10:00 صباحاً إلى 10:00 مساءً",
-          "hoursEn": "Daily: 10:00 AM – 10:00 PM",
-          "mapUrl": "https://maps.google.com/?q=Baghdad+Karrada"
-        }
-      ],
-      "faqs": [
-        {
-          "qAr": "هل جميع الأجهزة في متجر DR HOME أصلية ومكفولة؟",
-          "aAr": "نعم، جميع أجهزتنا أصلية 100% ومشمولة بضمان رسمي حقيقي يصل إلى 10 سنوات.",
-          "qEn": "Are all appliances authentic and covered by warranty?",
-          "aEn": "Yes, 100% genuine with official warranty up to 10 years."
+          id: "kitchenaid-mixer",
+          modelCode: "5KSM60SPXBER",
+          brand: "KitchenAid",
+          category: "kitchen",
+          price: 1085000,
+          oldPrice: 1150000,
+          inStock: true,
+          image: "https://images.unsplash.com/photo-1594385208974-2e75f8d7bb48?q=80&w=900&auto=format&fit=crop",
+          nameAr: "عجانة كيتشن إيد آرتيزان رافعة للوعاء سعة 5.6 لتر، هيكل معدني بالكامل، الأحمر الملكي"
         }
       ]
     };
 
-    /* تحميل آمن للبيانات يضمن عدم ظهور شاشة فارغة أبداً */
-    function loadSafeInitialData() {
+    function getSafeStoreData() {
       try {
-        const saved = localStorage.getItem("drhome_v3_data");
-        if (saved) {
-          const parsed = JSON.parse(saved);
+        const raw = localStorage.getItem("drhome_live_store_v4");
+        if (raw) {
+          const parsed = JSON.parse(raw);
           if (parsed && Array.isArray(parsed.products) && parsed.products.length > 0) {
             return parsed;
           }
         }
       } catch (e) {}
-      return JSON.parse(JSON.stringify(BUILTIN_DATA));
+      return JSON.parse(JSON.stringify(INITIAL_STORE));
     }
 
-    const AdminState = {
-      owner: localStorage.getItem("drhome_gh_owner") || "fofoea67-dev",
-      repo: localStorage.getItem("drhome_gh_repo") || "drhome",
-      token: localStorage.getItem("drhome_gh_token") || "",
-      data: loadSafeInitialData(),
-      activeTab: "products",
-      searchQuery: "",
-      catFilter: "all"
+    const App = {
+      store: getSafeStoreData(),
+      editMode: false,
+      activeCat: "all",
+      search: "",
+      cart: []
     };
 
-    function showToast(msg, isError = false) {
-      const box = document.getElementById("toast-box");
-      box.textContent = msg;
-      box.className = `fixed top-5 left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-2xl shadow-2xl font-bold text-sm text-white transition-all max-w-md text-center ${
-        isError ? "bg-rose-600" : "bg-emerald-600"
-      }`;
-      box.classList.remove("hidden");
-      setTimeout(() => box.classList.add("hidden"), 3500);
+    function notify(msg) {
+      const el = document.getElementById("live-toast");
+      el.textContent = msg;
+      el.classList.remove("hidden");
+      setTimeout(() => el.classList.add("hidden"), 3500);
     }
 
-    function saveDraft() {
+    function saveLocal() {
       try {
-        localStorage.setItem("drhome_v3_data", JSON.stringify(AdminState.data));
+        localStorage.setItem("drhome_live_store_v4", JSON.stringify(App.store));
       } catch (e) {}
     }
 
-    function resetToDefaults() {
-      AdminState.data = JSON.parse(JSON.stringify(BUILTIN_DATA));
-      saveDraft();
-      switchTab("products");
-      showToast("تم إظهار واستعادة جميع الأجهزة الافتراضية بنجاح ✓");
+    function formatIQD(val) {
+      return Number(val || 0).toLocaleString("en-US") + " دينار";
     }
 
-    /* ضغط وتحويل الصور المرفوعة من الجهاز مباشرة */
-    function uploadInlineImage(fileInput, prodIndex, isBanner = false, isCategory = false) {
-      const file = fileInput.files[0];
-      if (!file) return;
+    /* تفعيل أو إيقاف التعديل الحي المباشر داخل الموقع */
+    function toggleLiveEditMode() {
+      App.editMode = !App.editMode;
+      document.getElementById("toggle-edit-label").textContent = App.editMode
+        ? "إغلاق وضع التعديل (معاينة كزبون)"
+        : "تفعيل التعديل المباشر هنا (Live Edit)";
+      document.getElementById("add-prod-live-btn").classList.toggle("hidden", !App.editMode);
+      document.getElementById("save-live-btn").classList.toggle("hidden", !App.editMode);
+      document.getElementById("reset-live-btn").classList.toggle("hidden", !App.editMode);
+      document.getElementById("hero-edit-controls").classList.toggle("hidden", !App.editMode);
+      document.getElementById("edit-mode-hint").classList.toggle("hidden", !App.editMode);
 
+      if (App.editMode) {
+        document.getElementById("edit-hero-title").value = App.store.hero.titleAr;
+        document.getElementById("edit-hero-sub").value = App.store.hero.subtitleAr;
+        notify("تم تفعيل التعديل المباشر! عدّل أي جهاز بالأسفل مباشرة ✏️");
+      }
+      renderStore();
+    }
+
+    function updateHeroLive() {
+      App.store.hero.titleAr = document.getElementById("edit-hero-title").value;
+      App.store.hero.subtitleAr = document.getElementById("edit-hero-sub").value;
+      document.getElementById("hero-title-el").textContent = App.store.hero.titleAr;
+      document.getElementById("hero-sub-el").textContent = App.store.hero.subtitleAr;
+      saveLocal();
+    }
+
+    function uploadHeroImageLive(input) {
+      const file = input.files[0];
+      if (!file) return;
+      compressImageFile(file, 1200, (dataUrl) => {
+        App.store.hero.image = dataUrl;
+        document.getElementById("hero-img-el").src = dataUrl;
+        saveLocal();
+        notify("تم تغيير صورة البانر مباشرة ✓");
+      });
+    }
+
+    function uploadProductImageLive(input, index) {
+      const file = input.files[0];
+      if (!file) return;
+      compressImageFile(file, 800, (dataUrl) => {
+        App.store.products[index].image = dataUrl;
+        saveLocal();
+        renderStore();
+        notify("تم تغيير صورة الجهاز مباشرة ✓");
+      });
+    }
+
+    function compressImageFile(file, maxW, callback) {
       const reader = new FileReader();
-      reader.onload = function (event) {
+      reader.onload = (ev) => {
         const img = new Image();
-        img.onload = function () {
+        img.onload = () => {
           const canvas = document.createElement("canvas");
-          const MAX_W = isBanner ? 1200 : 800;
           let w = img.width;
           let h = img.height;
-          if (w > MAX_W) {
-            h = Math.round((h * MAX_W) / w);
-            w = MAX_W;
+          if (w > maxW) {
+            h = Math.round((h * maxW) / w);
+            w = maxW;
           }
           canvas.width = w;
           canvas.height = h;
-          const ctx = canvas.getContext("2d");
-          ctx.drawImage(img, 0, 0, w, h);
-          const dataUrl = canvas.toDataURL("image/jpeg", 0.82);
-
-          if (isBanner) {
-            AdminState.data.banners[prodIndex].image = dataUrl;
-          } else if (isCategory) {
-            AdminState.data.categories[prodIndex].image = dataUrl;
-          } else {
-            AdminState.data.products[prodIndex].image = dataUrl;
-          }
-
-          saveDraft();
-          renderCurrentTab();
-          showToast("تم تحديث الصورة بنجاح! اضغط (حفظ ونشر في الموقع) لاعتمادها ✓");
+          canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+          callback(canvas.toDataURL("image/jpeg", 0.82));
         };
-        img.src = event.target.result;
+        img.src = ev.target.result;
       };
       reader.readAsDataURL(file);
     }
 
-    function switchTab(tab) {
-      AdminState.activeTab = tab;
-      document.querySelectorAll(".sidebar-btn").forEach((b) => {
-        b.classList.remove("active");
-        b.classList.add("text-slate-300");
-      });
-      const btn = document.getElementById("tab-" + tab);
-      if (btn) {
-        btn.classList.add("active");
-        btn.classList.remove("text-slate-300");
+    function renderStore() {
+      // تحديث البانر
+      if (App.store.hero) {
+        document.getElementById("hero-title-el").textContent = App.store.hero.titleAr;
+        document.getElementById("hero-sub-el").textContent = App.store.hero.subtitleAr;
+        document.getElementById("hero-img-el").src = App.store.hero.image;
       }
 
-      const titles = {
-        products: "إدارة الأجهزة والأسعار والصور",
-        banners: "إدارة البانرات والعروض العلوية",
-        categories: "إدارة الأقسام الرئيسية",
-        settings: "إعدادات الواتساب والفروع والربط"
-      };
-      document.getElementById("current-tab-title").textContent = titles[tab] || "";
-      renderCurrentTab();
-    }
+      const grid = document.getElementById("products-grid");
+      const prods = App.store.products || [];
+      const q = App.search.trim().toLowerCase();
 
-    function renderCurrentTab() {
-      const container = document.getElementById("admin-content");
-      if (!AdminState.data || !Array.isArray(AdminState.data.products)) {
-        AdminState.data = JSON.parse(JSON.stringify(BUILTIN_DATA));
-      }
-
-      if (AdminState.activeTab === "products") container.innerHTML = renderProductsEditor();
-      else if (AdminState.activeTab === "banners") container.innerHTML = renderBannersEditor();
-      else if (AdminState.activeTab === "categories") container.innerHTML = renderCategoriesEditor();
-      else if (AdminState.activeTab === "settings") container.innerHTML = renderSettingsEditor();
-    }
-
-    /* ========================================================================
-       قسم 1: محرر الأجهزة والأسعار والصور المباشر (يفتح افتراضياً)
-       ======================================================================== */
-    function renderProductsEditor() {
-      const prods = AdminState.data.products || [];
-      const cats = AdminState.data.categories || [];
-      const brands = AdminState.data.brands || [];
-
-      const q = AdminState.searchQuery.trim().toLowerCase();
       const filtered = prods.filter((p) => {
-        const matchCat = AdminState.catFilter === "all" || p.category === AdminState.catFilter;
-        const matchQ =
+        const matchCat = App.activeCat === "all" || p.category === App.activeCat;
+        const matchSearch =
           !q ||
           (p.nameAr && p.nameAr.toLowerCase().includes(q)) ||
           (p.modelCode && p.modelCode.toLowerCase().includes(q));
-        return matchCat && matchQ;
+        return matchCat && matchSearch;
       });
 
-      return `
-        <!-- شريط الإحصائيات السريع -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5">
-          <div class="bg-white p-4 rounded-2xl border border-slate-200 flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-500">إجمالي الأجهزة</span>
-            <span class="text-2xl font-black text-slate-900">${prods.length}</span>
-          </div>
-          <div class="bg-white p-4 rounded-2xl border border-slate-200 flex items-center justify-between">
-            <span class="text-xs font-bold text-emerald-600">متوفر بالمخزون</span>
-            <span class="text-2xl font-black text-emerald-600">${prods.filter((x) => x.inStock).length}</span>
-          </div>
-          <div class="bg-white p-4 rounded-2xl border border-slate-200 flex items-center justify-between">
-            <span class="text-xs font-bold text-lgRed">عروض وتخفيضات 🔥</span>
-            <span class="text-2xl font-black text-lgRed">${prods.filter((x) => x.isOffer || x.oldPrice > x.price).length}</span>
-          </div>
-          <button onclick="addNewProductBlank()" class="bg-lgRed hover:bg-lgRedDark text-white p-4 rounded-2xl font-black text-sm flex items-center justify-center gap-2 shadow-sm transition">
-            <span>+ إضافة جهاز جديد فوراً</span>
-          </button>
-        </div>
+      grid.innerHTML = filtered
+        .map((p) => {
+          const idx = prods.indexOf(p);
+          const hasDiscount = p.oldPrice && p.oldPrice > p.price;
+          const diff = hasDiscount ? p.oldPrice - p.price : 0;
 
-        <!-- شريط البحث والفلترة -->
-        <div class="bg-white p-4 rounded-2xl border border-slate-200 flex flex-col sm:flex-row gap-3">
-          <input
-            type="search"
-            value="${AdminState.searchQuery}"
-            oninput="AdminState.searchQuery = this.value; renderCurrentTab();"
-            placeholder="ابحث باسم الجهاز أو رقم الموديل..."
-            class="flex-1 px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-sm focus:outline-none focus:border-lgRed"
-          />
-          <select
-            onchange="AdminState.catFilter = this.value; renderCurrentTab();"
-            class="px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-300 text-sm font-bold"
-          >
-            <option value="all" ${AdminState.catFilter === "all" ? "selected" : ""}>جميع الأقسام (${prods.length})</option>
-            ${cats
-              .map(
-                (c) =>
-                  `<option value="${c.id}" ${AdminState.catFilter === c.id ? "selected" : ""}>${c.nameAr}</option>`
-              )
-              .join("")}
-          </select>
-        </div>
+          return `
+            <article class="store-card bg-white rounded-2xl border ${
+              App.editMode ? "border-2 border-brandRed" : "border-slate-200"
+            } overflow-hidden flex flex-col justify-between relative">
+              <div>
+                <!-- صورة الجهاز -->
+                <div class="relative h-40 sm:h-52 bg-slate-50 p-3 flex items-center justify-center border-b border-slate-100">
+                  <img src="${p.image}" alt="" class="max-h-full max-w-full object-contain rounded-lg" />
+                  ${
+                    hasDiscount
+                      ? `<span class="absolute top-2.5 start-2.5 px-2.5 py-1 rounded-lg bg-brandRed text-white text-[10px] sm:text-xs font-black shadow-xs">
+                          ${Number(diff).toLocaleString("en-US")} د.ع خصم
+                        </span>`
+                      : ""
+                  }
+                </div>
 
-        <!-- بطاقات التعديل المباشر لكل جهاز -->
-        <div class="space-y-4">
-          ${filtered
-            .map((p) => {
-              const i = prods.indexOf(p);
-              return `
-                <div class="bg-white rounded-3xl border-2 border-slate-200 hover:border-slate-300 p-5 shadow-xs space-y-4 transition">
-                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+                <!-- بيانات الجهاز للزبون -->
+                <div class="p-3 sm:p-4 space-y-2">
+                  <div class="flex items-center justify-between text-[10px] sm:text-xs font-bold text-slate-500">
+                    <span class="text-brandRed uppercase">${p.brand || "LG"}</span>
+                    <span class="font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-700">${p.modelCode || ""}</span>
+                  </div>
 
-                    <!-- 1. صورة الجهاز + زر رفع صورة مباشر -->
-                    <div class="lg:col-span-3 flex flex-col items-center bg-slate-50 p-4 rounded-2xl border border-slate-200 space-y-3">
-                      <img src="${p.image}" alt="" class="w-36 h-36 object-contain bg-white rounded-xl border border-slate-200 p-2" />
-                      <label class="w-full py-2.5 px-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs text-center cursor-pointer transition block">
-                        📤 تغيير الصورة من جهازي
-                        <input type="file" accept="image/*" class="hidden" onchange="uploadInlineImage(this, ${i}, false, false)" />
-                      </label>
-                      <input
-                        type="text"
-                        value="${p.image}"
-                        placeholder="أو الصق رابط الصورة هنا..."
-                        onchange="AdminState.data.products[${i}].image = this.value; saveDraft(); renderCurrentTab();"
-                        class="w-full px-2.5 py-1.5 rounded-lg bg-white border border-slate-300 text-[11px] font-mono"
-                        dir="ltr"
-                      />
-                    </div>
+                  <h3 class="text-xs sm:text-sm font-bold text-darkSlate line-clamp-2 leading-relaxed min-h-[2.4rem]">
+                    ${p.nameAr}
+                  </h3>
 
-                    <!-- 2. اسم الجهاز، الموديل، القسم، والماركة -->
-                    <div class="lg:col-span-5 space-y-3">
-                      <div>
-                        <label class="block text-xs font-bold text-slate-600 mb-1">اسم ومواصفات الجهاز (عربي)</label>
-                        <textarea
-                          rows="2"
-                          oninput="AdminState.data.products[${i}].nameAr = this.value; saveDraft();"
-                          class="w-full px-3.5 py-2 rounded-xl bg-slate-50 border border-slate-300 font-bold text-sm focus:bg-white focus:border-lgRed focus:outline-none"
-                        >${p.nameAr || ""}</textarea>
-                      </div>
-
-                      <div class="grid grid-cols-2 gap-2.5">
-                        <div>
-                          <label class="block text-xs font-bold text-slate-600 mb-1">رقم الموديل (Model)</label>
-                          <input
-                            type="text"
-                            value="${p.modelCode || ""}"
-                            oninput="AdminState.data.products[${i}].modelCode = this.value; saveDraft();"
-                            class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 font-mono text-xs font-bold"
-                            dir="ltr"
-                          />
-                        </div>
-                        <div>
-                          <label class="block text-xs font-bold text-slate-600 mb-1">القسم</label>
-                          <select
-                            onchange="AdminState.data.products[${i}].category = this.value; saveDraft();"
-                            class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 text-xs font-bold"
-                          >
-                            ${cats
-                              .map(
-                                (c) =>
-                                  `<option value="${c.id}" ${p.category === c.id ? "selected" : ""}>${c.nameAr}</option>`
-                              )
-                              .join("")}
-                          </select>
-                        </div>
-                      </div>
-
-                      <div class="grid grid-cols-2 gap-2.5">
-                        <div>
-                          <label class="block text-xs font-bold text-slate-600 mb-1">الماركة</label>
-                          <select
-                            onchange="AdminState.data.products[${i}].brand = this.value; saveDraft();"
-                            class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 text-xs font-bold"
-                          >
-                            ${brands
-                              .map(
-                                (b) =>
-                                  `<option value="${b.id}" ${p.brand === b.id ? "selected" : ""}>${b.nameAr}</option>`
-                              )
-                              .join("")}
-                          </select>
-                        </div>
-                        <div>
-                          <label class="block text-xs font-bold text-slate-600 mb-1">الحجم / السعة</label>
-                          <input
-                            type="text"
-                            value="${p.specs?.capacityOrSize || ""}"
-                            oninput="if(!AdminState.data.products[${i}].specs) AdminState.data.products[${i}].specs={}; AdminState.data.products[${i}].specs.capacityOrSize = this.value; saveDraft();"
-                            class="w-full px-3 py-2 rounded-xl bg-slate-50 border border-slate-300 text-xs font-bold"
-                          />
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- 3. الأسعار بالدينار العراقي والتوفر والحذف -->
-                    <div class="lg:col-span-4 bg-rose-50/50 p-4 rounded-2xl border border-rose-200/80 space-y-3">
-                      <div>
-                        <label class="block text-xs font-black text-lgRed mb-1">السعر الحالي بالدينار العراقي</label>
-                        <input
-                          type="number"
-                          value="${p.price || 0}"
-                          oninput="AdminState.data.products[${i}].price = Number(this.value); saveDraft();"
-                          class="w-full px-3.5 py-2.5 rounded-xl bg-white border-2 border-lgRed/40 focus:border-lgRed font-black text-lg text-slate-900 focus:outline-none"
-                        />
-                      </div>
-
-                      <div>
-                        <label class="block text-xs font-bold text-slate-600 mb-1">السعر السابق قبل الخصم (ضع 0 إذا بدون خصم)</label>
-                        <input
-                          type="number"
-                          value="${p.oldPrice || 0}"
-                          oninput="AdminState.data.products[${i}].oldPrice = Number(this.value); saveDraft();"
-                          class="w-full px-3.5 py-2 rounded-xl bg-white border border-slate-300 font-bold text-sm text-slate-700"
-                        />
-                      </div>
-
-                      <div class="flex flex-wrap items-center justify-between gap-2 pt-2">
-                        <button
-                          type="button"
-                          onclick="AdminState.data.products[${i}].inStock = !AdminState.data.products[${i}].inStock; saveDraft(); renderCurrentTab();"
-                          class="px-3.5 py-2 rounded-xl text-xs font-black transition ${
-                            p.inStock
-                              ? "bg-emerald-600 text-white"
-                              : "bg-slate-300 text-slate-700"
-                          }"
-                        >
-                          ${p.inStock ? "✓ متوفر في المخزون" : "✕ غير متوفر"}
-                        </button>
-
-                        <button
-                          type="button"
-                          onclick="deleteProductItem(${i})"
-                          class="px-3.5 py-2 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold transition"
-                        >
-                          🗑 حذف الجهاز
-                        </button>
-                      </div>
-                    </div>
-
+                  <div>
+                    ${
+                      p.inStock
+                        ? `<span class="inline-flex items-center gap-1 text-emerald-700 font-bold bg-emerald-50 px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs">● متوفر في المخزون</span>`
+                        : `<span class="inline-flex items-center gap-1 text-rose-700 font-bold bg-rose-50 px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs">● غير متوفر</span>`
+                    }
                   </div>
                 </div>
-              `;
-            })
-            .join("")}
-        </div>
-      `;
+              </div>
+
+              <!-- السعر وأزرار الشراء -->
+              <div class="p-3 sm:p-4 pt-0 space-y-2.5">
+                <div class="pt-2 border-t border-slate-100">
+                  <div class="text-base sm:text-lg font-black text-brandRed">${formatIQD(p.price)}</div>
+                  ${
+                    hasDiscount
+                      ? `<div class="text-[11px] text-slate-400 line-through">${formatIQD(p.oldPrice)}</div>`
+                      : `<div class="h-4"></div>`
+                  }
+                </div>
+
+                ${
+                  !App.editMode
+                    ? `
+                  <!-- أزرار الزبون العادية -->
+                  <div class="grid grid-cols-2 gap-1.5 sm:gap-2">
+                    <button onclick="addToCart(${idx})" ${!p.inStock ? "disabled" : ""} class="py-2.5 rounded-xl bg-darkSlate hover:bg-slate-800 text-white font-bold text-xs transition">
+                      أضف للسلة
+                    </button>
+                    <button onclick="orderWhatsApp(${idx})" class="py-2.5 rounded-xl bg-brandRed hover:bg-brandRedHover text-white font-bold text-xs transition">
+                      واتساب
+                    </button>
+                  </div>
+                `
+                    : `
+                  <!-- لوحة التعديل الحي المباشر داخل البطاقة نفسها! -->
+                  <div class="p-3 rounded-2xl bg-rose-50 border border-rose-200 space-y-2 text-xs">
+                    <div class="font-black text-brandRed text-[11px]">✏️ تعديل مباشر لهذا الجهاز:</div>
+
+                    <label class="block w-full py-2 px-2 rounded-xl bg-slate-900 text-white font-bold text-center cursor-pointer">
+                      📤 تغيير الصورة من جهازي
+                      <input type="file" accept="image/*" class="hidden" onchange="uploadProductImageLive(this, ${idx})" />
+                    </label>
+
+                    <div>
+                      <span class="text-[10px] font-bold text-slate-600">الاسم والمواصفات:</span>
+                      <textarea rows="2" oninput="App.store.products[${idx}].nameAr = this.value; saveLocal();" class="w-full p-2 rounded-lg bg-white border border-slate-300 font-bold text-xs">${p.nameAr}</textarea>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-1.5">
+                      <div>
+                        <span class="text-[10px] font-bold text-brandRed">السعر الحالي (د.ع):</span>
+                        <input type="number" value="${p.price}" onchange="App.store.products[${idx}].price = Number(this.value); saveLocal(); renderStore();" class="w-full p-1.5 rounded-lg bg-white border border-brandRed font-black text-xs" />
+                      </div>
+                      <div>
+                        <span class="text-[10px] font-bold text-slate-500">السعر السابق:</span>
+                        <input type="number" value="${p.oldPrice \vert{}\vert{} 0}" onchange="App.store.products[${idx}].oldPrice = Number(this.value); saveLocal(); renderStore();" class="w-full p-1.5 rounded-lg bg-white border border-slate-300 font-bold text-xs" />
+                      </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-1.5">
+                      <div>
+                        <span class="text-[10px] font-bold text-slate-500">رقم الموديل:</span>
+                        <input type="text" value="${p.modelCode \vert{}\vert{} ""}" onchange="App.store.products[${idx}].modelCode = this.value; saveLocal(); renderStore();" class="w-full p-1.5 rounded-lg bg-white border border-slate-300 font-mono text-xs" dir="ltr" />
+                      </div>
+                      <div>
+                        <span class="text-[10px] font-bold text-slate-500">القسم:</span>
+                        <select onchange="App.store.products[${idx}].category = this.value; saveLocal(); renderStore();" class="w-full p-1.5 rounded-lg bg-white border border-slate-300 font-bold text-[11px]">
+                          <option value="refrigerators" ${p.category === "refrigerators" ? "selected" : ""}>الثلاجات</option>
+                          <option value="tvs" ${p.category === "tvs" ? "selected" : ""}>التلفزيونات</option>
+                          <option value="washers" ${p.category === "washers" ? "selected" : ""}>الغسالات</option>
+                          <option value="ac" ${p.category === "ac" ? "selected" : ""}>السبالت</option>
+                          <option value="kitchen" ${p.category === "kitchen" ? "selected" : ""}>المطبخ</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-1">
+                      <button type="button" onclick="App.store.products[${idx}].inStock = !App.store.products[${idx}].inStock; saveLocal(); renderStore();" class="px-2.5 py-1 rounded-lg font-bold text-[11px] ${p.inStock ? "bg-emerald-600 text-white" : "bg-slate-300 text-slate-800"}">
+                        ${p.inStock ? "✓ متوفر" : "✕ غير متوفر"}
+                      </button>
+                      <button type="button" onclick="deleteProductLive(${idx})" class="px-2.5 py-1 rounded-lg bg-rose-600 text-white font-bold text-[11px]">
+                        🗑 حذف
+                      </button>
+                    </div>
+                  </div>
+                `
+                }
+              </div>
+            </article>
+          `;
+        })
+        .join("");
     }
 
-    function addNewProductBlank() {
-      const newProd = {
+    function addNewProductLive() {
+      App.store.products.unshift({
         id: "prod-" + Date.now(),
-        modelCode: "NEW-MODEL",
-        brand: "lg",
-        category: "refrigerators",
-        subcategory: "instaview",
+        modelCode: "LG-NEW",
+        brand: "LG",
+        category: App.activeCat === "all" ? "refrigerators" : App.activeCat,
         price: 1500000,
         oldPrice: 1650000,
         inStock: true,
-        isOffer: true,
-        warrantyYears: 10,
         image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=900&auto=format&fit=crop",
-        nameAr: "جهاز جديد — اكتب اسم ومواصفات الجهاز هنا",
-        nameEn: "New Appliance",
-        shortDescAr: "وصف الجهاز الجديد",
-        shortDescEn: "",
-        specs: {
-          capacityOrSize: "قياسي",
-          color: "سلفر / أسود",
-          motorOrTech: "Inverter",
-          origin: "ضمان رسمي"
-        }
-      };
-      AdminState.data.products.unshift(newProd);
-      saveDraft();
-      switchTab("products");
-      showToast("تمت إضافة بطاقة جهاز جديد في أول القائمة! عدّل بياناتها الآن ✓");
+        nameAr: "جهاز جديد — عدّل الاسم والسعر والصورة من هنا مباشرة"
+      });
+      saveLocal();
+      renderStore();
+      notify("تمت إضافة جهاز جديد في بداية القائمة! ✓");
     }
 
-    function deleteProductItem(index) {
-      if (!confirm("هل تريد بالتأكيد حذف هذا الجهاز من القائمة؟")) return;
-      AdminState.data.products.splice(index, 1);
-      saveDraft();
-      renderCurrentTab();
-      showToast("تم حذف الجهاز ✓");
+    function deleteProductLive(index) {
+      if (!confirm("هل تريد حذف هذا الجهاز؟")) return;
+      App.store.products.splice(index, 1);
+      saveLocal();
+      renderStore();
+      notify("تم حذف الجهاز ✓");
     }
 
-    /* ========================================================================
-       قسم 2: محرر البانرات العلوية
-       ======================================================================== */
-    function renderBannersEditor() {
-      const banners = AdminState.data.banners || [];
-      return `
-        <div class="space-y-6">
-          ${banners
-            .map(
-              (b, i) => `
-            <div class="bg-white rounded-3xl border border-slate-200 p-6 space-y-4">
-              <h3 class="font-black text-base text-lgRed border-b border-slate-100 pb-3">البانر الإعلاني الرئيسي رقم #${i + 1}</h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
-                <div>
-                  <label class="block font-bold mb-1">الشارة الصغيرة (عربي)</label>
-                  <input type="text" value="${b.badgeAr \vert{}\vert{} ""}" oninput="AdminState.data.banners[${i}].badgeAr = this.value; saveDraft();" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300" />
-                </div>
-                <div>
-                  <label class="block font-bold mb-1">العنوان الكبير للبانر (عربي)</label>
-                  <input type="text" value="${b.titleAr \vert{}\vert{} ""}" oninput="AdminState.data.banners[${i}].titleAr = this.value; saveDraft();" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-bold" />
-                </div>
-                <div class="md:col-span-2">
-                  <label class="block font-bold mb-1">الوصف تحت العنوان (عربي)</label>
-                  <textarea rows="2" oninput="AdminState.data.banners[${i}].subtitleAr = this.value; saveDraft();" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300">${b.subtitleAr || ""}</textarea>
-                </div>
-                <div class="md:col-span-2 p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center gap-4">
-                  <img src="${b.image}" class="w-40 h-24 object-cover rounded-xl border border-slate-300" />
-                  <div class="flex-1 w-full space-y-2">
-                    <input type="text" value="${b.image}" onchange="AdminState.data.banners[${i}].image = this.value; saveDraft(); renderCurrentTab();" class="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 text-xs font-mono" dir="ltr" />
-                    <label class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 text-white font-bold text-xs cursor-pointer">
-                      <span>📤 رفع صورة بانر من جهازي</span>
-                      <input type="file" accept="image/*" class="hidden" onchange="uploadInlineImage(this, ${i}, true, false)" />
-                    </label>
-                  </div>
-                </div>
+    function resetAllProducts() {
+      if (!confirm("هل تريد استعادة قائمة الأجهزة الافتراضية؟")) return;
+      App.store = JSON.parse(JSON.stringify(INITIAL_STORE));
+      saveLocal();
+      renderStore();
+      notify("تمت استعادة كافة الأجهزة الافتراضية ✓");
+    }
+
+    function setCategory(cat) {
+      App.activeCat = cat;
+      document.querySelectorAll(".cat-pill").forEach((btn) => {
+        btn.className = "cat-pill px-4 py-1.5 rounded-xl bg-white border border-slate-200 text-slate-700 whitespace-nowrap transition";
+      });
+      const activeBtn = document.getElementById("cat-btn-" + cat);
+      if (activeBtn) {
+        activeBtn.className = "cat-pill px-4 py-1.5 rounded-xl bg-brandRed text-white whitespace-nowrap transition";
+      }
+      renderStore();
+    }
+
+    function filterProducts(q) {
+      App.search = q;
+      renderStore();
+    }
+
+    /* السلة والواتساب */
+    function addToCart(index) {
+      const p = App.store.products[index];
+      App.cart.push(p);
+      document.getElementById("cart-count").textContent = App.cart.length;
+      openCart();
+    }
+
+    function openCart() {
+      const box = document.getElementById("cart-items");
+      let total = 0;
+      if (App.cart.length === 0) {
+        box.innerHTML = `<p class="text-center text-slate-400 py-8 text-xs">السلة فارغة حالياً</p>`;
+      } else {
+        box.innerHTML = App.cart
+          .map((p, i) => {
+            total += Number(p.price || 0);
+            return `
+              <div class="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-slate-50 border text-xs">
+                <span class="font-bold truncate flex-1">${p.nameAr}</span>
+                <span class="text-brandRed font-black whitespace-nowrap">${formatIQD(p.price)}</span>
+                <button onclick="App.cart.splice(${i},1); document.getElementById('cart-count').textContent=App.cart.length; openCart();" class="text-rose-600 font-bold px-1">✕</button>
               </div>
-            </div>
-          `
-            )
-            .join("")}
-        </div>
-      `;
+            `;
+          })
+          .join("");
+      }
+      document.getElementById("cart-total-price").textContent = formatIQD(total);
+      document.getElementById("cart-modal").classList.remove("hidden");
     }
 
-    /* ========================================================================
-       قسم 3: محرر الأقسام الرئيسية
-       ======================================================================== */
-    function renderCategoriesEditor() {
-      const cats = AdminState.data.categories || [];
-      return `
-        <div class="bg-white rounded-3xl border border-slate-200 p-6 space-y-5">
-          <h3 class="font-black text-base">الأقسام الدائرية في الصفحة الرئيسية</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            ${cats
-              .map(
-                (c, i) => `
-              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center gap-4">
-                <img src="${c.image}" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-xs flex-shrink-0" />
-                <div class="flex-1 space-y-2">
-                  <input type="text" value="${c.nameAr}" oninput="AdminState.data.categories[${i}].nameAr = this.value; saveDraft();" class="w-full px-3 py-1.5 rounded-lg bg-white border border-slate-300 font-bold text-sm" />
-                  <label class="inline-block px-3 py-1.5 rounded-lg bg-slate-900 text-white font-bold text-xs cursor-pointer">
-                    📤 تغيير صورة القسم
-                    <input type="file" accept="image/*" class="hidden" onchange="uploadInlineImage(this, ${i}, false, true)" />
-                  </label>
-                </div>
-              </div>
-            `
-              )
-              .join("")}
-          </div>
-        </div>
-      `;
+    function orderWhatsApp(index) {
+      const p = App.store.products[index];
+      const msg = `مرحباً DR HOME، أرغب بطلب الجهاز:\n- ${p.nameAr}\n- الموديل: ${p.modelCode}\n- السعر: ${formatIQD(p.price)}`;
+      window.open(`https://wa.me/${App.store.whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
     }
 
-    /* ========================================================================
-       قسم 4: إعدادات الواتساب والفروع والربط
-       ======================================================================== */
-    function renderSettingsEditor() {
-      const info = AdminState.data.storeInfo || {};
-      const branches = AdminState.data.branches || [];
-      return `
-        <div class="bg-white rounded-3xl border border-slate-200 p-6 space-y-5 text-xs sm:text-sm">
-          <h3 class="font-black text-base text-lgRed">بيانات المتجر ورقم الواتساب للطلبات</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block font-bold mb-1">اسم المتجر</label>
-              <input type="text" value="${info.name || ""}" oninput="AdminState.data.storeInfo.name = this.value; saveDraft();" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-bold" />
-            </div>
-            <div>
-              <label class="block font-bold mb-1">رقم الواتساب لاستلام الطلبات (بدون + مثل 9647700000000)</label>
-              <input type="text" value="${info.whatsappNumber || ""}" oninput="AdminState.data.storeInfo.whatsappNumber = this.value; saveDraft();" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono font-bold" dir="ltr" />
-            </div>
-            <div>
-              <label class="block font-bold mb-1">رقم الهاتف المعروض للزبائن</label>
-              <input type="text" value="${info.phone || ""}" oninput="AdminState.data.storeInfo.phone = this.value; saveDraft();" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono" dir="ltr" />
-            </div>
-            <div>
-              <label class="block font-bold mb-1">العنوان الرئيسي</label>
-              <input type="text" value="${info.addressAr || ""}" oninput="AdminState.data.storeInfo.addressAr = this.value; saveDraft();" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300" />
-            </div>
-          </div>
-        </div>
-
-        <div class="bg-white rounded-3xl border border-slate-200 p-6 space-y-4 text-xs sm:text-sm">
-          <h3 class="font-black text-base">إعداد النشر التلقائي المباشر لـ GitHub (اختياري)</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label class="block font-bold mb-1">اسم المستودع (Repository)</label>
-              <input type="text" value="${AdminState.repo}" oninput="AdminState.repo = this.value.trim(); localStorage.setItem('drhome_gh_repo', AdminState.repo);" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono" dir="ltr" />
-            </div>
-            <div>
-              <label class="block font-bold mb-1">مفتاح GitHub Token (اختياري للنشر بضغطة واحدة)</label>
-              <input type="password" value="${AdminState.token}" placeholder="ghp_xxxxxxxxxxxx" oninput="AdminState.token = this.value.trim(); localStorage.setItem('drhome_gh_token', AdminState.token);" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono" dir="ltr" />
-            </div>
-          </div>
-        </div>
-      `;
+    function sendCartWhatsApp() {
+      if (App.cart.length === 0) return;
+      const name = document.getElementById("order-name").value || "زبون DR HOME";
+      const addr = document.getElementById("order-address").value || "بغداد";
+      let total = 0;
+      const lines = App.cart.map((p, i) => {
+        total += Number(p.price || 0);
+        return `${i + 1}. ${p.nameAr} [${p.modelCode}] = ${formatIQD(p.price)}`;
+      });
+      const msg = `طلب جديد من متجر DR HOME:\nالاسم: ${name}\nالعنوان: ${addr}\n\nالأجهزة:\n${lines.join("\n")}\n\nالمجموع: ${formatIQD(total)}`;
+      window.open(`https://wa.me/${App.store.whatsappNumber}?text=${encodeURIComponent(msg)}`, "_blank");
     }
 
     /* حفظ ونشر التعديلات */
-    async function publishChanges() {
-      saveDraft();
-      const jsonStr = JSON.stringify(AdminState.data, null, 2);
-
-      try {
-        await navigator.clipboard.writeText(jsonStr);
-      } catch (e) {}
-
-      if (AdminState.token && AdminState.token.startsWith("ghp_")) {
-        const topBtn = document.getElementById("top-save-btn");
-        const orig = topBtn.innerHTML;
-        topBtn.innerHTML = "⏳ جاري النشر...";
-        try {
-          const apiUrl = `https://api.github.com/repos/${AdminState.owner}/${AdminState.repo}/contents/content.json`;
-          let sha = null;
-          const getRes = await fetch(apiUrl + `?ref=main&t=${Date.now()}`, {
-            headers: { Authorization: `Bearer ${AdminState.token}` }
-          });
-          if (getRes.ok) {
-            const getObj = await getRes.json();
-            sha = getObj.sha;
-          }
-
-          const bytes = new TextEncoder().encode(jsonStr);
-          let bin = "";
-          for (let i = 0; i < bytes.byteLength; i++) bin += String.fromCharCode(bytes[i]);
-          const b64 = btoa(bin);
-
-          const body = { message: "Update store via DR HOME Admin", content: b64, branch: "main" };
-          if (sha) body.sha = sha;
-
-          const putRes = await fetch(apiUrl, {
-            method: "PUT",
-            headers: {
-              Authorization: `Bearer ${AdminState.token}`,
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify(body)
-          });
-
-          if (putRes.ok) {
-            topBtn.innerHTML = orig;
-            showToast("تم نشر التعديلات في الموقع مباشرة بنجاح! 🚀");
-            return;
-          }
-        } catch (err) {}
-        topBtn.innerHTML = orig;
-      }
-
-      document.getElementById("direct-github-edit-link").href =
-        `https://github.com/${AdminState.owner}/${AdminState.repo}/edit/main/content.json`;
+    function openPublishModal() {
+      saveLocal();
+      const savedToken = localStorage.getItem("drhome_gh_token") || "";
+      document.getElementById("gh-token-live").value = savedToken;
+      copyUpdatedJson();
       document.getElementById("publish-modal").classList.remove("hidden");
     }
 
-    function copyJsonAgain() {
-      const jsonStr = JSON.stringify(AdminState.data, null, 2);
-      navigator.clipboard.writeText(jsonStr);
-      showToast("تم نسخ الكود! الصقه في صفحة GitHub واضغط Commit changes");
+    function copyUpdatedJson() {
+      const jsonStr = JSON.stringify(App.store, null, 2);
+      try {
+        navigator.clipboard.writeText(jsonStr);
+      } catch (e) {}
     }
 
-    function downloadJsonFile() {
-      const jsonStr = JSON.stringify(AdminState.data, null, 2);
-      const blob = new Blob([jsonStr], { type: "application/json" });
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      a.download = "content.json";
-      a.click();
-      showToast("تم تنزيل ملف content.json بنجاح ✓");
+    async function pushLiveToGitHub() {
+      const token = document.getElementById("gh-token-live").value.trim();
+      if (!token) {
+        notify("أدخل مفتاح الـ Token أولاً أو استخدم الزر الأحمر بالأسفل");
+        return;
+      }
+      localStorage.setItem("drhome_gh_token", token);
+      const btn = document.getElementById("push-gh-btn");
+      btn.textContent = "⏳ جاري النشر المباشر...";
+
+      try {
+        const url = "https://api.github.com/repos/fofoea67-dev/drhome/contents/content.json";
+        let sha = null;
+        const getRes = await fetch(url + "?ref=main&t=" + Date.now(), {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        if (getRes.ok) {
+          const obj = await getRes.json();
+          sha = obj.sha;
+        }
+
+        const jsonStr = JSON.stringify(App.store, null, 2);
+        const bytes = new TextEncoder().encode(jsonStr);
+        let bin = "";
+        for (let i = 0; i < bytes.byteLength; i++) bin += String.fromCharCode(bytes[i]);
+
+        const body = { message: "Live update from DR HOME on-site editor", content: btoa(bin), branch: "main" };
+        if (sha) body.sha = sha;
+
+        const putRes = await fetch(url, {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(body)
+        });
+
+        if (putRes.ok) {
+          document.getElementById("publish-modal").classList.add("hidden");
+          notify("تم نشر التعديلات في الموقع مباشرة بنجاح! 🚀");
+        } else {
+          notify("تأكد من صلاحية الـ Token أو استخدم زر اللصق المباشر");
+        }
+      } catch (e) {
+        notify("حدث خطأ في الاتصال، استخدم زر اللصق المباشر");
+      } finally {
+        btn.textContent = "🚀 انشر في الموقع مباشرة الآن";
+      }
     }
 
-    /* تشغيل فوري عند فتح الصفحة */
-    renderCurrentTab();
+    /* تشغيل فوري عند فتح الموقع + جلب البيانات الحية إن وجدت */
+    renderStore();
 
-    /* جلب أحدث البيانات من content.json إن كانت صالحة وتحتوي على منتجات */
-    (async function syncFromLiveIfValid() {
-      if (!localStorage.getItem("drhome_v3_data")) {
+    (async function loadLiveContentJson() {
+      if (!localStorage.getItem("drhome_live_store_v4")) {
         try {
           const res = await fetch("./content.json?t=" + Date.now(), { cache: "no-store" });
           if (res.ok) {
-            const liveJson = await res.json();
-            if (liveJson && Array.isArray(liveJson.products) && liveJson.products.length > 0) {
-              AdminState.data = liveJson;
-              saveDraft();
-              renderCurrentTab();
+            const data = await res.json();
+            if (data && Array.isArray(data.products) && data.products.length > 0) {
+              App.store.products = data.products;
+              if (data.hero) App.store.hero = data.hero;
+              saveLocal();
+              renderStore();
             }
           }
         } catch (e) {}
