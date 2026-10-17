@@ -1,6 +1,7 @@
 {
   "storeInfo": {
     "name": "DR HOME",
+    "logo": "images/DR HOME home applinces store.png",
     "whatsappNumber": "9647860577861",
     "phone": "+9647860577861",
     "email": "info@drhome.online",
@@ -34,8 +35,7 @@
       "titleAr": "شاشة",
       "titleEn": "tv",
       "subtitleAr": "dddddddddddd",
-      "subtitleEn": "dddddddddd",
-      "image": "images/بوست إعلاني لشاشة QNED86A6A.png"
+      "subtitleEn": "dddddddddd"
     }
   ],
   "brands": [
