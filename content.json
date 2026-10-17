@@ -2,8 +2,8 @@
   "storeInfo": {
     "name": "DR HOME",
     "logo": "",
-    "whatsappNumber": "9647700000000",
-    "phone": "+964 770 000 0000",
+    "whatsappNumber": "9647860577861",
+    "phone": "+9647860577861",
     "email": "info@drhome.online",
     "addressAr": "بغداد — صالات عرض DR HOME للأجهزة المنزلية والإلكترونيات",
     "addressEn": "Baghdad — DR HOME Home Appliances & Electronics Showrooms",
@@ -34,6 +34,7 @@
   ],
   "brands": [
     { "id": "lg", "nameAr": "إل جي (LG)", "nameEn": "LG Electronics" },
+    { "id": "lg", "nameAr": "توشيبا (LG)", "nameEn": "toshiba Electronics" },
     { "id": "whirlpool", "nameAr": "ويرلبول (Whirlpool)", "nameEn": "Whirlpool" },
     { "id": "carrier", "nameAr": "كاريير (Carrier)", "nameEn": "Carrier" },
     { "id": "kitchenaid", "nameAr": "كيتشن إيد (KitchenAid)", "nameEn": "KitchenAid" }
