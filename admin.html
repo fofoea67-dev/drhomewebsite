@@ -3,18 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>DR HOME | لوحة التحكم الإدارية (Admin Dashboard)</title>
+  <title>DR HOME | لوحة التحكم المباشرة</title>
   <meta name="theme-color" content="#A50034" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="DR HOME Admin" />
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -48,85 +46,67 @@
 </head>
 <body class="bg-surfaceLight text-slate-900 min-h-screen flex flex-col">
 
-  <!-- Top Notification Toast -->
-  <div id="toast-box" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 hidden px-6 py-3.5 rounded-2xl shadow-2xl font-bold text-sm text-white transition-all"></div>
+  <!-- Notification Toast -->
+  <div id="toast-box" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 hidden px-6 py-3.5 rounded-2xl shadow-2xl font-bold text-sm text-white transition-all max-w-md text-center"></div>
 
   <!-- ========================================================================
-       1. LOGIN SCREEN (GitHub Direct Connection)
+       1. DIRECT PASSWORD LOGIN SCREEN (Password: drhomeeh2026)
        ======================================================================== -->
   <div id="login-screen" class="min-h-screen flex items-center justify-center p-4 bg-slate-950">
-    <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 text-white">
-      <div class="flex items-center gap-3">
-        <div class="w-12 h-12 rounded-2xl bg-lgRed flex items-center justify-center font-black text-xl shadow-lg shadow-lgRed/30">
-          DR
-        </div>
-        <div>
-          <h1 class="text-xl font-black">لوحة تحكم DR HOME</h1>
-          <p class="text-xs text-slate-400">Admin Dashboard • اتصال مباشر مع GitHub</p>
-        </div>
+    <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 text-white text-center">
+      <div class="w-16 h-16 rounded-2xl bg-lgRed mx-auto flex items-center justify-center font-black text-2xl shadow-lg shadow-lgRed/30">
+        DR
       </div>
 
-      <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+      <div class="space-y-1">
+        <h1 class="text-2xl font-black">لوحة تحكم DR HOME</h1>
+        <p class="text-xs text-slate-400">أدخل كلمة السر للدخول المباشر إلى لوحة الإدارة</p>
+      </div>
+
+      <form onsubmit="checkDirectPassword(event)" class="space-y-4 text-right">
         <div>
-          <label class="block text-xs font-bold text-slate-300 mb-1.5">اسم المستخدم في GitHub (Owner)</label>
-          <input id="gh-owner" type="text" required value="fofoea67-dev" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white font-mono text-sm focus:outline-none focus:border-lgRed" dir="ltr" />
+          <label class="block text-xs font-bold text-slate-300 mb-2">كلمة السر الخاصة بك</label>
+          <input
+            id="admin-pass-input"
+            type="password"
+            required
+            autofocus
+            oninput="autoCheckPassword(this.value)"
+            placeholder="أدخل كلمة السر هنا..."
+            class="w-full px-4 py-3.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-center font-mono text-lg focus:outline-none focus:border-lgRed"
+            dir="ltr"
+          />
         </div>
 
-        <div>
-          <label class="block text-xs font-bold text-slate-300 mb-1.5">اسم المستودع (Repository)</label>
-          <input id="gh-repo" type="text" required value="drhome" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white font-mono text-sm focus:outline-none focus:border-lgRed" dir="ltr" />
-        </div>
+        <p id="pass-error" class="hidden text-xs font-bold text-rose-400 text-center">
+          كلمة السر غير صحيحة، حاول مرة أخرى
+        </p>
 
-        <div>
-          <label class="block text-xs font-bold text-slate-300 mb-1.5">الفرع (Branch)</label>
-          <input id="gh-branch" type="text" required value="main" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white font-mono text-sm focus:outline-none focus:border-lgRed" dir="ltr" />
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-slate-300 mb-1.5">مفتاح الدخول السري (GitHub Personal Access Token)</label>
-          <input id="gh-token" type="password" required placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white font-mono text-sm focus:outline-none focus:border-lgRed" dir="ltr" />
-        </div>
-
-        <label class="flex items-center gap-2 text-xs text-slate-300 cursor-pointer pt-1">
-          <input id="gh-remember" type="checkbox" checked class="w-4 h-4 accent-lgRed" />
-          <span>حفظ بيانات الدخول على هذا الجهاز لفتح التطبيق فوراً</span>
-        </label>
-
-        <button id="login-submit-btn" type="submit" class="w-full py-3.5 rounded-xl bg-lgRed hover:bg-lgRedDark text-white font-black text-sm shadow-lg shadow-lgRed/30 transition">
-          دخول إلى لوحة التحكم
+        <button
+          type="submit"
+          class="w-full py-3.5 rounded-xl bg-lgRed hover:bg-lgRedDark text-white font-black text-sm shadow-lg shadow-lgRed/30 transition"
+        >
+          دخول مباشر إلى لوحة التحكم
         </button>
       </form>
-
-      <!-- Quick Token Help Accordion -->
-      <details class="bg-slate-800/70 rounded-2xl p-4 text-xs text-slate-300 border border-slate-700/70">
-        <summary class="font-bold text-white cursor-pointer">كيف أحصل على مفتاح الدخول (Token) في دقيقة واحدة؟</summary>
-        <ol class="list-decimal list-inside space-y-1.5 mt-3 leading-relaxed text-slate-300">
-          <li>افتح الرابط: <a href="https://github.com/settings/tokens/new" target="_blank" class="text-rose-400 underline font-mono">github.com/settings/tokens/new</a></li>
-          <li>في خانة <b>Note</b> اكتب: <code>DRHOME</code></li>
-          <li>في خانة <b>Expiration</b> اختر: <code>No expiration</code> (بدون انتهاء).</li>
-          <li>ضع علامة صح على المربع الأول <b><code>repo</code></b>.</li>
-          <li>انزل للأسفل واضغط الزر الأخضر <b>Generate token</b>، ثم انسخ الكود الذي يبدأ بـ <code>ghp_</code> والصقه في الخانة أعلاه.</li>
-        </ol>
-      </details>
     </div>
   </div>
 
   <!-- ========================================================================
-       2. MAIN ADMIN DASHBOARD APP (lg-iq.com/admin/dashboard Style)
+       2. MAIN ADMIN DASHBOARD APP
        ======================================================================== -->
   <div id="dashboard-screen" class="hidden flex-1 flex flex-col lg:flex-row min-h-screen">
 
     <!-- Sidebar Navigation -->
     <aside class="w-full lg:w-72 bg-darkSidebar text-white flex flex-col justify-between border-b lg:border-b-0 lg:border-l border-slate-800 lg:sticky lg:top-0 lg:h-screen z-30">
       <div>
-        <!-- Brand Header -->
         <div class="p-5 border-b border-slate-800 flex items-center justify-between">
           <div class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-xl bg-lgRed flex items-center justify-center font-black text-lg">DR</div>
             <div>
               <div class="font-black text-base leading-none">DR HOME ADMIN</div>
               <div class="text-[11px] text-emerald-400 font-bold mt-1 flex items-center gap-1">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> متصل بـ GitHub مباشرة
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> دخول مباشر مفعّل
               </div>
             </div>
           </div>
@@ -135,7 +115,6 @@
           </a>
         </div>
 
-        <!-- Navigation Menu -->
         <nav class="p-3 flex lg:flex-col gap-1.5 overflow-x-auto">
           <button onclick="switchTab('overview')" id="tab-overview" class="sidebar-btn active px-4 py-3 rounded-xl text-xs sm:text-sm font-bold text-right flex items-center gap-2.5 whitespace-nowrap transition">
             <span>📊</span> <span>الرئيسية والإحصائيات</span>
@@ -150,53 +129,95 @@
             <span>🗂️</span> <span>الأقسام والماركات</span>
           </button>
           <button onclick="switchTab('settings')" id="tab-settings" class="sidebar-btn px-4 py-3 rounded-xl text-xs sm:text-sm font-bold text-slate-300 hover:bg-slate-800 text-right flex items-center gap-2.5 whitespace-nowrap transition">
-            <span>⚙️</span> <span>الهوية والفروع والأسئلة</span>
+            <span>⚙️</span> <span>الهوية والفروع والربط</span>
           </button>
         </nav>
       </div>
 
-      <!-- Logout & Sync Status -->
       <div class="hidden lg:block p-4 border-t border-slate-800 space-y-2">
-        <button onclick="saveAllToGitHub()" id="sidebar-save-btn" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm shadow-lg transition flex items-center justify-center gap-2">
+        <button onclick="publishChanges()" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm shadow-lg transition flex items-center justify-center gap-2">
           <span>💾</span> <span>حفظ ونشر في الموقع الآن</span>
         </button>
         <button onclick="logoutAdmin()" class="w-full py-2 rounded-xl bg-slate-800 hover:bg-rose-900/60 text-slate-300 text-xs font-bold transition">
-          تسجيل الخروج
+          قفل اللوحة (تسجيل الخروج)
         </button>
       </div>
     </aside>
 
     <!-- Main Workspace -->
     <div class="flex-1 flex flex-col">
-      <!-- Sticky Top Action Bar -->
       <header class="sticky top-0 z-20 bg-white/95 backdrop-blur-md border-b border-slate-200 px-4 sm:px-8 py-3.5 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 id="current-tab-title" class="text-lg sm:text-xl font-black text-slate-900">الرئيسية والإحصائيات</h2>
-          <p class="text-xs text-slate-500">أي تعديل تحفظه هنا ينعكس فوراً في موقعك الرسمي</p>
+          <p class="text-xs text-slate-500">عدّل الأسعار والصور والمنتجات ثم اضغط (حفظ ونشر في الموقع)</p>
         </div>
 
-        <div class="flex items-center gap-2.5">
+        <div class="flex items-center gap-2">
           <button onclick="openProductModal()" class="px-4 py-2.5 rounded-xl bg-lgRed hover:bg-lgRedDark text-white font-bold text-xs sm:text-sm shadow-sm transition">
             + إضافة منتج جديد
           </button>
-          <button onclick="saveAllToGitHub()" id="top-save-btn" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs sm:text-sm shadow-md transition flex items-center gap-1.5">
-            <span>💾</span> <span>حفظ التعديلات ونشرها</span>
+          <button onclick="publishChanges()" id="top-save-btn" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs sm:text-sm shadow-md transition flex items-center gap-1.5">
+            <span>💾</span> <span>حفظ ونشر في الموقع</span>
           </button>
         </div>
       </header>
 
-      <!-- Dynamic Tab Content -->
       <main id="admin-content" class="p-4 sm:p-8 flex-1 max-w-7xl w-full mx-auto space-y-6"></main>
     </div>
   </div>
 
   <!-- ========================================================================
-       3. PRODUCT ADD / EDIT MODAL (With Direct Image Upload to GitHub)
+       3. PUBLISH / SYNC MODAL (Works With OR Without GitHub Token!)
+       ======================================================================== -->
+  <div id="publish-modal" class="fixed inset-0 z-50 hidden bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 space-y-5 text-right">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h3 class="text-lg font-black text-slate-900">🚀 نشر التعديلات في GitHub مباشرة</h3>
+        <button onclick="document.getElementById('publish-modal').classList.add('hidden')" class="p-2 rounded-lg bg-slate-100 font-bold">✕</button>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs sm:text-sm text-emerald-900 leading-relaxed font-bold">
+        ✓ تم نسخ كود التعديلات الجديد تلقائياً إلى حافظة جهازك!
+      </div>
+
+      <div class="space-y-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
+        <p class="font-bold text-slate-900">لتحديث الموقع أمام جميع الزبائن في 5 ثوانٍ (بدون Token):</p>
+        <ol class="list-decimal list-inside space-y-1.5">
+          <li>اضغط على الزر الأحمر بالأسفل لفتح ملف <code>content.json</code> في GitHub.</li>
+          <li>امسح النص القديم الموجود هناك والصق النص الجديد (<code>Ctrl+V</code> أو لصق).</li>
+          <li>اضغط الزر الأخضر <b>Commit changes</b>.</li>
+        </ol>
+      </div>
+
+      <div class="space-y-2.5 pt-2">
+        <a
+          id="direct-github-edit-link"
+          href="https://github.com/fofoea67-dev/drhome/edit/main/content.json"
+          target="_blank"
+          onclick="copyJsonAgain()"
+          class="block w-full py-3.5 px-4 rounded-xl bg-lgRed hover:bg-lgRedDark text-white font-black text-center text-sm shadow-lg transition"
+        >
+          1. فتح ملف content.json في GitHub للصق التعديلات ↗
+        </a>
+
+        <button
+          type="button"
+          onclick="downloadJsonFile()"
+          class="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition"
+        >
+          📥 أو تنزيل ملف content.json جاهزاً على جهازي
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       4. PRODUCT ADD / EDIT MODAL
        ======================================================================== -->
   <div id="product-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
     <div class="bg-white rounded-3xl max-w-3xl w-full p-5 sm:p-8 shadow-2xl border border-slate-200 my-auto max-h-[92vh] overflow-y-auto space-y-5">
       <div class="flex items-center justify-between border-b border-slate-200 pb-4">
-        <h3 id="modal-title" class="text-lg sm:text-xl font-black text-slate-900">إضافة / تعديل منتج</h3>
+        <h3 class="text-lg sm:text-xl font-black text-slate-900">إضافة / تعديل منتج</h3>
         <button onclick="closeProductModal()" class="p-2 rounded-lg bg-slate-100 hover:bg-slate-200 font-bold">✕</button>
       </div>
 
@@ -235,21 +256,20 @@
             <input id="m-price" type="number" required placeholder="مثال: 3100000" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 font-black text-base" />
           </div>
           <div>
-            <label class="block font-bold text-slate-600 mb-1">السعر السابق قبل الخصم (ضع 0 إذا لا يوجد خصم)</label>
+            <label class="block font-bold text-slate-600 mb-1">السعر السابق قبل الخصم (0 إذا لا يوجد خصم)</label>
             <input id="m-oldprice" type="number" value="0" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-slate-300 font-bold text-base" />
           </div>
         </div>
 
-        <!-- Image Upload Box -->
         <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
-          <label class="block font-bold text-slate-700">صورة المنتج (ارفع صورة من التلفون/الحاسوب أو الصق رابطاً)</label>
+          <label class="block font-bold text-slate-700">صورة المنتج (اختر صورة من جهازك أو ضع رابطاً)</label>
           <div class="flex flex-col sm:flex-row items-center gap-3">
             <img id="m-img-preview" src="" alt="" class="w-20 h-20 rounded-xl object-contain bg-white border border-slate-200 p-1" />
             <div class="flex-1 w-full space-y-2">
               <input id="m-image" type="text" required placeholder="رابط الصورة..." oninput="document.getElementById('m-img-preview').src = this.value" class="w-full px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-xs font-mono" dir="ltr" />
               <label class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs cursor-pointer transition">
-                <span>📤 رفع صورة مباشرة من جهازي</span>
-                <input type="file" accept="image/*" class="hidden" onchange="uploadImageToGitHub(this, 'm-image', 'm-img-preview')" />
+                <span>📤 اختيار صورة من التلفون أو الكومبيوتر</span>
+                <input type="file" accept="image/*" class="hidden" onchange="handleSmartImageUpload(this, 'm-image', 'm-img-preview')" />
               </label>
             </div>
           </div>
@@ -257,12 +277,12 @@
 
         <div>
           <label class="block font-bold text-slate-700 mb-1">اسم ومواصفات المنتج بالبطاقة (عربي)</label>
-          <textarea id="m-name-ar" rows="2" required placeholder="مثال: ثلاجة إل جي InstaView حجم 617 لتر الباب بجانب الباب..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300"></textarea>
+          <textarea id="m-name-ar" rows="2" required class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300"></textarea>
         </div>
 
         <div>
           <label class="block font-bold text-slate-700 mb-1">اسم ومواصفات المنتج (إنكليزي)</label>
-          <textarea id="m-name-en" rows="2" placeholder="LG InstaView 617L Side-by-Side Refrigerator..." class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300" dir="ltr"></textarea>
+          <textarea id="m-name-en" rows="2" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300" dir="ltr"></textarea>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -276,27 +296,25 @@
           </div>
         </div>
 
-        <!-- Technical Specs -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 p-4 rounded-2xl bg-slate-50 border border-slate-200">
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">السعة / الحجم</label>
-            <input id="m-spec-size" type="text" placeholder="مثال: 617 لتر / 65 بوصة" class="w-full px-3 py-2 rounded-lg bg-white border border-slate-300" />
+            <input id="m-spec-size" type="text" class="w-full px-3 py-2 rounded-lg bg-white border border-slate-300" />
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">اللون</label>
-            <input id="m-spec-color" type="text" placeholder="مثال: أسود مطفي" class="w-full px-3 py-2 rounded-lg bg-white border border-slate-300" />
+            <input id="m-spec-color" type="text" class="w-full px-3 py-2 rounded-lg bg-white border border-slate-300" />
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">المحرك والتقنية</label>
-            <input id="m-spec-tech" type="text" placeholder="مثال: Smart Inverter + ThinQ" class="w-full px-3 py-2 rounded-lg bg-white border border-slate-300" />
+            <input id="m-spec-tech" type="text" class="w-full px-3 py-2 rounded-lg bg-white border border-slate-300" />
           </div>
           <div>
             <label class="block text-xs font-bold text-slate-600 mb-1">المنشأ والضمان</label>
-            <input id="m-spec-origin" type="text" placeholder="مثال: كوريا / ضمان 10 سنوات" class="w-full px-3 py-2 rounded-lg bg-white border border-slate-300" />
+            <input id="m-spec-origin" type="text" class="w-full px-3 py-2 rounded-lg bg-white border border-slate-300" />
           </div>
         </div>
 
-        <!-- Checkboxes -->
         <div class="flex flex-wrap items-center gap-6 pt-2">
           <label class="flex items-center gap-2 font-bold cursor-pointer">
             <input id="m-instock" type="checkbox" checked class="w-5 h-5 accent-emerald-600" />
@@ -310,23 +328,260 @@
 
         <div class="pt-4 border-t border-slate-200 flex items-center justify-end gap-3">
           <button type="button" onclick="closeProductModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 font-bold">إلغاء</button>
-          <button type="submit" class="px-8 py-2.5 rounded-xl bg-lgRed hover:bg-lgRedDark text-white font-black shadow-md">تأكيد وإضافة للقائمة</button>
+          <button type="submit" class="px-8 py-2.5 rounded-xl bg-lgRed hover:bg-lgRedDark text-white font-black shadow-md">تأكيد وحفظ في القائمة</button>
         </div>
       </form>
     </div>
   </div>
 
   <!-- ========================================================================
-       4. ADMIN DASHBOARD JAVASCRIPT ENGINE
+       5. ENGINE & DATA
        ======================================================================== -->
   <script>
+    const MASTER_PASSWORD = "drhomeeh2026";
+
+    const DEFAULT_STORE_DATA = {
+      "storeInfo": {
+        "name": "DR HOME",
+        "logo": "",
+        "whatsappNumber": "9647700000000",
+        "phone": "+964 770 000 0000",
+        "email": "info@drhome.online",
+        "addressAr": "بغداد — صالات عرض DR HOME للأجهزة المنزلية والإلكترونيات",
+        "addressEn": "Baghdad — DR HOME Home Appliances & Electronics Showrooms",
+        "instagram": "https://instagram.com",
+        "facebook": "https://facebook.com"
+      },
+      "banners": [
+        {
+          "badgeAr": "تخفيضات كبرى في DR HOME E-Store",
+          "badgeEn": "MEGA SALE AT DR HOME E-STORE",
+          "titleAr": "أحدث أجهزة إل جي (LG) المنزلية بضمان رسمي وأسعار تنافسية",
+          "titleEn": "Latest LG Home Appliances with Official Warranty & Best IQD Prices",
+          "subtitleAr": "تسوق ثلاجات InstaView، شاشات OLED evo، غسالات AI DD، ومكيفات Dual Inverter مع توصيل وتنصيب مجاني.",
+          "subtitleEn": "Shop InstaView Refrigerators, OLED evo TVs, AI DD Washers, and Dual Inverter ACs with free delivery.",
+          "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1600&auto=format&fit=crop",
+          "targetCategory": "refrigerators"
+        },
+        {
+          "badgeAr": "عروض الشاشات والترفيه المنزلي",
+          "badgeEn": "HOME ENTERTAINMENT OFFERS",
+          "titleAr": "شاشات LG OLED evo & QNED بدقة 4K سينمائية",
+          "titleEn": "LG OLED evo & QNED 4K Smart TVs",
+          "subtitleAr": "خصومات فورية تصل إلى 350,000 دينار على الشاشات الكبيرة مع ضمان حقيقي لمدة سنتين.",
+          "subtitleEn": "Instant discounts up to 350,000 IQD on flagship large-screen TVs.",
+          "image": "https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=1600&auto=format&fit=crop",
+          "targetCategory": "tvs"
+        }
+      ],
+      "brands": [
+        { "id": "lg", "nameAr": "إل جي (LG)", "nameEn": "LG Electronics" },
+        { "id": "whirlpool", "nameAr": "ويرلبول (Whirlpool)", "nameEn": "Whirlpool" },
+        { "id": "carrier", "nameAr": "كاريير (Carrier)", "nameEn": "Carrier" },
+        { "id": "kitchenaid", "nameAr": "كيتشن إيد (KitchenAid)", "nameEn": "KitchenAid" }
+      ],
+      "categories": [
+        {
+          "id": "refrigerators",
+          "nameAr": "الثلاجات والمجمدات",
+          "nameEn": "Refrigerators & Freezers",
+          "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop",
+          "subcategories": [
+            { "id": "instaview", "nameAr": "ثلاجة InstaView", "nameEn": "InstaView Fridge" },
+            { "id": "side-by-side", "nameAr": "ثلاجات بابين متقابلين", "nameEn": "Side by Side" },
+            { "id": "four-door", "nameAr": "ثلاجة أربعة أبواب", "nameEn": "Four Door" },
+            { "id": "freezer", "nameAr": "فريزر ومجمدة عمودية", "nameEn": "Vertical Freezer" }
+          ]
+        },
+        {
+          "id": "tvs",
+          "nameAr": "التلفزيونات والصوتيات",
+          "nameEn": "TVs & Audio",
+          "image": "https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=600&auto=format&fit=crop",
+          "subcategories": [
+            { "id": "oled", "nameAr": "شاشات OLED evo", "nameEn": "OLED evo TVs" },
+            { "id": "qned", "nameAr": "شاشات QNED MiniLED", "nameEn": "QNED MiniLED" },
+            { "id": "uhd", "nameAr": "شاشات UHD 4K", "nameEn": "UHD 4K TVs" }
+          ]
+        },
+        {
+          "id": "washers",
+          "nameAr": "الغسالات والمجففات",
+          "nameEn": "Washers & Dryers",
+          "image": "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?q=80&w=600&auto=format&fit=crop",
+          "subcategories": [
+            { "id": "washtower", "nameAr": "برج الغسيل WashTower", "nameEn": "WashTower" },
+            { "id": "front-load", "nameAr": "غسالة تحميل أمامي", "nameEn": "Front Load Washer" },
+            { "id": "dryer", "nameAr": "مجفف ملابس", "nameEn": "Heat Pump Dryer" }
+          ]
+        },
+        {
+          "id": "ac",
+          "nameAr": "المكيفات والسبالت",
+          "nameEn": "Air Conditioners",
+          "image": "https://images.unsplash.com/photo-1614631446501-abcf76949eca?q=80&w=600&auto=format&fit=crop",
+          "subcategories": [
+            { "id": "split-ac", "nameAr": "سبلت جداري انفرتر", "nameEn": "Dual Inverter Split" },
+            { "id": "standing-ac", "nameAr": "سبلت كنتوري عمودي", "nameEn": "Floor Standing AC" }
+          ]
+        },
+        {
+          "id": "kitchen",
+          "nameAr": "أجهزة المطبخ والبلت-إن",
+          "nameEn": "Kitchen & Built-in",
+          "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=600&auto=format&fit=crop",
+          "subcategories": [
+            { "id": "dishwasher", "nameAr": "غسالة الصحون", "nameEn": "Dishwashers" },
+            { "id": "builtin-oven", "nameAr": "أفران وطباخات مدمجة", "nameEn": "Built-in Ovens & Hobs" },
+            { "id": "microwave", "nameAr": "مايكروويف", "nameEn": "Microwaves" },
+            { "id": "mixer", "nameAr": "عجانة ومحضرة طعام", "nameEn": "Stand Mixers & Blenders" }
+          ]
+        }
+      ],
+      "products": [
+        {
+          "id": "lg-instaview-617-black",
+          "modelCode": "GR-X257CQES",
+          "brand": "lg",
+          "category": "refrigerators",
+          "subcategory": "instaview",
+          "price": 3100000,
+          "oldPrice": 3350000,
+          "inStock": true,
+          "isOffer": true,
+          "warrantyYears": 10,
+          "image": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=900&auto=format&fit=crop",
+          "nameAr": "ثلاجة إل جي InstaView حجم 617 لتر الباب بجانب الباب، تقنية UVnano، تقنية التبريد الطولي LinearCooling، تقنية ThinQ لون أسود مطفي",
+          "nameEn": "LG InstaView 617L Side-by-Side Refrigerator, UVnano, LinearCooling, ThinQ Wi-Fi, Matte Black",
+          "shortDescAr": "انقر مرتين على الزجاج لرؤية المحتويات الداخلية دون فتح الباب وفقدان الهواء البارد، مع موزع ماء وثلج معقم بتقنية UVnano وضاغط انفرتر خطي مكفول لمدة 10 سنوات.",
+          "shortDescEn": "Knock twice to see inside without losing cold air.",
+          "specs": {
+            "capacityOrSize": "617 لتر (30 قدم)",
+            "color": "أسود مطفي (Matte Black)",
+            "motorOrTech": "Inverter Linear Compressor + ThinQ",
+            "origin": "كوريا / ضمان رسمي 10 سنوات"
+          }
+        },
+        {
+          "id": "lg-oled-evo-c5-65",
+          "modelCode": "OLED65C56LA",
+          "brand": "lg",
+          "category": "tvs",
+          "subcategory": "oled",
+          "price": 2450000,
+          "oldPrice": 2800000,
+          "inStock": true,
+          "isOffer": true,
+          "warrantyYears": 2,
+          "image": "https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=900&auto=format&fit=crop",
+          "nameAr": "شاشة إل جي أوليد 65 بوصة OLED evo C5 4K Smart TV، معالج α9 AI الجيل السابع، Dolby Vision & Atmos",
+          "nameEn": "LG 65-inch OLED evo C5 4K Smart TV, α9 AI Processor Gen7, Brightness Booster, 144Hz",
+          "shortDescAr": "تباين لا نهائي مع وحدات البكسل ذاتية الإضاءة، تصميم نحيف للغاية يندمج مع الجدار، ودعم كامل للألعاب بسرعة 144Hz.",
+          "shortDescEn": "Self-lit OLED pixels for infinite contrast.",
+          "specs": {
+            "capacityOrSize": "65 بوصة (4K OLED evo)",
+            "color": "أسود تيتانيوم",
+            "motorOrTech": "α9 AI Processor + webOS 24",
+            "origin": "كوريا / ضمان سنتين"
+          }
+        },
+        {
+          "id": "lg-washtower-21-16",
+          "modelCode": "WK2116WST",
+          "brand": "lg",
+          "category": "washers",
+          "subcategory": "washtower",
+          "price": 2690000,
+          "oldPrice": 2950000,
+          "inStock": true,
+          "isOffer": true,
+          "warrantyYears": 10,
+          "image": "https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?q=80&w=900&auto=format&fit=crop",
+          "nameAr": "برج الغسيل والتجفيف إل جي WashTower سعة 21 كجم غسيل و 16 كجم تجفيف، ذكاء اصطناعي AI DD، بخار حقيقي",
+          "nameEn": "LG WashTower All-in-One Stacked Washer (21kg) & Heat Pump Dryer (16kg), AI DD, Steam+",
+          "shortDescAr": "حل متكامل لغسيل وتجفيف الملابس في وحدة عمودية واحدة أنيقة مع لوحة تحكم وسطية مريحة.",
+          "shortDescEn": "Single unit vertical laundry solution.",
+          "specs": {
+            "capacityOrSize": "21 كجم غسيل / 16 كجم تجفيف",
+            "color": "أخضر وأسود فاخر",
+            "motorOrTech": "AI Direct Drive + Dual Inverter HeatPump",
+            "origin": "كوريا / ضمان 10 سنوات"
+          }
+        },
+        {
+          "id": "lg-dualcool-ac-2ton",
+          "modelCode": "I24CGH",
+          "brand": "lg",
+          "category": "ac",
+          "subcategory": "split-ac",
+          "price": 1180000,
+          "oldPrice": 1290000,
+          "inStock": true,
+          "isOffer": true,
+          "warrantyYears": 10,
+          "image": "https://images.unsplash.com/photo-1614631446501-abcf76949eca?q=80&w=900&auto=format&fit=crop",
+          "nameAr": "سبلت إل جي DualCool Inverter سعة 2 طن (24,000 BTU)، ضاغط استوائي T3 يتحمل حتى 65 مئوية، تحكم بالأمبير وواي فاي",
+          "nameEn": "LG DualCool Inverter Split AC 2.0 Ton (24,000 BTU), Tropical T3 Compressor, Ampere Control & Wi-Fi",
+          "shortDescAr": "تبريد فائق السرعة وتوفير طاقة يصل إلى 65% مع خاصية تحديد سحب الأمبير بلمسة زر ليتناسب مع المولدة.",
+          "shortDescEn": "Engineered for Iraqi summers up to 65°C.",
+          "specs": {
+            "capacityOrSize": "2 طن (24,000 BTU)",
+            "color": "أبيض لؤلؤي",
+            "motorOrTech": "Dual Inverter Tropical T3 + ThinQ Wi-Fi",
+            "origin": "ضمان الضاغط 10 سنوات"
+          }
+        },
+        {
+          "id": "lg-quadwash-dishwasher",
+          "modelCode": "DFC513FV",
+          "brand": "lg",
+          "category": "kitchen",
+          "subcategory": "dishwasher",
+          "price": 1090000,
+          "oldPrice": 1220000,
+          "inStock": true,
+          "isOffer": true,
+          "warrantyYears": 10,
+          "image": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=900&auto=format&fit=crop",
+          "nameAr": "غسالة الصحون المتطورة من LG موديل DFC513FV، تقنية QuadWash بـ 4 أذرع رش، بخار TrueSteam، 14 مكان",
+          "nameEn": "LG QuadWash TrueSteam Dishwasher (14 Place Settings), Inverter Direct Drive, Matte Silver",
+          "shortDescAr": "تنظيف من كل الزوايا بفضل أذرع الرش رباعية الحركة مع تعقيم بالبخار الحقيقي يزيل البقع الصعبة والدهون.",
+          "shortDescEn": "4-arm QuadWash system with TrueSteam.",
+          "specs": {
+            "capacityOrSize": "14 مكان (حجم كامل)",
+            "color": "فضي بلاتيني",
+            "motorOrTech": "Inverter Direct Drive + TrueSteam",
+            "origin": "كوريا / ضمان 10 سنوات"
+          }
+        }
+      ],
+      "branches": [
+        {
+          "nameAr": "معرض DR HOME الرئيسي — بغداد",
+          "nameEn": "DR HOME Main Flagship Showroom — Baghdad",
+          "addressAr": "بغداد، الكرادة، تقاطع المسبح، بناية DR HOME للأجهزة المنزلية",
+          "addressEn": "Baghdad, Karrada, Al-Masbah Intersection, DR HOME Building",
+          "phone": "+964 770 000 0001",
+          "hoursAr": "يومياً من 10:00 صباحاً إلى 10:00 مساءً",
+          "hoursEn": "Daily: 10:00 AM – 10:00 PM",
+          "mapUrl": "https://maps.google.com/?q=Baghdad+Karrada"
+        }
+      ],
+      "faqs": [
+        {
+          "qAr": "هل جميع الأجهزة في متجر DR HOME أصلية ومكفولة؟",
+          "aAr": "نعم، جميع أجهزتنا أصلية 100% ومشمولة بضمان رسمي حقيقي يصل إلى 10 سنوات على الضواغط والمحركات الانفرتر.",
+          "qEn": "Are all appliances authentic and covered by an official warranty?",
+          "aEn": "Yes, 100% of our products are genuine and backed by an official warranty up to 10 years."
+        }
+      ]
+    };
+
     const AdminState = {
       owner: localStorage.getItem("drhome_gh_owner") || "fofoea67-dev",
       repo: localStorage.getItem("drhome_gh_repo") || "drhome",
-      branch: localStorage.getItem("drhome_gh_branch") || "main",
       token: localStorage.getItem("drhome_gh_token") || "",
-      fileSha: null,
-      data: null,
+      data: JSON.parse(localStorage.getItem("drhome_admin_draft") || JSON.stringify(DEFAULT_STORE_DATA)),
       activeTab: "overview",
       productSearch: ""
     };
@@ -334,170 +589,168 @@
     function showToast(msg, isError = false) {
       const box = document.getElementById("toast-box");
       box.textContent = msg;
-      box.className = `fixed top-5 left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-2xl shadow-2xl font-bold text-sm text-white transition-all ${
+      box.className = `fixed top-5 left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 rounded-2xl shadow-2xl font-bold text-sm text-white transition-all max-w-md text-center ${
         isError ? "bg-rose-600" : "bg-emerald-600"
       }`;
       box.classList.remove("hidden");
       setTimeout(() => box.classList.add("hidden"), 4000);
     }
 
-    /* UTF-8 Safe Base64 Helpers for Arabic Content */
-    function decodeBase64UTF8(base64Str) {
-      const clean = base64Str.replace(/\n/g, "");
-      const binString = atob(clean);
-      const bytes = Uint8Array.from(binString, (m) => m.codePointAt(0));
-      return new TextDecoder().decode(bytes);
+    function saveDraftLocally() {
+      localStorage.setItem("drhome_admin_draft", JSON.stringify(AdminState.data));
     }
 
-    function encodeBase64UTF8(textStr) {
-      const bytes = new TextEncoder().encode(textStr);
-      let binString = "";
-      for (let i = 0; i < bytes.byteLength; i++) {
-        binString += String.fromCharCode(bytes[i]);
+    /* Instant Password Check (Unlocks immediately when drhomeeh2026 is typed) */
+    function autoCheckPassword(val) {
+      if (val.trim() === MASTER_PASSWORD) {
+        unlockDashboard();
       }
-      return btoa(binString);
     }
 
-    /* Connect & Fetch content.json from GitHub API */
-    async function handleAdminLogin(e) {
-      if (e) e.preventDefault();
-      const owner = document.getElementById("gh-owner").value.trim();
-      const repo = document.getElementById("gh-repo").value.trim();
-      const branch = document.getElementById("gh-branch").value.trim();
-      const token = document.getElementById("gh-token").value.trim();
-      const remember = document.getElementById("gh-remember").checked;
+    function checkDirectPassword(e) {
+      e.preventDefault();
+      const val = document.getElementById("admin-pass-input").value.trim();
+      if (val === MASTER_PASSWORD) {
+        unlockDashboard();
+      } else {
+        document.getElementById("pass-error").classList.remove("hidden");
+      }
+    }
 
-      const btn = document.getElementById("login-submit-btn");
-      btn.textContent = "جاري الاتصال بمستودع GitHub...";
-      btn.disabled = true;
+    async function unlockDashboard() {
+      sessionStorage.setItem("drhome_unlocked", "true");
+      document.getElementById("login-screen").classList.add("hidden");
+      document.getElementById("dashboard-screen").classList.remove("hidden");
 
-      try {
-        const url = `https://api.github.com/repos/${owner}/${repo}/contents/content.json?ref=${branch}&t=${Date.now()}`;
-        const res = await fetch(url, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            Accept: "application/vnd.github.v3+json"
+      // Load live content.json if available and no local draft exists yet
+      if (!localStorage.getItem("drhome_admin_draft")) {
+        try {
+          const res = await fetch("./content.json?t=" + Date.now(), { cache: "no-store" });
+          if (res.ok) {
+            AdminState.data = await res.json();
+            saveDraftLocally();
           }
-        });
-
-        if (!res.ok) {
-          throw new Error("تأكد من صحة مفتاح الـ Token واسم المستودع ووجود ملف content.json");
-        }
-
-        const fileObj = await res.json();
-        AdminState.fileSha = fileObj.sha;
-        AdminState.data = JSON.parse(decodeBase64UTF8(fileObj.content));
-        AdminState.owner = owner;
-        AdminState.repo = repo;
-        AdminState.branch = branch;
-        AdminState.token = token;
-
-        if (remember) {
-          localStorage.setItem("drhome_gh_owner", owner);
-          localStorage.setItem("drhome_gh_repo", repo);
-          localStorage.setItem("drhome_gh_branch", branch);
-          localStorage.setItem("drhome_gh_token", token);
-        }
-
-        document.getElementById("login-screen").classList.add("hidden");
-        document.getElementById("dashboard-screen").classList.remove("hidden");
-        renderCurrentTab();
-        showToast("تم الدخول وتحميل بيانات المتجر بنجاح ✓");
-      } catch (err) {
-        showToast(err.message, true);
-      } finally {
-        btn.textContent = "دخول إلى لوحة التحكم";
-        btn.disabled = false;
+        } catch (e) {}
       }
+
+      renderCurrentTab();
+      showToast("أهلاً بك في لوحة تحكم DR HOME ✓");
     }
 
     function logoutAdmin() {
-      localStorage.removeItem("drhome_gh_token");
+      sessionStorage.removeItem("drhome_unlocked");
       location.reload();
     }
 
-    /* Save Updated content.json Live to GitHub */
-    async function saveAllToGitHub() {
-      const topBtn = document.getElementById("top-save-btn");
-      const origText = topBtn.innerHTML;
-      topBtn.innerHTML = "⏳ جاري الحفظ والنشر...";
-      topBtn.disabled = true;
-
-      try {
-        const url = `https://api.github.com/repos/${AdminState.owner}/${AdminState.repo}/contents/content.json`;
-        const jsonString = JSON.stringify(AdminState.data, null, 2);
-        const body = {
-          message: "تحديث محتوى المتجر عبر لوحة تحكم DR HOME",
-          content: encodeBase64UTF8(jsonString),
-          sha: AdminState.fileSha,
-          branch: AdminState.branch
-        };
-
-        const res = await fetch(url, {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${AdminState.token}`,
-            Accept: "application/vnd.github.v3+json",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(body)
-        });
-
-        if (!res.ok) throw new Error("فشل الحفظ في GitHub، حاول تحديث الصفحة");
-        const result = await res.json();
-        AdminState.fileSha = result.content.sha;
-        showToast("تم حفظ ونشر جميع التعديلات في الموقع مباشرة! 🚀");
-      } catch (err) {
-        showToast(err.message, true);
-      } finally {
-        topBtn.innerHTML = origText;
-        topBtn.disabled = false;
-      }
-    }
-
-    /* Direct Image Upload from Phone/PC to GitHub Repository */
-    async function uploadImageToGitHub(fileInput, targetInputId, previewImgId) {
+    /* Compress uploaded images automatically so they save directly inside content.json */
+    function handleSmartImageUpload(fileInput, targetInputId, previewImgId) {
       const file = fileInput.files[0];
       if (!file) return;
 
-      showToast("⏳ جاري رفع الصورة إلى GitHub...");
       const reader = new FileReader();
-      reader.onload = async function () {
-        try {
-          const base64Data = reader.result.split(",")[1];
-          const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-          const path = `images/${Date.now()}_${safeName}`;
-          const url = `https://api.github.com/repos/${AdminState.owner}/${AdminState.repo}/contents/${path}`;
+      reader.onload = function (event) {
+        const img = new Image();
+        img.onload = function () {
+          const canvas = document.createElement("canvas");
+          const MAX_WIDTH = 850;
+          let width = img.width;
+          let height = img.height;
 
-          const res = await fetch(url, {
-            method: "PUT",
-            headers: {
-              Authorization: `Bearer ${AdminState.token}`,
-              Accept: "application/vnd.github.v3+json",
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              message: `Upload image ${safeName}`,
-              content: base64Data,
-              branch: AdminState.branch
-            })
-          });
-
-          if (!res.ok) throw new Error("تعذر رفع الصورة، تأكد من صلاحية الـ Token");
-          const relativeUrl = `./${path}`;
-          document.getElementById(targetInputId).value = relativeUrl;
-          if (previewImgId && document.getElementById(previewImgId)) {
-            document.getElementById(previewImgId).src = reader.result;
+          if (width > MAX_WIDTH) {
+            height = Math.round((height * MAX_WIDTH) / width);
+            width = MAX_WIDTH;
           }
-          showToast("تم رفع الصورة بنجاح! اضغط (حفظ التعديلات) لاعتمادها ✓");
-        } catch (err) {
-          showToast(err.message, true);
-        }
+
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+
+          const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.82);
+          document.getElementById(targetInputId).value = compressedDataUrl;
+          if (previewImgId && document.getElementById(previewImgId)) {
+            document.getElementById(previewImgId).src = compressedDataUrl;
+          }
+          showToast("تم تجهيز وضغط الصورة بنجاح ✓");
+        };
+        img.src = event.target.result;
       };
       reader.readAsDataURL(file);
     }
 
-    /* Navigation Tabs */
+    /* Publish: Either pushes via optional Token OR opens 1-click Copy/Paste to GitHub */
+    async function publishChanges() {
+      saveDraftLocally();
+      const jsonStr = JSON.stringify(AdminState.data, null, 2);
+
+      try {
+        await navigator.clipboard.writeText(jsonStr);
+      } catch (e) {}
+
+      // If user configured an optional token in settings, push via API automatically
+      if (AdminState.token && AdminState.token.startsWith("ghp_")) {
+        const topBtn = document.getElementById("top-save-btn");
+        const orig = topBtn.innerHTML;
+        topBtn.innerHTML = "⏳ جاري النشر...";
+        try {
+          const apiUrl = `https://api.github.com/repos/${AdminState.owner}/${AdminState.repo}/contents/content.json`;
+          let sha = null;
+          const getRes = await fetch(apiUrl + `?ref=main&t=${Date.now()}`, {
+            headers: { Authorization: `Bearer ${AdminState.token}` }
+          });
+          if (getRes.ok) {
+            const getObj = await getRes.json();
+            sha = getObj.sha;
+          }
+
+          const bytes = new TextEncoder().encode(jsonStr);
+          let bin = "";
+          for (let i = 0; i < bytes.byteLength; i++) bin += String.fromCharCode(bytes[i]);
+          const b64 = btoa(bin);
+
+          const body = { message: "Update store via DR HOME Admin", content: b64, branch: "main" };
+          if (sha) body.sha = sha;
+
+          const putRes = await fetch(apiUrl, {
+            method: "PUT",
+            headers: {
+              Authorization: `Bearer ${AdminState.token}`,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(body)
+          });
+
+          if (putRes.ok) {
+            topBtn.innerHTML = orig;
+            showToast("تم نشر التعديلات في GitHub والموقع مباشرة! 🚀");
+            return;
+          }
+        } catch (err) {}
+        topBtn.innerHTML = orig;
+      }
+
+      // Otherwise, open the foolproof 1-click Copy & Open GitHub modal
+      document.getElementById("direct-github-edit-link").href =
+        `https://github.com/${AdminState.owner}/${AdminState.repo}/edit/main/content.json`;
+      document.getElementById("publish-modal").classList.remove("hidden");
+    }
+
+    function copyJsonAgain() {
+      const jsonStr = JSON.stringify(AdminState.data, null, 2);
+      navigator.clipboard.writeText(jsonStr);
+      showToast("تم نسخ التعديلات! الصقها في صفحة GitHub واضغط Commit changes");
+    }
+
+    function downloadJsonFile() {
+      const jsonStr = JSON.stringify(AdminState.data, null, 2);
+      const blob = new Blob([jsonStr], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "content.json";
+      a.click();
+      showToast("تم تنزيل ملف content.json بنجاح ✓");
+    }
+
     function switchTab(tab) {
       AdminState.activeTab = tab;
       document.querySelectorAll(".sidebar-btn").forEach((b) => {
@@ -515,7 +768,7 @@
         products: "إدارة المنتجات والأسعار والمخزون",
         banners: "إدارة البانرات والعروض العلوية",
         categories: "إدارة الأقسام والماركات",
-        settings: "إعدادات المتجر والفروع والأسئلة الشائعة"
+        settings: "الهوية والفروع والربط"
       };
       document.getElementById("current-tab-title").textContent = titles[tab] || "";
       renderCurrentTab();
@@ -530,7 +783,6 @@
       else if (AdminState.activeTab === "settings") container.innerHTML = renderSettingsTab();
     }
 
-    /* TAB 1: Overview */
     function renderOverviewTab() {
       const prods = AdminState.data.products || [];
       const inStockCount = prods.filter((p) => p.inStock).length;
@@ -558,9 +810,7 @@
         </div>
 
         <div class="bg-white rounded-3xl border border-slate-200 p-6 space-y-4">
-          <div class="flex items-center justify-between">
-            <h3 class="font-black text-base">وصول سريع لإدارة المتجر</h3>
-          </div>
+          <h3 class="font-black text-base">تحكم سريع في متجر DR HOME</h3>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <button onclick="openProductModal()" class="p-5 rounded-2xl bg-rose-50 hover:bg-rose-100 border border-rose-200 text-right space-y-1 transition">
               <div class="text-lg font-black text-lgRed">+ إضافة جهاز جديد</div>
@@ -579,7 +829,6 @@
       `;
     }
 
-    /* TAB 2: Products & Quick Price/Stock Editor */
     function renderProductsTab() {
       const prods = AdminState.data.products || [];
       const q = AdminState.productSearch.toLowerCase();
@@ -619,20 +868,19 @@
                       </div>
                     </div>
 
-                    <!-- Instant Inline Price & Stock Controls -->
                     <div class="flex flex-wrap items-center gap-2.5 w-full lg:w-auto justify-end border-t lg:border-t-0 pt-3 lg:pt-0 border-slate-200">
                       <div class="flex items-center gap-1">
                         <span class="text-xs text-slate-500 font-bold">السعر:</span>
                         <input
                           type="number"
                           value="${p.price}"
-                          onchange="AdminState.data.products[${realIdx}].price = Number(this.value); showToast('تم تعديل السعر، اضغط حفظ التعديلات بالأعلى');"
+                          onchange="AdminState.data.products[${realIdx}].price = Number(this.value); saveDraftLocally(); showToast('تم تحديث السعر ✓');"
                           class="w-28 px-2.5 py-1.5 rounded-lg bg-white border border-slate-300 font-bold text-xs"
                         />
                       </div>
 
                       <button
-                        onclick="AdminState.data.products[${realIdx}].inStock = !AdminState.data.products[${realIdx}].inStock; renderCurrentTab();"
+                        onclick="AdminState.data.products[${realIdx}].inStock = !AdminState.data.products[${realIdx}].inStock; saveDraftLocally(); renderCurrentTab();"
                         class="px-3 py-1.5 rounded-lg text-xs font-bold ${
                           p.inStock ? "bg-emerald-100 text-emerald-800" : "bg-rose-100 text-rose-800"
                         }"
@@ -663,7 +911,6 @@
       `;
     }
 
-    /* Product Modal Operations */
     function openProductModal(index = -1) {
       document.getElementById("prod-edit-index").value = index;
       const brands = AdminState.data.brands || [];
@@ -767,19 +1014,20 @@
         AdminState.data.products.unshift(prodObj);
       }
 
+      saveDraftLocally();
       closeProductModal();
       renderCurrentTab();
-      showToast("تم تحديث القائمة! اضغط (حفظ التعديلات ونشرها) بالأعلى لاعتمادها في الموقع");
+      showToast("تم حفظ المنتج! اضغط (حفظ ونشر في الموقع) بالأعلى");
     }
 
     function deleteProduct(idx) {
       if (!confirm("هل أنت متأكد من حذف هذا المنتج؟")) return;
       AdminState.data.products.splice(idx, 1);
+      saveDraftLocally();
       renderCurrentTab();
-      showToast("تم الحذف. اضغط (حفظ التعديلات ونشرها) لاعتماد التغيير");
+      showToast("تم حذف المنتج ✓");
     }
 
-    /* TAB 3: Banners Editor */
     function renderBannersTab() {
       const banners = AdminState.data.banners || [];
       return `
@@ -788,31 +1036,27 @@
             .map(
               (b, i) => `
             <div class="bg-white rounded-3xl border border-slate-200 p-6 space-y-4">
-              <div class="flex items-center justify-between border-b border-slate-100 pb-3">
-                <h3 class="font-black text-base text-lgRed">البانر الإعلاني رقم #${i + 1}</h3>
-              </div>
-
+              <h3 class="font-black text-base text-lgRed border-b border-slate-100 pb-3">البانر الإعلاني رقم #${i + 1}</h3>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
                 <div>
                   <label class="block font-bold mb-1">الشارة العلوية (عربي)</label>
-                  <input type="text" value="${b.badgeAr \vert{}\vert{} ""}" oninput="AdminState.data.banners[${i}].badgeAr = this.value" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300" />
+                  <input type="text" value="${b.badgeAr \vert{}\vert{} ""}" oninput="AdminState.data.banners[${i}].badgeAr = this.value; saveDraftLocally();" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300" />
                 </div>
                 <div>
                   <label class="block font-bold mb-1">العنوان الرئيسي (عربي)</label>
-                  <input type="text" value="${b.titleAr \vert{}\vert{} ""}" oninput="AdminState.data.banners[${i}].titleAr = this.value" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-bold" />
+                  <input type="text" value="${b.titleAr \vert{}\vert{} ""}" oninput="AdminState.data.banners[${i}].titleAr = this.value; saveDraftLocally();" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-bold" />
                 </div>
                 <div class="md:col-span-2">
                   <label class="block font-bold mb-1">الوصف تحت العنوان (عربي)</label>
-                  <textarea rows="2" oninput="AdminState.data.banners[${i}].subtitleAr = this.value" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300">${b.subtitleAr || ""}</textarea>
+                  <textarea rows="2" oninput="AdminState.data.banners[${i}].subtitleAr = this.value; saveDraftLocally();" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300">${b.subtitleAr || ""}</textarea>
                 </div>
-
                 <div class="md:col-span-2 p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center gap-4">
                   <img id="ban-prev-${i}" src="${b.image}" class="w-36 h-24 object-cover rounded-xl border border-slate-300" />
                   <div class="flex-1 w-full space-y-2">
-                    <input id="ban-img-${i}" type="text" value="${b.image}" oninput="AdminState.data.banners[${i}].image = this.value; document.getElementById('ban-prev-${i}').src = this.value" class="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 text-xs font-mono" dir="ltr" />
+                    <input id="ban-img-${i}" type="text" value="${b.image}" oninput="AdminState.data.banners[${i}].image = this.value; document.getElementById('ban-prev-${i}').src = this.value; saveDraftLocally();" class="w-full px-3 py-2 rounded-xl bg-white border border-slate-300 text-xs font-mono" dir="ltr" />
                     <label class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 text-white font-bold text-xs cursor-pointer">
-                      <span>📤 رفع صورة بانر جديدة من جهازي</span>
-                      <input type="file" accept="image/*" class="hidden" onchange="uploadBannerImage(this, ${i})" />
+                      <span>📤 اختيار صورة بانر من جهازي</span>
+                      <input type="file" accept="image/*" class="hidden" onchange="uploadBannerLocal(this, ${i})" />
                     </label>
                   </div>
                 </div>
@@ -825,15 +1069,17 @@
       `;
     }
 
-    function uploadBannerImage(inputEl, bannerIdx) {
-      uploadImageToGitHub(inputEl, `ban-img-${bannerIdx}`, `ban-prev-${bannerIdx}`);
+    function uploadBannerLocal(inputEl, idx) {
+      handleSmartImageUpload(inputEl, `ban-img-${idx}`, `ban-prev-${idx}`);
       setTimeout(() => {
-        const val = document.getElementById(`ban-img-${bannerIdx}`).value;
-        if (val) AdminState.data.banners[bannerIdx].image = val;
-      }, 2500);
+        const val = document.getElementById(`ban-img-${idx}`).value;
+        if (val) {
+          AdminState.data.banners[idx].image = val;
+          saveDraftLocally();
+        }
+      }, 600);
     }
 
-    /* TAB 4: Categories & Brands */
     function renderCategoriesTab() {
       const cats = AdminState.data.categories || [];
       return `
@@ -847,8 +1093,8 @@
                 <div class="flex items-center gap-3">
                   <img id="cat-prev-${i}" src="${c.image}" class="w-16 h-16 rounded-full object-cover border-2 border-white shadow-xs" />
                   <div class="flex-1 space-y-1.5">
-                    <input type="text" value="${c.nameAr}" oninput="AdminState.data.categories[${i}].nameAr = this.value" class="w-full px-3 py-1.5 rounded-lg bg-white border border-slate-300 font-bold text-sm" />
-                    <input id="cat-img-${i}" type="text" value="${c.image}" oninput="AdminState.data.categories[${i}].image = this.value; document.getElementById('cat-prev-${i}').src = this.value" class="w-full px-3 py-1 rounded-lg bg-white border border-slate-300 text-xs font-mono" dir="ltr" />
+                    <input type="text" value="${c.nameAr}" oninput="AdminState.data.categories[${i}].nameAr = this.value; saveDraftLocally();" class="w-full px-3 py-1.5 rounded-lg bg-white border border-slate-300 font-bold text-sm" />
+                    <input id="cat-img-${i}" type="text" value="${c.image}" oninput="AdminState.data.categories[${i}].image = this.value; document.getElementById('cat-prev-${i}').src = this.value; saveDraftLocally();" class="w-full px-3 py-1 rounded-lg bg-white border border-slate-300 text-xs font-mono" dir="ltr" />
                   </div>
                 </div>
               </div>
@@ -860,33 +1106,42 @@
       `;
     }
 
-    /* TAB 5: Store Settings, WhatsApp & Branches */
     function renderSettingsTab() {
       const info = AdminState.data.storeInfo || {};
       const branches = AdminState.data.branches || [];
       return `
         <div class="bg-white rounded-3xl border border-slate-200 p-6 space-y-5 text-xs sm:text-sm">
-          <h3 class="font-black text-base text-lgRed">بيانات التواصل والواتساب والشعار</h3>
+          <h3 class="font-black text-base text-lgRed">بيانات التواصل والواتساب</h3>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block font-bold mb-1">اسم المتجر</label>
-              <input type="text" value="${info.name || ""}" oninput="AdminState.data.storeInfo.name = this.value" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-bold" />
+              <input type="text" value="${info.name || ""}" oninput="AdminState.data.storeInfo.name = this.value; saveDraftLocally();" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-bold" />
             </div>
             <div>
-              <label class="block font-bold mb-1">رقم الواتساب لاستلام الطلبات (بدون + مثل 9647700000000)</label>
-              <input type="text" value="${info.whatsappNumber || ""}" oninput="AdminState.data.storeInfo.whatsappNumber = this.value" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono font-bold" dir="ltr" />
+              <label class="block font-bold mb-1">رقم الواتساب لاستلام الطلبات (مثل 9647700000000)</label>
+              <input type="text" value="${info.whatsappNumber || ""}" oninput="AdminState.data.storeInfo.whatsappNumber = this.value; saveDraftLocally();" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono font-bold" dir="ltr" />
             </div>
             <div>
               <label class="block font-bold mb-1">رقم الهاتف المعروض بالواجهة</label>
-              <input type="text" value="${info.phone || ""}" oninput="AdminState.data.storeInfo.phone = this.value" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono" dir="ltr" />
+              <input type="text" value="${info.phone || ""}" oninput="AdminState.data.storeInfo.phone = this.value; saveDraftLocally();" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono" dir="ltr" />
             </div>
             <div>
               <label class="block font-bold mb-1">البريد الإلكتروني</label>
-              <input type="text" value="${info.email || ""}" oninput="AdminState.data.storeInfo.email = this.value" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono" dir="ltr" />
+              <input type="text" value="${info.email || ""}" oninput="AdminState.data.storeInfo.email = this.value; saveDraftLocally();" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono" dir="ltr" />
             </div>
-            <div class="sm:col-span-2">
-              <label class="block font-bold mb-1">العنوان الرئيسي بالفوتر (عربي)</label>
-              <input type="text" value="${info.addressAr || ""}" oninput="AdminState.data.storeInfo.addressAr = this.value" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300" />
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-slate-200 p-6 space-y-4 text-xs sm:text-sm">
+          <h3 class="font-black text-base">إعدادات الربط السريع مع GitHub (اختياري)</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-bold mb-1">اسم المستودع (Repository)</label>
+              <input type="text" value="${AdminState.repo}" oninput="AdminState.repo = this.value.trim(); localStorage.setItem('drhome_gh_repo', AdminState.repo);" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono" dir="ltr" />
+            </div>
+            <div>
+              <label class="block font-bold mb-1">مفتاح GitHub Token للنشر التلقائي (اختياري)</label>
+              <input type="password" value="${AdminState.token}" placeholder="اتركه فارغاً لاستخدام النسخ المباشر" oninput="AdminState.token = this.value.trim(); localStorage.setItem('drhome_gh_token', AdminState.token);" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-300 font-mono" dir="ltr" />
             </div>
           </div>
         </div>
@@ -897,9 +1152,9 @@
             .map(
               (b, i) => `
             <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <input type="text" value="${b.nameAr}" oninput="AdminState.data.branches[${i}].nameAr = this.value" placeholder="اسم الفرع" class="px-3 py-2 rounded-lg bg-white border border-slate-300 font-bold" />
-              <input type="text" value="${b.phone}" oninput="AdminState.data.branches[${i}].phone = this.value" placeholder="هاتف الفرع" class="px-3 py-2 rounded-lg bg-white border border-slate-300 font-mono" dir="ltr" />
-              <input type="text" value="${b.addressAr}" oninput="AdminState.data.branches[${i}].addressAr = this.value" placeholder="العنوان" class="sm:col-span-2 px-3 py-2 rounded-lg bg-white border border-slate-300" />
+              <input type="text" value="${b.nameAr}" oninput="AdminState.data.branches[${i}].nameAr = this.value; saveDraftLocally();" class="px-3 py-2 rounded-lg bg-white border border-slate-300 font-bold" />
+              <input type="text" value="${b.phone}" oninput="AdminState.data.branches[${i}].phone = this.value; saveDraftLocally();" class="px-3 py-2 rounded-lg bg-white border border-slate-300 font-mono" dir="ltr" />
+              <input type="text" value="${b.addressAr}" oninput="AdminState.data.branches[${i}].addressAr = this.value; saveDraftLocally();" class="sm:col-span-2 px-3 py-2 rounded-lg bg-white border border-slate-300" />
             </div>
           `
             )
@@ -908,14 +1163,9 @@
       `;
     }
 
-    /* Auto-fill saved credentials on load */
     document.addEventListener("DOMContentLoaded", () => {
-      document.getElementById("gh-owner").value = AdminState.owner;
-      document.getElementById("gh-repo").value = AdminState.repo;
-      document.getElementById("gh-branch").value = AdminState.branch;
-      if (AdminState.token) {
-        document.getElementById("gh-token").value = AdminState.token;
-        handleAdminLogin();
+      if (sessionStorage.getItem("drhome_unlocked") === "true") {
+        unlockDashboard();
       }
     });
   </script>
