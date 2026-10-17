@@ -50,52 +50,9 @@
   <div id="toast-box" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 hidden px-6 py-3.5 rounded-2xl shadow-2xl font-bold text-sm text-white transition-all max-w-md text-center"></div>
 
   <!-- ========================================================================
-       1. DIRECT PASSWORD LOGIN SCREEN (Password: drhomeeh2026)
+       1. MAIN ADMIN DASHBOARD APP (Opens Immediately Without Password)
        ======================================================================== -->
-  <div id="login-screen" class="min-h-screen flex items-center justify-center p-4 bg-slate-950">
-    <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 text-white text-center">
-      <div class="w-16 h-16 rounded-2xl bg-lgRed mx-auto flex items-center justify-center font-black text-2xl shadow-lg shadow-lgRed/30">
-        DR
-      </div>
-
-      <div class="space-y-1">
-        <h1 class="text-2xl font-black">لوحة تحكم DR HOME</h1>
-        <p class="text-xs text-slate-400">أدخل كلمة السر للدخول المباشر إلى لوحة الإدارة</p>
-      </div>
-
-      <form onsubmit="checkDirectPassword(event)" class="space-y-4 text-right">
-        <div>
-          <label class="block text-xs font-bold text-slate-300 mb-2">كلمة السر الخاصة بك</label>
-          <input
-            id="admin-pass-input"
-            type="password"
-            required
-            autofocus
-            oninput="autoCheckPassword(this.value)"
-            placeholder="أدخل كلمة السر هنا..."
-            class="w-full px-4 py-3.5 rounded-xl bg-slate-800 border border-slate-700 text-white text-center font-mono text-lg focus:outline-none focus:border-lgRed"
-            dir="ltr"
-          />
-        </div>
-
-        <p id="pass-error" class="hidden text-xs font-bold text-rose-400 text-center">
-          كلمة السر غير صحيحة، حاول مرة أخرى
-        </p>
-
-        <button
-          type="submit"
-          class="w-full py-3.5 rounded-xl bg-lgRed hover:bg-lgRedDark text-white font-black text-sm shadow-lg shadow-lgRed/30 transition"
-        >
-          دخول مباشر إلى لوحة التحكم
-        </button>
-      </form>
-    </div>
-  </div>
-
-  <!-- ========================================================================
-       2. MAIN ADMIN DASHBOARD APP
-       ======================================================================== -->
-  <div id="dashboard-screen" class="hidden flex-1 flex flex-col lg:flex-row min-h-screen">
+  <div id="dashboard-screen" class="flex-1 flex flex-col lg:flex-row min-h-screen">
 
     <!-- Sidebar Navigation -->
     <aside class="w-full lg:w-72 bg-darkSidebar text-white flex flex-col justify-between border-b lg:border-b-0 lg:border-l border-slate-800 lg:sticky lg:top-0 lg:h-screen z-30">
@@ -106,7 +63,7 @@
             <div>
               <div class="font-black text-base leading-none">DR HOME ADMIN</div>
               <div class="text-[11px] text-emerald-400 font-bold mt-1 flex items-center gap-1">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> دخول مباشر مفعّل
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> لوحة التحكم المباشرة
               </div>
             </div>
           </div>
@@ -138,8 +95,8 @@
         <button onclick="publishChanges()" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-black text-sm shadow-lg transition flex items-center justify-center gap-2">
           <span>💾</span> <span>حفظ ونشر في الموقع الآن</span>
         </button>
-        <button onclick="logoutAdmin()" class="w-full py-2 rounded-xl bg-slate-800 hover:bg-rose-900/60 text-slate-300 text-xs font-bold transition">
-          قفل اللوحة (تسجيل الخروج)
+        <button onclick="reloadFromLiveSite()" class="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-bold transition">
+          🔄 جلب آخر نسخة من الموقع
         </button>
       </div>
     </aside>
@@ -167,7 +124,7 @@
   </div>
 
   <!-- ========================================================================
-       3. PUBLISH / SYNC MODAL (Works With OR Without GitHub Token!)
+       2. PUBLISH / SYNC MODAL
        ======================================================================== -->
   <div id="publish-modal" class="fixed inset-0 z-50 hidden bg-slate-950/75 backdrop-blur-xs flex items-center justify-center p-4">
     <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-slate-200 space-y-5 text-right">
@@ -181,7 +138,7 @@
       </div>
 
       <div class="space-y-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
-        <p class="font-bold text-slate-900">لتحديث الموقع أمام جميع الزبائن في 5 ثوانٍ (بدون Token):</p>
+        <p class="font-bold text-slate-900">لتحديث الموقع أمام جميع الزبائن في 5 ثوانٍ:</p>
         <ol class="list-decimal list-inside space-y-1.5">
           <li>اضغط على الزر الأحمر بالأسفل لفتح ملف <code>content.json</code> في GitHub.</li>
           <li>امسح النص القديم الموجود هناك والصق النص الجديد (<code>Ctrl+V</code> أو لصق).</li>
@@ -212,7 +169,7 @@
   </div>
 
   <!-- ========================================================================
-       4. PRODUCT ADD / EDIT MODAL
+       3. PRODUCT ADD / EDIT MODAL
        ======================================================================== -->
   <div id="product-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
     <div class="bg-white rounded-3xl max-w-3xl w-full p-5 sm:p-8 shadow-2xl border border-slate-200 my-auto max-h-[92vh] overflow-y-auto space-y-5">
@@ -335,11 +292,9 @@
   </div>
 
   <!-- ========================================================================
-       5. ENGINE & DATA
+       4. ENGINE & DATA
        ======================================================================== -->
   <script>
-    const MASTER_PASSWORD = "drhomeeh2026";
-
     const DEFAULT_STORE_DATA = {
       "storeInfo": {
         "name": "DR HOME",
@@ -600,46 +555,20 @@
       localStorage.setItem("drhome_admin_draft", JSON.stringify(AdminState.data));
     }
 
-    /* Instant Password Check (Unlocks immediately when drhomeeh2026 is typed) */
-    function autoCheckPassword(val) {
-      if (val.trim() === MASTER_PASSWORD) {
-        unlockDashboard();
+    async function reloadFromLiveSite() {
+      try {
+        const res = await fetch("./content.json?t=" + Date.now(), { cache: "no-store" });
+        if (res.ok) {
+          AdminState.data = await res.json();
+          saveDraftLocally();
+          renderCurrentTab();
+          showToast("تم جلب أحدث البيانات المنشورة في الموقع بنجاح ✓");
+        } else {
+          showToast("تم استخدام البيانات الافتراضية الجاهزة ✓");
+        }
+      } catch (e) {
+        showToast("تم استخدام البيانات المحفوظة حالياً ✓");
       }
-    }
-
-    function checkDirectPassword(e) {
-      e.preventDefault();
-      const val = document.getElementById("admin-pass-input").value.trim();
-      if (val === MASTER_PASSWORD) {
-        unlockDashboard();
-      } else {
-        document.getElementById("pass-error").classList.remove("hidden");
-      }
-    }
-
-    async function unlockDashboard() {
-      sessionStorage.setItem("drhome_unlocked", "true");
-      document.getElementById("login-screen").classList.add("hidden");
-      document.getElementById("dashboard-screen").classList.remove("hidden");
-
-      // Load live content.json if available and no local draft exists yet
-      if (!localStorage.getItem("drhome_admin_draft")) {
-        try {
-          const res = await fetch("./content.json?t=" + Date.now(), { cache: "no-store" });
-          if (res.ok) {
-            AdminState.data = await res.json();
-            saveDraftLocally();
-          }
-        } catch (e) {}
-      }
-
-      renderCurrentTab();
-      showToast("أهلاً بك في لوحة تحكم DR HOME ✓");
-    }
-
-    function logoutAdmin() {
-      sessionStorage.removeItem("drhome_unlocked");
-      location.reload();
     }
 
     /* Compress uploaded images automatically so they save directly inside content.json */
@@ -687,7 +616,6 @@
         await navigator.clipboard.writeText(jsonStr);
       } catch (e) {}
 
-      // If user configured an optional token in settings, push via API automatically
       if (AdminState.token && AdminState.token.startsWith("ghp_")) {
         const topBtn = document.getElementById("top-save-btn");
         const orig = topBtn.innerHTML;
@@ -729,7 +657,6 @@
         topBtn.innerHTML = orig;
       }
 
-      // Otherwise, open the foolproof 1-click Copy & Open GitHub modal
       document.getElementById("direct-github-edit-link").href =
         `https://github.com/${AdminState.owner}/${AdminState.repo}/edit/main/content.json`;
       document.getElementById("publish-modal").classList.remove("hidden");
@@ -1163,9 +1090,18 @@
       `;
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      if (sessionStorage.getItem("drhome_unlocked") === "true") {
-        unlockDashboard();
+    /* Boot Dashboard Immediately on Page Load */
+    document.addEventListener("DOMContentLoaded", async () => {
+      renderCurrentTab();
+      if (!localStorage.getItem("drhome_admin_draft")) {
+        try {
+          const res = await fetch("./content.json?t=" + Date.now(), { cache: "no-store" });
+          if (res.ok) {
+            AdminState.data = await res.json();
+            saveDraftLocally();
+            renderCurrentTab();
+          }
+        } catch (e) {}
       }
     });
   </script>
