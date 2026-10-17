@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DR HOME | متجر الأجهزة المنزلية الفاخرة</title>
+  <meta name="description" content="DR HOME — الوجهة الأولى للأجهزة المنزلية الفاخرة في العراق. شاشات OLED evo، ثلاجات InstaView، مكيفات Dual Inverter، وأجهزة مطبخ ذكية بضمان رسمي وأسعار بالدينار العراقي." />
+  <meta name="keywords" content="DR HOME, أجهزة منزلية العراق, شاشات LG OLED, ثلاجات InstaView, سبالت انفرتر, غسالات ذكية, بغداد" />
+  <meta name="theme-color" content="#050505" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="DR HOME | الفخامة والتكنولوجيا الكورية في قلب منزلك" />
+  <meta property="og:description" content="اكتشف أحدث الشاشات، الثلاجات، الغسالات، والسبالت بضمان رسمي وأسعار بالدينار العراقي." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=1200&auto=format&fit=crop" />
+
+  <!-- Google Fonts: Tajawal (Arabic) & Plus Jakarta Sans (English) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#050505',
+            charcoal: '#111111',
+            graphite: '#1B1B1B',
+            crimson: '#A50034',
+            crimsonLight: '#D00043',
+            champagne: '#D4AF37'
+          },
+          fontFamily: {
+            ar: ['Tajawal', 'sans-serif'],
+            en: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Custom Luxury Styles -->
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <!-- Dynamic Schema.org Container -->
+  <script id="schema-org-script" type="application/ld+json"></script>
+</head>
+<body class="bg-obsidian text-white antialiased selection:bg-crimson selection:text-white min-h-screen flex flex-col">
+
+  <!-- Skip to Content for Accessibility -->
+  <a href="#main-view" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:right-4 focus:z-50 focus:bg-crimson focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">
+    تخطي إلى المحتوى الرئيسي
+  </a>
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-charcoal border-b border-white/10 text-xs text-neutral-300 py-2 px-4">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-crimson animate-pulse"></span>
+        <span id="top-bar-tagline">الفخامة والتكنولوجيا الكورية في قلب منزلك</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#support" class="hover:text-white transition" data-i18n="navWarranty">ضمان رسمي 10 سنوات</a>
+        <span class="text-white/20">|</span>
+        <a href="#contact" id="top-bar-phone" class="hover:text-white transition font-mono" dir="ltr">+964 770 000 0000</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Sticky Header -->
+  <header class="sticky top-0 z-40 glass-header border-b border-white/10 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="#home" class="flex items-center gap-3 group focus:outline-none" aria-label="DR HOME">
+        <img id="brand-logo-img" src="" alt="DR HOME" class="h-10 w-auto hidden object-contain" />
+        <div id="brand-logo-text" class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-full bg-crimson flex items-center justify-center text-white font-black text-lg tracking-tighter shadow-lg shadow-crimson/30 group-hover:scale-105 transition">
+            DR
+          </div>
+          <div class="flex flex-col">
+            <span class="text-xl font-black tracking-widest text-white leading-none">DR HOME</span>
+            <span class="text-[10px] tracking-[0.25em] text-neutral-400 uppercase mt-0.5">Flagship Appliances</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-neutral-300" aria-label="Main Navigation">
+        <a href="#home" class="nav-link hover:text-white transition py-1" data-route="home" data-i18n="navHome">الرئيسية</a>
+        <a href="#categories" class="nav-link hover:text-white transition py-1" data-route="categories" data-i18n="navCategories">الفئات والمنتجات</a>
+        <a href="#offers" class="nav-link hover:text-white transition py-1 flex items-center gap-1.5" data-route="offers">
+          <span class="w-1.5 h-1.5 rounded-full bg-crimson"></span>
+          <span data-i18n="navOffers">العروض والخصومات</span>
+        </a>
+        <a href="#compare" class="nav-link hover:text-white transition py-1 flex items-center gap-1.5" data-route="compare">
+          <span data-i18n="navCompare">المقارنة</span>
+          <span id="compare-count-badge" class="px-1.5 py-0.5 text-[11px] rounded-full bg-white/10 text-white hidden">0</span>
+        </a>
+        <a href="#support" class="nav-link hover:text-white transition py-1" data-route="support" data-i18n="navSupport">الدعم والضمان</a>
+        <a href="#faq" class="nav-link hover:text-white transition py-1" data-route="faq" data-i18n="navFaq">الأسئلة الشائعة</a>
+        <a href="#about" class="nav-link hover:text-white transition py-1" data-route="about" data-i18n="navAbout">من نحن</a>
+        <a href="#contact" class="nav-link hover:text-white transition py-1" data-route="contact" data-i18n="navContact">الفروع وتواصل معنا</a>
+      </nav>
+
+      <!-- Action Buttons: Language Toggle, Cart, Mobile Menu -->
+      <div class="flex items-center gap-3">
+        <!-- Language Switcher -->
+        <button id="lang-toggle-btn" type="button" class="px-3.5 py-2 rounded-full border border-white/15 hover:border-white/40 text-xs font-bold tracking-wider uppercase transition flex items-center gap-1.5 bg-white/5 hover:bg-white/10" aria-label="Switch Language">
+          <svg class="w-4 h-4 text-crimson" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+          </svg>
+          <span id="lang-toggle-label">EN</span>
+        </button>
+
+        <!-- Cart Drawer Trigger -->
+        <button id="cart-open-btn" type="button" class="relative p-2.5 rounded-full border border-white/15 hover:border-white/40 bg-white/5 hover:bg-white/10 transition" aria-label="سلة المشتريات">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span id="cart-count-badge" class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-crimson text-white text-[11px] font-bold flex items-center justify-center">0</span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" type="button" class="lg:hidden p-2.5 rounded-full border border-white/15 bg-white/5 text-white" aria-label="القائمة">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="lg:hidden hidden border-t border-white/10 bg-charcoal px-4 pt-3 pb-6 space-y-2">
+      <a href="#home" class="block px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm font-medium" data-i18n="navHome">الرئيسية</a>
+      <a href="#categories" class="block px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm font-medium" data-i18n="navCategories">الفئات والمنتجات</a>
+      <a href="#offers" class="block px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm font-medium text-crimsonLight" data-i18n="navOffers">العروض والخصومات</a>
+      <a href="#compare" class="block px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm font-medium" data-i18n="navCompare">مقارنة المنتجات</a>
+      <a href="#support" class="block px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm font-medium" data-i18n="navSupport">الدعم والضمان</a>
+      <a href="#faq" class="block px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm font-medium" data-i18n="navFaq">الأسئلة الشائعة</a>
+      <a href="#about" class="block px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm font-medium" data-i18n="navAbout">من نحن</a>
+      <a href="#contact" class="block px-3 py-2.5 rounded-xl hover:bg-white/5 text-sm font-medium" data-i18n="navContact">الفروع وتواصل معنا</a>
+    </div>
+  </header>
+
+  <!-- Main Dynamic View Container -->
+  <main id="main-view" class="flex-grow"></main>
+
+  <!-- Floating Compare Bar (Shows when items are added to comparison) -->
+  <div id="floating-compare-bar" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-30 hidden bg-charcoal/95 backdrop-blur-xl border border-white/20 rounded-2xl px-5 py-3 shadow-2xl flex items-center gap-4">
+    <div class="text-xs sm:text-sm font-medium">
+      <span data-i18n="compareBarText">منتجات محددة للمقارنة:</span>
+      <strong id="floating-compare-count" class="text-crimson mx-1">0</strong>/3
+    </div>
+    <a href="#compare" class="px-4 py-2 rounded-xl bg-white text-obsidian font-bold text-xs hover:bg-neutral-200 transition" data-i18n="compareNowBtn">
+      قارن الآن
+    </a>
+    <button id="clear-compare-btn" type="button" class="text-xs text-neutral-400 hover:text-white transition" data-i18n="clearBtn">
+      مسح
+    </button>
+  </div>
+
+  <!-- Slide-Over Shopping Cart Drawer -->
+  <div id="cart-modal" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true">
+    <div id="cart-backdrop" class="fixed inset-0 bg-black/75 backdrop-blur-sm transition-opacity"></div>
+    <div class="fixed inset-y-0 left-0 max-w-full flex">
+      <div class="w-screen max-w-md bg-charcoal border-r border-white/10 flex flex-col justify-between shadow-2xl">
+        <!-- Cart Header -->
+        <div class="p-6 border-b border-white/10 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-crimson"></span>
+            <h2 class="text-lg font-bold" data-i18n="cartTitle">سلة المشتريات والطلب السريع</h2>
+          </div>
+          <button id="cart-close-btn" type="button" class="p-2 rounded-full hover:bg-white/10 text-neutral-400 hover:text-white transition" aria-label="إغلاق">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cart-items-container" class="p-6 flex-1 overflow-y-auto space-y-4"></div>
+
+        <!-- Cart Footer & WhatsApp Checkout -->
+        <div class="p-6 border-t border-white/10 bg-obsidian/80 space-y-4">
+          <div class="flex items-center justify-between text-base font-bold">
+            <span data-i18n="cartTotal">المجموع الكلي:</span>
+            <span id="cart-total-price" class="text-xl text-white">0 د.ع</span>
+          </div>
+          <div class="space-y-2.5">
+            <input id="checkout-customer-name" type="text" class="w-full px-4 py-2.5 rounded-xl bg-charcoal border border-white/15 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-crimson" placeholder="الاسم الكامل (اختياري)" />
+            <input id="checkout-customer-city" type="text" class="w-full px-4 py-2.5 rounded-xl bg-charcoal border border-white/15 text-sm text-white placeholder-neutral-500 focus:outline-none focus:border-crimson" placeholder="المحافظة / المنطقة (مثال: بغداد - المنصور)" />
+          </div>
+          <button id="cart-whatsapp-checkout-btn" type="button" class="w-full py-3.5 px-6 rounded-xl bg-crimson hover:bg-crimsonLight text-white font-bold text-sm flex items-center justify-center gap-2.5 shadow-lg shadow-crimson/25 transition">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+            </svg>
+            <span data-i18n="cartCheckoutWhatsApp">إرسال الطلب عبر واتساب</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Luxury Footer -->
+  <footer class="bg-charcoal border-t border-white/10 pt-16 pb-10 text-neutral-400 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+        <!-- Col 1: Brand -->
+        <div class="space-y-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-full bg-crimson flex items-center justify-center text-white font-black text-base">DR</div>
+            <span class="text-xl font-black tracking-widest text-white">DR HOME</span>
+          </div>
+          <p id="footer-about-snippet" class="text-neutral-400 leading-relaxed text-xs sm:text-sm"></p>
+          <div class="flex items-center gap-3 pt-2">
+            <a id="footer-instagram" href="#" target="_blank" rel="noopener" class="px-3.5 py-2 rounded-full bg-white/5 hover:bg-crimson text-white text-xs transition">Instagram</a>
+            <a id="footer-facebook" href="#" target="_blank" rel="noopener" class="px-3.5 py-2 rounded-full bg-white/5 hover:bg-crimson text-white text-xs transition">Facebook</a>
+          </div>
+        </div>
+
+        <!-- Col 2: Categories -->
+        <div>
+          <h3 class="text-white font-bold mb-4 text-base" data-i18n="footerCategoriesTitle">فئات الأجهزة</h3>
+          <ul id="footer-categories-list" class="space-y-2.5"></ul>
+        </div>
+
+        <!-- Col 3: Quick Links -->
+        <div>
+          <h3 class="text-white font-bold mb-4 text-base" data-i18n="footerLinksTitle">روابط مهمة</h3>
+          <ul class="space-y-2.5">
+            <li><a href="#offers" class="hover:text-white transition" data-i18n="navOffers">العروض والخصومات</a></li>
+            <li><a href="#compare" class="hover:text-white transition" data-i18n="navCompare">مقارنة المنتجات</a></li>
+            <li><a href="#support" class="hover:text-white transition" data-i18n="navSupport">الدعم والضمان</a></li>
+            <li><a href="#faq" class="hover:text-white transition" data-i18n="navFaq">الأسئلة الشائعة</a></li>
+            <li><a href="#about" class="hover:text-white transition" data-i18n="navAbout">من نحن</a></li>
+            <li><a href="#privacy" class="hover:text-white transition" data-i18n="navPrivacy">سياسة الخصوصية</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Direct Contact -->
+        <div class="space-y-3">
+          <h3 class="text-white font-bold mb-4 text-base" data-i18n="footerContactTitle">خدمة الزبائن</h3>
+          <p id="footer-phone" class="text-white font-mono text-base" dir="ltr">+964 770 000 0000</p>
+          <p id="footer-email" class="text-neutral-400 font-mono text-xs"></p>
+          <div class="pt-2">
+            <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-obsidian font-bold text-xs hover:bg-neutral-200 transition" data-i18n="footerBranchesBtn">
+              عناوين الفروع وصالات العرض
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Copyright -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500">
+        <p>© <span id="current-year"></span> DR HOME. <span data-i18n="footerRights">جميع الحقوق محفوظة.</span></p>
+        <div class="flex items-center gap-4">
+          <a href="#privacy" class="hover:text-white transition" data-i18n="navPrivacy">سياسة الخصوصية</a>
+          <span>•</span>
+          <a href="#support" class="hover:text-white transition" data-i18n="navSupport">شروط الضمان</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main Application Script -->
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>
