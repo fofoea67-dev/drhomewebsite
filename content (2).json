@@ -1,0 +1,518 @@
+{
+  "storeInfo": {
+    "name": "DR HOME",
+    "logo": "images/DR HOME home applinces store.png",
+    "whatsappNumber": "9647860577861",
+    "phone": "+9647860577861",
+    "email": "info@drhome.online",
+    "addressAr": "بغداد — صالات عرض DR HOME للأجهزة المنزلية والإلكترونيات",
+    "addressEn": "Baghdad —  حي الجامعةDR HOME Home Appliances & Electronics Showrooms",
+    "instagram": "https://www.instagram.com/essa_dr_home/",
+    "facebook": "https://facebook.com"
+  },
+  "banners": [
+    {
+      "badgeAr": "تخفيضات كبرى في DR HOME E-Store",
+      "badgeEn": "MEGA SALE AT DR HOME E-STORE",
+      "titleAr": "أحدث أجهزة إل جي (LG) المنزلية بضمان رسمي وأسعار تنافسية",
+      "titleEn": "Latest LG Home Appliances with Official Warranty & Best IQD Prices",
+      "subtitleAr": "تسوق ثلاجات InstaView، شاشات OLED evo، غسالات AI DD، ومكيفات Dual Inverter مع توصيل وتنصيب مجاني.",
+      "subtitleEn": "Shop InstaView Refrigerators, OLED evo TVs, AI DD Washers, and Dual Inverter ACs with free delivery.",
+      "image": "images/DR HOME home applinces store-1.png",
+      "targetCategory": "refrigerators"
+    },
+    {
+      "badgeAr": "عروض الشاشات والترفيه المنزلي",
+      "badgeEn": "HOME ENTERTAINMENT OFFERS",
+      "titleAr": "شاشات LG OLED evo & QNED بدقة 4K سينمائية",
+      "titleEn": "LG OLED evo & QNED 4K Smart TVs",
+      "subtitleAr": "خصومات فورية تصل إلى 350,000 دينار على الشاشات الكبيرة مع ضمان حقيقي لمدة سنتين.",
+      "subtitleEn": "Instant discounts up to 350,000 IQD on flagship large-screen TVs.",
+      "targetCategory": "tvs"
+    },
+    {
+      "badgeAr": "شاشة",
+      "badgeEn": "tv",
+      "titleAr": "شاشة",
+      "titleEn": "tv",
+      "subtitleAr": "dddddddddddd",
+      "subtitleEn": "dddddddddd"
+    }
+  ],
+  "brands": [
+    {
+      "id": "lg",
+      "nameAr": "إل جي (LG)",
+      "nameEn": "LG Electronics"
+    },
+    {
+      "id": "lg",
+      "nameAr": "توشيبا0000000",
+      "nameEn": "toshiba Electronics"
+    },
+    {
+      "id": "whirlpool",
+      "nameAr": "ويرلبول (Whirlpool)",
+      "nameEn": "Whirlpool"
+    },
+    {
+      "id": "carrier",
+      "nameAr": "كاريير (Carrier)",
+      "nameEn": "Carrier"
+    },
+    {
+      "id": "kitchenaid",
+      "nameAr": "كيتشن إيد (KitchenAid)",
+      "nameEn": "KitchenAid"
+    }
+  ],
+  "categories": [
+    {
+      "id": "refrigerators",
+      "nameAr": "الثلاجات والمجمدات",
+      "nameEn": "Refrigerators & Freezers",
+      "subcategories": [
+        {
+          "id": "instaview",
+          "nameAr": "ثلاجة InstaView",
+          "nameEn": "InstaView Fridge"
+        },
+        {
+          "id": "side-by-side",
+          "nameAr": "ثلاجات بابين متقابلين",
+          "nameEn": "Side by Side"
+        },
+        {
+          "id": "four-door",
+          "nameAr": "ثلاجة أربعة أبواب",
+          "nameEn": "Four Door"
+        },
+        {
+          "id": "freezer",
+          "nameAr": "فريزر ومجمدة عمودية",
+          "nameEn": "Vertical Freezer"
+        }
+      ]
+    },
+    {
+      "id": "tvs",
+      "nameAr": "التلفزيونات والصوتيات",
+      "nameEn": "TVs & Audio",
+      "image": "images/6880d177aa6e3.jpg",
+      "subcategories": [
+        {
+          "id": "oled",
+          "nameAr": "شاشات OLED evo",
+          "nameEn": "OLED evo TVs"
+        },
+        {
+          "id": "qned",
+          "nameAr": "شاشات QNED MiniLED",
+          "nameEn": "QNED MiniLED"
+        },
+        {
+          "id": "uhd",
+          "nameAr": "شاشات UHD 4K",
+          "nameEn": "UHD 4K TVs"
+        }
+      ]
+    },
+    {
+      "id": "washers",
+      "nameAr": "الغسالات والمجففات",
+      "nameEn": "Washers & Dryers",
+      "subcategories": [
+        {
+          "id": "washtower",
+          "nameAr": "برج الغسيل WashTower",
+          "nameEn": "WashTower"
+        },
+        {
+          "id": "front-load",
+          "nameAr": "غسالة تحميل أمامي",
+          "nameEn": "Front Load Washer"
+        },
+        {
+          "id": "dryer",
+          "nameAr": "مجفف ملابس",
+          "nameEn": "Heat Pump Dryer"
+        }
+      ]
+    },
+    {
+      "id": "ac",
+      "nameAr": "المكيفات والسبالت",
+      "nameEn": "Air Conditioners",
+      "subcategories": [
+        {
+          "id": "split-ac",
+          "nameAr": "سبلت جداري انفرتر",
+          "nameEn": "Dual Inverter Split"
+        },
+        {
+          "id": "standing-ac",
+          "nameAr": "سبلت كنتوري عمودي",
+          "nameEn": "Floor Standing AC"
+        }
+      ]
+    },
+    {
+      "id": "kitchen",
+      "nameAr": "أجهزة المطبخ والبلت-إن",
+      "nameEn": "Kitchen & Built-in",
+      "subcategories": [
+        {
+          "id": "dishwasher",
+          "nameAr": "غسالة الصحون",
+          "nameEn": "Dishwashers"
+        },
+        {
+          "id": "builtin-oven",
+          "nameAr": "أفران وطباخات مدمجة",
+          "nameEn": "Built-in Ovens & Hobs"
+        },
+        {
+          "id": "microwave",
+          "nameAr": "مايكروويف",
+          "nameEn": "Microwaves"
+        },
+        {
+          "id": "mixer",
+          "nameAr": "عجانة ومحضرة طعام",
+          "nameEn": "Stand Mixers & Blenders"
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "product-mvcqwibu",
+      "modelCode": "",
+      "brand": "lg",
+      "category": "refrigerators",
+      "subcategory": "instaview",
+      "price": 0,
+      "oldPrice": 0,
+      "inStock": true,
+      "isOffer": false,
+      "warrantyYears": 2,
+      "image": "",
+      "nameAr": "",
+      "nameEn": "",
+      "shortDescAr": "",
+      "shortDescEn": "",
+      "specs": {
+        "capacityOrSize": "",
+        "color": "",
+        "motorOrTech": "",
+        "origin": ""
+      }
+    },
+    {
+      "id": "lg-instaview-617-black",
+      "modelCode": "GR-X257CQES",
+      "brand": "lg",
+      "category": "refrigerators",
+      "subcategory": "instaview",
+      "price": 0,
+      "oldPrice": 3350000,
+      "inStock": true,
+      "isOffer": true,
+      "warrantyYears": 10,
+      "nameAr": "ثلاجة إل جي InstaView حجم 617 لتر الباب بجانب الباب، تقنية UVnano، تقنية التبريد الطولي LinearCooling، تقنية ThinQ لون أسود مطفي",
+      "nameEn": "LG InstaView 617L Side-by-Side Refrigerator, UVnano, LinearCooling, ThinQ Wi-Fi, Matte Black",
+      "shortDescAr": "انقر مرتين على الزجاج لرؤية المحتويات الداخلية دون فتح الباب وفقدان الهواء البارد، مع موزع ماء وثلج معقم بتقنية UVnano وضاغط انفرتر خطي مكفول لمدة 10 سنوات.",
+      "shortDescEn": "Knock twice to see inside without losing cold air. Equipped with UVnano sanitized water/ice dispenser and 10-year Inverter Linear Compressor warranty.",
+      "specs": {
+        "capacityOrSize": "617 لتر (30 قدم)",
+        "color": "أسود مطفي (Matte Black)",
+        "motorOrTech": "Inverter Linear Compressor + ThinQ",
+        "origin": "كوريا / ضمان رسمي 10 سنوات"
+      }
+    },
+    {
+      "id": "lg-instaview-611-white",
+      "modelCode": "GC-X257CSES",
+      "brand": "lg",
+      "category": "refrigerators",
+      "subcategory": "instaview",
+      "price": 0,
+      "oldPrice": 0,
+      "inStock": true,
+      "isOffer": false,
+      "warrantyYears": 10,
+      "nameAr": "ثلاجة إل جي إنستافيو 611 لتر الباب بجانب الباب، تقنية UVnano، تقنية التبريد الطولي LinearCooling، تقنية ThinQ لون أبيض/سلفر",
+      "nameEn": "LG InstaView 611L Side-by-Side Refrigerator, UVnano, LinearCooling, ThinQ, Platinum Silver",
+      "shortDescAr": "ثلاجة باب بجانب باب فاخرة بتقنية حفظ الرطوبة FreshBalancer وفلتر Hygiene Fresh+ الذي يقضي على 99.999% من البكتيريا والروائح.",
+      "shortDescEn": "Side-by-side luxury refrigerator with FreshBalancer and Hygiene Fresh+ 5-step air filter.",
+      "specs": {
+        "capacityOrSize": "611 لتر",
+        "color": "فضي بلاتيني / أبيض",
+        "motorOrTech": "Smart Inverter + Hygiene Fresh+",
+        "origin": "ضمان رسمي 10 سنوات"
+      }
+    },
+    {
+      "id": "lg-vertical-freezer-324",
+      "modelCode": "GN-F304SLBT",
+      "brand": "lg",
+      "category": "refrigerators",
+      "subcategory": "freezer",
+      "price": 0,
+      "oldPrice": 1520000,
+      "inStock": true,
+      "isOffer": true,
+      "warrantyYears": 10,
+      "nameAr": "فريزر عامودي إل جي 324 لتر، بباب واحد، ضاغط سمارت انفيرتر، تقنية Door Cooling و Linear Cooling لون سلفر",
+      "nameEn": "LG Vertical Single-Door Freezer 324L, Smart Inverter Compressor, DoorCooling+, Silver",
+      "shortDescAr": "مجمدة عمودية بدون ثلج (No Frost) بسبعة أدراج شفافة واسعة وتبريد سريع متساوٍ في كل الرفوف.",
+      "shortDescEn": "Total No-Frost upright freezer with 7 spacious drawers and Smart Inverter energy efficiency.",
+      "specs": {
+        "capacityOrSize": "324 لتر",
+        "color": "سلفر (Silver)",
+        "motorOrTech": "Smart Inverter + DoorCooling+",
+        "origin": "ضمان رسمي 10 سنوات"
+      }
+    },
+    {
+      "id": "lg-four-door-705-out",
+      "modelCode": "GR-X29FTQKL",
+      "brand": "lg",
+      "category": "refrigerators",
+      "subcategory": "four-door",
+      "price": 0,
+      "oldPrice": 0,
+      "inStock": false,
+      "isOffer": false,
+      "warrantyYears": 10,
+      "nameAr": "ثلاجة إل جي أربع أبواب بسعة إجمالية 705 لتر باب داخل باب وتقنية تعقيم خاصة، لون الستانلس الأسود",
+      "nameEn": "LG 4-Door French Door Refrigerator 705L, Door-in-Door, UVnano, Black Stainless",
+      "shortDescAr": "تصميم أربعة أبواب واسع جداً للعائلات الكبيرة مع رفوف قابلة للطي وتقنية التبريد المحيطي.",
+      "shortDescEn": "Ultra-large capacity 4-door refrigerator with folding shelves and surround cooling.",
+      "specs": {
+        "capacityOrSize": "705 لتر",
+        "color": "ستانلس أسود",
+        "motorOrTech": "Inverter Linear Compressor",
+        "origin": "كوريا"
+      }
+    },
+    {
+      "id": "lg-oled-evo-c5-65",
+      "modelCode": "OLED65C56LA",
+      "brand": "lg",
+      "category": "tvs",
+      "subcategory": "oled",
+      "price": 0,
+      "oldPrice": 2800000,
+      "inStock": true,
+      "isOffer": true,
+      "warrantyYears": 2,
+      "nameAr": "شاشة إل جي أوليد 65 بوصة OLED evo C5 4K Smart TV، معالج α9 AI الجيل السابع، Dolby Vision & Atmos",
+      "nameEn": "LG 65-inch OLED evo C5 4K Smart TV, α9 AI Processor Gen7, Brightness Booster, 144Hz",
+      "shortDescAr": "تباين لا نهائي مع وحدات البكسل ذاتية الإضاءة، تصميم نحيف للغاية يندمج مع الجدار، ودعم كامل للألعاب بسرعة 144Hz.",
+      "shortDescEn": "Self-lit OLED pixels for infinite contrast, ultra-slim gallery design, and 4 HDMI 2.1 ports.",
+      "specs": {
+        "capacityOrSize": "65 بوصة (4K OLED evo)",
+        "color": "أسود تيتانيوم",
+        "motorOrTech": "α9 AI Processor + webOS 24",
+        "origin": "كوريا / ضمان سنتين"
+      }
+    },
+    {
+      "id": "lg-qned-75-miniled",
+      "modelCode": "75QNED85T6A",
+      "brand": "lg",
+      "category": "tvs",
+      "subcategory": "qned",
+      "price": 0,
+      "oldPrice": 2400000,
+      "inStock": true,
+      "isOffer": true,
+      "warrantyYears": 2,
+      "nameAr": "شاشة إل جي 75 بوصة QNED85 MiniLED 4K، تقنية Quantum Dot NanoCell، معدل تحديث 120Hz",
+      "nameEn": "LG 75-inch QNED85 MiniLED 4K Smart TV, α8 AI Processor, 120Hz Native Refresh Rate",
+      "shortDescAr": "ألوان نقية فائقة السطوع بفضل دمج تقنيتي Quantum Dot و NanoCell مع تحكم دقيق بالإضاءة الخلفية.",
+      "shortDescEn": "Quantum Dot meets NanoCell with Precision Dimming technology for cinema-scale clarity.",
+      "specs": {
+        "capacityOrSize": "75 بوصة (4K QNED)",
+        "color": "أسود فحمي",
+        "motorOrTech": "α8 AI Processor 4K",
+        "origin": "ضمان رسمي سنتين"
+      }
+    },
+    {
+      "id": "lg-washtower-21-16",
+      "modelCode": "WK2116WST",
+      "brand": "lg",
+      "category": "washers",
+      "subcategory": "washtower",
+      "price": 0,
+      "oldPrice": 2950000,
+      "inStock": true,
+      "isOffer": true,
+      "warrantyYears": 10,
+      "nameAr": "برج الغسيل والتجفيف إل جي WashTower سعة 21 كجم غسيل و 16 كجم تجفيف، ذكاء اصطناعي AI DD، بخار حقيقي",
+      "nameEn": "LG WashTower All-in-One Stacked Washer (21kg) & Heat Pump Dryer (16kg), AI DD, Steam+",
+      "shortDescAr": "حل متكامل لغسيل وتجفيف الملابس في وحدة عمودية واحدة أنيقة مع لوحة تحكم وسطية مريحة.",
+      "shortDescEn": "Single unit vertical laundry solution with Center Control panel and TurboWash 360.",
+      "specs": {
+        "capacityOrSize": "21 كجم غسيل / 16 كجم تجفيف",
+        "color": "أخضر وأسود فاخر / أسود فحمي",
+        "motorOrTech": "AI Direct Drive + Dual Inverter HeatPump",
+        "origin": "كوريا / ضمان 10 سنوات"
+      }
+    },
+    {
+      "id": "whirlpool-washer-10kg",
+      "modelCode": "FFD 10449 SBCV GCC",
+      "brand": "whirlpool",
+      "category": "washers",
+      "subcategory": "front-load",
+      "price": 0,
+      "oldPrice": 920000,
+      "inStock": true,
+      "isOffer": true,
+      "warrantyYears": 10,
+      "nameAr": "غسالة ملابس ويرلبول (Whirlpool) ذات تحميل أمامي: سعة 10 كجم، تقنية الحاسة السادسة 6th Sense، لون فضي",
+      "nameEn": "Whirlpool Front Load Washing Machine 10kg, 6th Sense Technology, FreshCare+, Silver Inox",
+      "shortDescAr": "مستشعرات ذكية تضبط الماء والطاقة حسب حجم الغسيل مع خاصية FreshCare+ بالبخار للحفاظ على انتعاش الملابس.",
+      "shortDescEn": "6th Sense intelligent sensors adapt resources to load size, with Inverter motor.",
+      "specs": {
+        "capacityOrSize": "10 كجم (1400 دورة/دقيقة)",
+        "color": "فضي إنوكس (Inox)",
+        "motorOrTech": "SenseInverter Motor + 6th Sense",
+        "origin": "أوروبا / ضمان رسمي"
+      }
+    },
+    {
+      "id": "lg-dualcool-ac-2ton",
+      "modelCode": "I24CGH",
+      "brand": "lg",
+      "category": "ac",
+      "subcategory": "split-ac",
+      "price": 0,
+      "oldPrice": 1290000,
+      "inStock": true,
+      "isOffer": true,
+      "warrantyYears": 10,
+      "nameAr": "سبلت إل جي DualCool Inverter سعة 2 طن (24,000 BTU)، ضاغط استوائي T3 يتحمل حتى 65 مئوية، تحكم بالأمبير وواي فاي",
+      "nameEn": "LG DualCool Inverter Split AC 2.0 Ton (24,000 BTU), Tropical T3 Compressor, Ampere Control & Wi-Fi",
+      "shortDescAr": "تبريد فائق السرعة وتوفير طاقة يصل إلى 65% مع خاصية تحديد سحب الأمبير بلمسة زر ليتناسب مع المولدة.",
+      "shortDescEn": "Engineered for Iraqi summers up to 65°C with Active Energy Control and Plasmaster Ionizer.",
+      "specs": {
+        "capacityOrSize": "2 طن (24,000 BTU)",
+        "color": "أبيض لؤلؤي",
+        "motorOrTech": "Dual Inverter Tropical T3 + ThinQ Wi-Fi",
+        "origin": "ضمان الضاغط 10 سنوات"
+      }
+    },
+    {
+      "id": "lg-quadwash-dishwasher",
+      "modelCode": "DFC513FV",
+      "brand": "lg",
+      "category": "kitchen",
+      "subcategory": "dishwasher",
+      "price": 10000,
+      "oldPrice": 1220000,
+      "inStock": true,
+      "isOffer": true,
+      "warrantyYears": 10,
+      "nameAr": "غسالة الصحون المتطورة من LG موديل DFC513FV، تقنية QuadWash بـ 4 أذرع رش، بخار TrueSteam، 14 مكان",
+      "nameEn": "LG QuadWash TrueSteam Dishwasher (14 Place Settings), Inverter Direct Drive, Matte Silver",
+      "shortDescAr": "تنظيف من كل الزوايا بفضل أذرع الرش رباعية الحركة مع تعقيم بالبخار الحقيقي يزيل البقع الصعبة والدهون.",
+      "shortDescEn": "4-arm QuadWash system with TrueSteam sanitization and EasyRack Plus adjustable baskets.",
+      "specs": {
+        "capacityOrSize": "14 مكان (حجم كامل)",
+        "color": "فضي بلاتيني",
+        "motorOrTech": "Inverter Direct Drive + TrueSteam",
+        "origin": "كوريا / ضمان 10 سنوات"
+      }
+    },
+    {
+      "id": "whirlpool-builtin-hob-5",
+      "modelCode": "PMW 75D2/IXL LPG",
+      "brand": "whirlpool",
+      "category": "kitchen",
+      "subcategory": "builtin-oven",
+      "price": 0,
+      "oldPrice": 713000,
+      "inStock": true,
+      "isOffer": true,
+      "warrantyYears": 2,
+      "nameAr": "طباخ غاز ويرلبول (مسطح بلت-إن)، 5 شعلات، تقنية iXelium المضادة للخدش والاصفرار | PMW 75D2/IXL LPG",
+      "nameEn": "Whirlpool Built-in Gas Hob 75cm, 5 Burners, iXelium Nanotechnology Stainless Steel",
+      "shortDescAr": "سطح ستانلس ستيل معالج بتقنية النانو iXelium لسهولة التنظيف ومقاومة الحرارة العالية مع شبكات حديد زهر متينة.",
+      "shortDescEn": "iXelium treated stainless steel surface with cast iron pan supports and flame failure safety device.",
+      "specs": {
+        "capacityOrSize": "75 سم — 5 شعلات غاز",
+        "color": "ستانلس ستيل (Inox)",
+        "motorOrTech": "iXelium Surface + Auto Ignition",
+        "origin": "إيطاليا"
+      }
+    },
+    {
+      "id": "kitchenaid-stand-mixer-56",
+      "modelCode": "5KSM60SPXBER",
+      "brand": "kitchenaid",
+      "category": "kitchen",
+      "subcategory": "mixer",
+      "price": 10000000,
+      "oldPrice": 1150000,
+      "inStock": true,
+      "isOffer": true,
+      "warrantyYears": 2,
+      "nameAr": "عجانة كيتشن إيد آرتيزان رافعة للوعاء سعة 5.6 لتر، هيكل معدني بالكامل، اللون: الأحمر الملكي | 5KSM60SPXBER",
+      "nameEn": "KitchenAid Artisan Bowl-Lift Stand Mixer 5.6L, Full Metal Construction, Empire Red | 5KSM60SPXBER",
+      "shortDescAr": "العجانة الاحترافية الأولى عالمياً بنظام رفع الوعاء و11 سرعة دقيقة للعجن الكثيف والخفق السريع.",
+      "shortDescEn": "Heavy-duty bowl-lift stand mixer with 5.6L stainless steel bowl and planetary mixing action.",
+      "specs": {
+        "capacityOrSize": "5.6 لتر",
+        "color": "الأحمر الملكي (Empire Red)",
+        "motorOrTech": "Direct Drive Metal Motor (11 Speeds)",
+        "origin": "الولايات المتحدة الأمريكية"
+      }
+    }
+  ],
+  "branches": [
+    {
+      "nameAr": "معرض DR HOME الرئيسي — بغداد (الكرادة)",
+      "nameEn": "DR HOME Main Flagship Showroom — Baghdad (Karrada)",
+      "addressAr": "بغداد، الكرادة، تقاطع المسبح، بناية DR HOME للأجهزة المنزلية",
+      "addressEn": "Baghdad, Karrada, Al-Masbah Intersection, DR HOME Building",
+      "phone": "+964 770 000 0001",
+      "hoursAr": "يومياً من 10:00 صباحاً إلى 10:00 مساءً",
+      "hoursEn": "Daily: 10:00 AM – 10:00 PM",
+      "mapUrl": "https://maps.google.com/?q=Baghdad+Karrada"
+    },
+    {
+      "nameAr": "معرض DR HOME — فرع المنصور",
+      "nameEn": "DR HOME Showroom — Al-Mansour Branch",
+      "addressAr": "بغداد، المنصور، شارع 14 رمضان",
+      "addressEn": "Baghdad, Al-Mansour, 14 Ramadan St.",
+      "phone": "+964 770 000 0002",
+      "hoursAr": "يومياً من 10:30 صباحاً إلى 10:30 مساءً",
+      "hoursEn": "Daily: 10:30 AM – 10:30 PM",
+      "mapUrl": "https://maps.google.com/?q=Baghdad+Mansour"
+    }
+  ],
+  "faqs": [
+    {
+      "qAr": "هل جميع الأجهزة في متجر DR HOME أصلية ومكفولة؟",
+      "aAr": "نعم، جميع أجهزتنا من LG و Whirlpool و Carrier و KitchenAid أصلية 100% ومشمولة بضمان رسمي حقيقي يصل إلى 10 سنوات على الضواغط والمحركات الانفرتر.",
+      "qEn": "Are all appliances authentic and covered by an official warranty?",
+      "aEn": "Yes, 100% of our LG, Whirlpool, Carrier, and KitchenAid products are genuine and backed by an official warranty up to 10 years."
+    },
+    {
+      "qAr": "كيف أطلب جهازاً من الموقع؟ وهل يوجد دفع عند الاستلام؟",
+      "aAr": "يمكنك الضغط على زر (أضف للسلة) لتجميع عدة أجهزة أو زر (اطلب عبر واتساب) لإرسال طلبك مباشرة مع رقم الموديل والسعر إلى قسم المبيعات، والدفع متاح عند الاستلام بعد الفحص.",
+      "qEn": "How do I place an order and is Cash on Delivery available?",
+      "aEn": "Add items to your cart or click Order via WhatsApp for instant checkout. Cash on delivery is available across Baghdad and all Iraqi provinces."
+    },
+    {
+      "qAr": "هل التوصيل والتنصيب متوفر؟",
+      "aAr": "نعم، نوفر توصيلاً سريعاً وآمناً مع كادر فني مختص لتنصيب الشاشات الجدارية، السبالت، الغسالات، وأجهزة المطبخ المدمجة (Built-in).",
+      "qEn": "Do you provide delivery and installation?",
+      "aEn": "Yes, our specialized technical team handles delivery and certified installation."
+    }
+  ]
+}
